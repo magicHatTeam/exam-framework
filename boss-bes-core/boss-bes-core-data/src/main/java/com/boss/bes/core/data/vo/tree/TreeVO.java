@@ -26,11 +26,4 @@ public class TreeVO<T extends AbstractTreeNode> {
     public void setTreeNodeList(List<T> treeNodeList) {
         this.treeNodeList = treeNodeList;
     }
-
-    @Override
-    public String toString() {
-        return "TreeVO{" +
-                "treeNodeList=" + treeNodeList +
-                '}';
-    }
 }

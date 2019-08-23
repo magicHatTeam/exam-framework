@@ -45,14 +45,4 @@ public abstract class AbstractTreeNode<T extends AbstractTreeNode> {
     public void setChildList(List<T> childList) {
         this.childList = childList;
     }
-
-
-    @Override
-    public String toString() {
-        return "AbstractTreeNode{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", childList=" + childList +
-                '}';
-    }
 }
