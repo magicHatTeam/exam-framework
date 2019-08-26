@@ -1,6 +1,6 @@
 package com.boss.bes.common.utils.excel;
 
-import com.bes.common.utils.CheckUtil;
+import com.boss.bes.common.utils.CheckUtil;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
