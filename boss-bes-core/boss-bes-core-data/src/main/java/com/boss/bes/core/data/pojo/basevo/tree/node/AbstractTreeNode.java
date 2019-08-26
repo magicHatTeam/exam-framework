@@ -1,5 +1,6 @@
 package com.boss.bes.core.data.pojo.basevo.tree.node;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ import java.util.List;
  * @version 1.0
  * @date 2019-08-21 15:23
  */
+@Valid
 public abstract class AbstractTreeNode<T extends AbstractTreeNode> {
     @NotNull(message = "树节点id不能为空")
     @Min(value = 1, message = "树节点id必须大于0")

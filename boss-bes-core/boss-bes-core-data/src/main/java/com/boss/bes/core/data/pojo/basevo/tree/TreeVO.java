@@ -14,8 +14,8 @@ import java.util.List;
  * @version 1.0
  * @date 2019-08-21 15:30
  */
+@Valid
 public class TreeVO<T extends AbstractTreeNode> {
-    @Valid
     @NotNull(message = "树节点不能为空")
     private List<T> treeNodeList;
 
