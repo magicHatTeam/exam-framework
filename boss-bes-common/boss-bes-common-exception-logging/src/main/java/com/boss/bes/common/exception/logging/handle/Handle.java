@@ -4,21 +4,15 @@ package com.boss.bes.common.exception.logging.handle;
 import com.boss.bes.common.exception.logging.aspect.ExceptionAspect;
 import com.boss.bes.common.exception.logging.exception.AppException;
 import com.boss.bes.core.data.util.ResponseUtil;
-<<<<<<< HEAD
 import com.boss.bes.core.data.pojo.CommonResponse;
 import com.boss.bes.core.data.pojo.ResultEnum;
-=======
-import com.boss.bes.core.data.vo.CommonResponse;
-import com.boss.bes.core.data.vo.ResultEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
->>>>>>> master
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
