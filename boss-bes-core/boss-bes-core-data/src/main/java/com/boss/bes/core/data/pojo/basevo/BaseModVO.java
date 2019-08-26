@@ -1,6 +1,8 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -22,11 +24,13 @@ public abstract class BaseModVO {
      */
     @NotNull(message = "名字不能为空")
     private String name;
+
     /**
      * 状态：是否启用
      */
-    @NotNull(message = "状态标记为不能为空")
-    private String status;
+    @Min(value = 0, message = "只能用0和1表示是否启用")
+    @Max(value = 1, message = "只能用0和1表示是否启用")
+    private Byte status;
 
     public Long getId() {
         return id;
@@ -44,11 +48,11 @@ public abstract class BaseModVO {
         this.name = name;
     }
 
-    public String getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 }
