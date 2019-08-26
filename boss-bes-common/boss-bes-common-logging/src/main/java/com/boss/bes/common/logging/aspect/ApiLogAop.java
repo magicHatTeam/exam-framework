@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 
 /**
  * 函数日志的切面
+ * 用来记录控制层的相关信息
  * @author longquanxiao
  * @date 2019/8/12
  */
