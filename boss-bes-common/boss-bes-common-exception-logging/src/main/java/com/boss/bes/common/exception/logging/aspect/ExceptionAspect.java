@@ -23,8 +23,6 @@ public class ExceptionAspect {
     @Resource
     private Handle handle;
 
-    private Logger logger = LoggerFactory.getLogger(ExceptionAspect.class);
-
     @Pointcut("@annotation(com.boss.bes.common.exception.logging.annotion.ExceptionHandle)")
     public  void serviceAspect() { }
 
@@ -37,7 +35,6 @@ public class ExceptionAspect {
       */
     @AfterThrowing(throwing = "ex",pointcut = "serviceAspect()")
     public void afterThrowing(AppException ex){
-        logger.error("Error found: ", ex);
         handle.handle(ex);
     }
 }
