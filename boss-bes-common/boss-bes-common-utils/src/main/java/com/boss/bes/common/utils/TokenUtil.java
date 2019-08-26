@@ -20,27 +20,31 @@ public class TokenUtil {
 
     /**
      * 从request里面解密出放入JWT token的自定义集合数据
-     * @param headStr 字符串 request中head的key
-     * @param tokenStr 字符串 JWT中token的key
      * @return Map<String,String> OR null
      */
-    public static Map<String,String> getCommonParamsFromToken(String headStr,String tokenStr) throws IOException {
+    public static Map<String,String> getCommonParamsFromToken(){
         Map<String,String> stringMap = null;
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (requestAttributes != null){
             HttpServletRequest request = requestAttributes.getRequest();
-            String body = getRequestBody(request);
-            if(StrUtil.isNotEmpty(body)) {
-                JSONObject jsonObject = JSON.parseObject(body);
-                String head = jsonObject.get(headStr).toString();
-                if (StrUtil.isNotEmpty(head)) {
-                    jsonObject = JSON.parseObject(head);
-                    String token = jsonObject.get(tokenStr).toString();
-                    if (StrUtil.isNotEmpty(token)) {
-                        stringMap = JwtUtil.verifyToken(token);
-                    }
-                }
+            String token = request.getHeader("token");
+            if (StrUtil.isNotEmpty(token)) {
+                stringMap = JwtUtil.verifyToken(token);
             }
+        }
+        return stringMap;
+    }
+
+    /**
+     * 从request中获取token中封装的数据
+     * @param request request
+     * @return Map<String,String> OR null
+     */
+    public static Map<String,String> getCommonParamsFromRequest(HttpServletRequest request){
+        Map<String,String> stringMap = null;
+        String token = request.getHeader("token");
+        if (StrUtil.isNotEmpty(token)) {
+            stringMap = JwtUtil.verifyToken(token);
         }
         return stringMap;
     }
