@@ -94,7 +94,7 @@ public class AutoFillEntityFieldAopAspect {
 	 *  2、从token里面拿用户ID错误
 	 */
 	private JSONObject getJsonObject() throws IOException {
-		Map<String, String> commonParamsFromToken = TokenUtil.getCommonParamsFromToken("head", "token");
+		Map<String, String> commonParamsFromToken = TokenUtil.getCommonParamsFromToken();
 		if (commonParamsFromToken!=null){
 			String userId = commonParamsFromToken.get("id");
 			if (StrUtil.isNotEmpty(userId)) {
