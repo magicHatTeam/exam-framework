@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -15,12 +16,12 @@ public abstract class BaseQueryVO {
     /**
      * 当前分页条件下，一页中拥有的数据条数
      */
-    @NotNull(message = "分页时每页的数据数目不能为空")
+    @Min(value = 1, message = "分页时每页的数据数目不能小于1")
     private Integer pageSize;
     /**
      * 当前分页条件下，一页中拥有的数据条数
      */
-    @NotNull(message = "分页时当前的页码不能为空")
+    @Min(value = 1, message = "分页时当前页码不能小于1")
     private Integer pageNum;
 
     public Integer getPageSize() {
