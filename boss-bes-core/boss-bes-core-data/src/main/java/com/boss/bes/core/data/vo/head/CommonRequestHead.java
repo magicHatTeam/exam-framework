@@ -4,9 +4,10 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 约定的请求报文头
+ *  3.0更新：从request head 中删除token
  *
  * @author 何家伟
- * @version 2.0
+ * @version 3.0
  * @date 2019-08-14 22:33
  */
 public class CommonRequestHead {
@@ -15,11 +16,6 @@ public class CommonRequestHead {
      */
     @NotBlank(message = "request的Head中版本信息不允许为空")
     private String version;
-    /**
-     * token
-     */
-    @NotBlank(message = "request的Head中token不允许为空")
-    private String token;
     /**
      * 业务类型
      */
@@ -53,14 +49,6 @@ public class CommonRequestHead {
         this.version = version;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public String getBusinessType() {
         return businessType;
     }
@@ -89,7 +77,6 @@ public class CommonRequestHead {
     public String toString() {
         return "CommonRequestHead{" +
                 "version='" + version + '\'' +
-                ", token='" + token + '\'' +
                 ", businessType='" + businessType + '\'' +
                 ", deviceId='" + deviceId + '\'' +
                 ", deviceType=" + deviceType +
