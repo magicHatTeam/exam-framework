@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DaoAopAnnotation {
+public @interface AutoFillEntityFieldAopAnnotation {
 	MethodType methodType() default MethodType.UNKNOWN;
 }
