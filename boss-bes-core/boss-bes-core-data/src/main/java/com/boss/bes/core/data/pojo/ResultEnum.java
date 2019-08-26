@@ -45,7 +45,20 @@ public enum ResultEnum {
     /**
      * 网关熔断超时错误
      */
-    GATEWAY_HYSTRIX_TIMEOUT_ERROR("1002", "网关熔断超时错误");
+    GATEWAY_HYSTRIX_TIMEOUT_ERROR("1002", "网关熔断超时错误"),
+    /**
+     * token无效错误
+     */
+    TOKEN_INVALID("1003","token无效，请重新登录"),
+    /**
+     * token不存在错误
+     */
+    TOKEN_NOT_EXITS("1004", "token不存在，请登录"),
+    /**
+     * 请求体参数不符合规范
+     */
+    REQUEST_BODY_PARAMS_ERROR("1005", "请求体参数不符合规范！！")
+    ;
 
     private String code;
     private String msg;

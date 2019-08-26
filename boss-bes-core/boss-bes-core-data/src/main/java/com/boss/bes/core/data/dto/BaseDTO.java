@@ -15,8 +15,6 @@ public abstract class BaseDTO {
     private String status;
     private Date createdTime;
     private Long createdBy;
-    private Integer pageSize;
-    private Integer pageNum;
     private Integer dataCount;
 
     public Long getId() {
@@ -57,22 +55,6 @@ public abstract class BaseDTO {
 
     public void setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
     }
 
     public Integer getDataCount() {
