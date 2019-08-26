@@ -1,6 +1,6 @@
 package com.boss.bes.common.exception.logging.exception;
 
-import com.boss.bes.core.data.vo.ResultEnum;
+import com.boss.bes.core.data.pojo.ResultEnum;
 
 /**
  *  Service 层的异常抛出父类

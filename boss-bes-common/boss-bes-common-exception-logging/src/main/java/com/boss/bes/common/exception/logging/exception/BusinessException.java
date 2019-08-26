@@ -1,6 +1,6 @@
 package com.boss.bes.common.exception.logging.exception;
 
-import com.boss.bes.core.data.vo.ResultEnum;
+import com.boss.bes.core.data.pojo.ResultEnum;
 
 /**
  * 用于抛出业务层的异常用于继承

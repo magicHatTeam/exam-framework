@@ -1,6 +1,6 @@
 package com.boss.bes.common.exception.logging.exception;
 
-import com.boss.bes.core.data.vo.ResultEnum;
+import com.boss.bes.core.data.pojo.ResultEnum;
 
 /**
  * Dao层 的异常抛出

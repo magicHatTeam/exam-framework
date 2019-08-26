@@ -1,4 +1,4 @@
-package com.boss.bes.core.data.vo.head;
+package com.boss.bes.core.data.pojo.head;
 
 import javax.validation.constraints.NotBlank;
 
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
  */
 public class CommonRequestHead {
     /**
-     * 应用版本
+     * 数据版本（时间戳形式，不是应用版本）
      */
     @NotBlank(message = "request的Head中版本信息不允许为空")
     private String version;

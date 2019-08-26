@@ -1,7 +1,7 @@
-package com.boss.bes.core.data.vo.tree;
+package com.boss.bes.core.data.pojo.basevo.tree;
 
 
-import com.boss.bes.core.data.vo.tree.node.AbstractTreeNode;
+import com.boss.bes.core.data.pojo.basevo.tree.node.AbstractTreeNode;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

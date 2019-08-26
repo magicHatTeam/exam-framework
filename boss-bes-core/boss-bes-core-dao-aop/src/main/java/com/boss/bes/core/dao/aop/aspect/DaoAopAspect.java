@@ -8,7 +8,7 @@ import com.boss.bes.core.dao.aop.annotation.DaoAopAnnotation;
 import com.boss.bes.core.dao.aop.pojo.common.InsertCommon;
 import com.boss.bes.core.dao.aop.pojo.common.UpdateCommon;
 import com.boss.bes.core.dao.aop.pojo.enums.MethodType;
-import com.boss.bes.core.data.vo.ResultEnum;
+import com.boss.bes.core.data.pojo.ResultEnum;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

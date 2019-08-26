@@ -1,6 +1,6 @@
-package com.boss.bes.core.data.vo;
+package com.boss.bes.core.data.pojo;
 
-import com.boss.bes.core.data.vo.head.CommonRequestHead;
+import com.boss.bes.core.data.pojo.head.CommonRequestHead;
 import javax.validation.Valid;
 
 /**

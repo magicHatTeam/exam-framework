@@ -1,4 +1,4 @@
-package com.boss.bes.core.data.vo.head;
+package com.boss.bes.core.data.pojo.head;
 
 /**
  * 响应报文头的实体类

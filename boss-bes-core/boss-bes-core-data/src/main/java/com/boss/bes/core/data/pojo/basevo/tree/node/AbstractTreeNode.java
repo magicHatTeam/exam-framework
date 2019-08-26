@@ -1,4 +1,4 @@
-package com.boss.bes.core.data.vo.tree.node;
+package com.boss.bes.core.data.pojo.basevo.tree.node;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;

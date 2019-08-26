@@ -1,4 +1,4 @@
-package com.boss.bes.core.data.vo;
+package com.boss.bes.core.data.pojo;
 
 /**
  * 业务结果枚举类，包含应答码和消息

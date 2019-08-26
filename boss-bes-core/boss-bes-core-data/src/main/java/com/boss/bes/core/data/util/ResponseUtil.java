@@ -1,7 +1,7 @@
 package com.boss.bes.core.data.util;
 
-import com.boss.bes.core.data.vo.CommonResponse;
-import com.boss.bes.core.data.vo.ResultEnum;
+import com.boss.bes.core.data.pojo.CommonResponse;
+import com.boss.bes.core.data.pojo.ResultEnum;
 
 /**
  * 供其他方法使用的生成响应报文的工具类,所有公共方法的返回值类型都是 CommonResponse

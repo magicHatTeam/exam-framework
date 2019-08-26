@@ -3,8 +3,8 @@ package com.boss.bes.common.exception.logging.handle;
 
 import com.boss.bes.common.exception.logging.exception.AppException;
 import com.boss.bes.core.data.util.ResponseUtil;
-import com.boss.bes.core.data.vo.CommonResponse;
-import com.boss.bes.core.data.vo.ResultEnum;
+import com.boss.bes.core.data.pojo.CommonResponse;
+import com.boss.bes.core.data.pojo.ResultEnum;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
