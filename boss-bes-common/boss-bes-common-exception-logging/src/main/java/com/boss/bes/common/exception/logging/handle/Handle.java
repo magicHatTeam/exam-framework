@@ -73,7 +73,6 @@ public class Handle {
             for (ObjectError objectError : errors){
                 errorMessages.add(objectError.getDefaultMessage());
             }
-
             return ResponseUtil.buildError("1000",errorMessages.toString());
         } else {
             return ResponseUtil.buildError(ResultEnum.SYSTEM_ERROR);
