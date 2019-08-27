@@ -14,5 +14,13 @@ import java.util.List;
 @Valid
 public abstract class BaseRemoveVO {
     @NotNull(message = "待删除的id集合不能为空")
-    private List<Integer> idList;
+    private List<String> idList;
+
+    public List<String> getIdList() {
+        return idList;
+    }
+
+    public void setIdList(List<String> idList) {
+        this.idList = idList;
+    }
 }

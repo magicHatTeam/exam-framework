@@ -18,7 +18,7 @@ public abstract class BaseModVO {
      * 字段id
      * 在新增字段时 id 可以为空
      */
-    private Long id;
+    private String id;
     /**
      * 字段名
      */
@@ -31,14 +31,6 @@ public abstract class BaseModVO {
     @Min(value = 0, message = "只能用0和1表示是否启用")
     @Max(value = 1, message = "只能用0和1表示是否启用")
     private Byte status;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -54,5 +46,13 @@ public abstract class BaseModVO {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
