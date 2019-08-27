@@ -21,8 +21,12 @@ public abstract class BaseDTO {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    /**
+     * 需要注意，这里要设置传入String类型的id，方便VO和DTO的id相互转换
+     * @param id string类型的id，正常情况下由VO传入
+     */
+    public void setId(String id) {
+        this.id = Long.valueOf(id);
     }
 
     public String getName() {
