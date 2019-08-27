@@ -46,6 +46,10 @@ public final class MessageUtil {
     private static final int DEF_READ_TIMEOUT = 30000;
 
     /**
+     *
+     */
+
+    /**
      * 发送短信
      * @param phoneNum
      * @param code     可以调用工具类中的GenerateRandomCode产生4位验证码
@@ -59,7 +63,7 @@ public final class MessageUtil {
          * 设置的模板变量，即随机四位验证码
          * 应用APP_KEY
          */
-        Map params = new HashMap();
+        Map params = new HashMap(16);
         params.put("mobile",phoneNum);
         params.put("tpl_id",TPL_ID);
         params.put("tpl_value","#code#="+code);

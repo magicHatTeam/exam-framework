@@ -43,7 +43,7 @@ public class ExcelUtil {
     /**
      * 存储样式
      */
-    private static final HashMap<String, CellStyle> cellStyleMap = new HashMap<String, CellStyle>();
+    private static final HashMap<String, CellStyle> CELL_STYLE_MAP = new HashMap<String, CellStyle>();
 
     /**
      * 读取excel文件里面的内容 支持日期，数字，字符，函数公式，布尔类型
@@ -272,8 +272,8 @@ public class ExcelUtil {
 
     private static CellStyle getStyle(String type, Workbook wb) {
 
-        if (cellStyleMap.containsKey(type)) {
-            return cellStyleMap.get(type);
+        if (CELL_STYLE_MAP.containsKey(type)) {
+            return CELL_STYLE_MAP.get(type);
         }
         // 生成一个样式
         CellStyle style = wb.createCellStyle();
@@ -301,7 +301,7 @@ public class ExcelUtil {
             font.setFontHeightInPoints((short) 12);
             style.setFont(font);
         }
-        cellStyleMap.put(type, style);
+        CELL_STYLE_MAP.put(type, style);
         return style;
     }
 
@@ -316,7 +316,9 @@ public class ExcelUtil {
                 return new HSSFWorkbook();
             case V2007:
                 return new XSSFWorkbook();
+                default:
+                    return null;
         }
-        return null;
+
     }
 }

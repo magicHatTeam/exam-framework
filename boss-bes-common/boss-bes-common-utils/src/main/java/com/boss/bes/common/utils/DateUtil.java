@@ -19,30 +19,42 @@ public final class DateUtil {
     private static ThreadLocal<SimpleDateFormat> ThreadTime = new ThreadLocal<SimpleDateFormat>();
 
     private static SimpleDateFormat dateTimeInstance() {
-        SimpleDateFormat df = ThreadDateTime.get();
-        if (df == null) {
-            df = new SimpleDateFormat(Opslab.DATETIME_FORMAT);
-            ThreadDateTime.set(df);
+        try {
+            SimpleDateFormat df = ThreadDateTime.get();
+            if (df == null) {
+                df = new SimpleDateFormat(Opslab.DATETIME_FORMAT);
+                ThreadDateTime.set(df);
+            }
+            return df;
+        }finally{
+            ThreadDateTime.remove();
         }
-        return df;
     }
 
     private static SimpleDateFormat dateInstance() {
-        SimpleDateFormat df = ThreadDate.get();
-        if (df == null) {
-            df = new SimpleDateFormat(Opslab.DATE_FORMAT);
-            ThreadDate.set(df);
+        try {
+            SimpleDateFormat df = ThreadDate.get();
+            if (df == null) {
+                df = new SimpleDateFormat(Opslab.DATE_FORMAT);
+                ThreadDate.set(df);
+            }
+            return df;
+        }finally{
+            ThreadDate.remove();
         }
-        return df;
     }
 
     private static SimpleDateFormat timeInstance() {
-        SimpleDateFormat df = ThreadTime.get();
-        if (df == null) {
-            df = new SimpleDateFormat(Opslab.TIME_FORMAT);
-            ThreadTime.set(df);
+        try {
+            SimpleDateFormat df = ThreadTime.get();
+            if (df == null) {
+                df = new SimpleDateFormat(Opslab.TIME_FORMAT);
+                ThreadTime.set(df);
+            }
+            return df;
+        }finally{
+            ThreadTime.remove();
         }
-        return df;
     }
 
     /**
