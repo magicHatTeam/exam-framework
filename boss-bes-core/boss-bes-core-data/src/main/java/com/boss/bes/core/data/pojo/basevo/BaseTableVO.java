@@ -10,11 +10,11 @@ import java.util.List;
  * @version 1.0
  * @date 2019-08-26 10:21
  */
-public abstract class BaseTableVO {
+public abstract class BaseTableVO<T extends BaseModVO> {
     /**
      * 显示在表格中的VO集合（因为表格中的单个VO和增加/删除VO类似）
      */
-    private List<BaseModVO> dataList;
+    private List<T> dataList;
     /**
      * 当前分页条件下，一页中拥有的数据条数
      */
@@ -28,11 +28,11 @@ public abstract class BaseTableVO {
      */
     private Integer dataCount;
 
-    public List<BaseModVO> getDataList() {
+    public List<T> getDataList() {
         return dataList;
     }
 
-    public void setDataList(List<BaseModVO> dataList) {
+    public void setDataList(List<T> dataList) {
         this.dataList = dataList;
     }
 
