@@ -22,7 +22,6 @@ public abstract class BaseModVO {
     /**
      * 字段名
      */
-    @NotNull(message = "名字不能为空")
     private String name;
     /**
      * 状态：是否启用
