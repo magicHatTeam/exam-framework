@@ -1,8 +1,8 @@
-package com.boss.bes.core.data.pojo.basevo.tree;
+package com.boss.bes.core.data.pojo.tree;
 
 
 import com.alibaba.fastjson.JSON;
-import com.boss.bes.core.data.pojo.basevo.tree.node.AbstractTreeNode;
+import com.boss.bes.core.data.pojo.tree.node.AbstractTreeNode;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,7 +16,7 @@ import java.util.List;
  * @date 2019-08-21 15:30
  */
 @Valid
-public class TreeVO<T extends AbstractTreeNode> {
+public class TreeBO<T extends AbstractTreeNode> {
     @NotNull(message = "树节点不能为空")
     private List<T> treeNodeList;
 
@@ -28,9 +28,9 @@ public class TreeVO<T extends AbstractTreeNode> {
         this.treeNodeList = treeNodeList;
     }
 
-    public TreeVO() {}
+    public TreeBO() {}
 
-    public TreeVO(@NotNull(message = "树节点不能为空") List<T> treeNodeList) {
+    public TreeBO(@NotNull(message = "树节点不能为空") List<T> treeNodeList) {
         this.treeNodeList = treeNodeList;
     }
 

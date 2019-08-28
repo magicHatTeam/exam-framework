@@ -1,4 +1,4 @@
-package com.boss.bes.core.data.pojo.basevo.tree.node;
+package com.boss.bes.core.data.pojo.tree.node;
 
 import com.alibaba.fastjson.JSON;
 
