@@ -35,6 +35,17 @@ public abstract class BaseModDTO {
     private Date updatedTime;
     private Long version;
 
+    public BaseModDTO(Long id, @NotNull(message = "名字不能为空") String name, @Min(value = 0, message = "只能用0和1表示是否启用") @Max(value = 1, message = "只能用0和1表示是否启用") Byte status, Long createdBy, Date createdTime, Long updatedBy, Date updatedTime, Long version) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+        this.createdBy = createdBy;
+        this.createdTime = createdTime;
+        this.updatedBy = updatedBy;
+        this.updatedTime = updatedTime;
+        this.version = version;
+    }
+
     public Long getId() {
         return id;
     }

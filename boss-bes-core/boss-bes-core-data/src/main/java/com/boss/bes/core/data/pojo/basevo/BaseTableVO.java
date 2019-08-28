@@ -28,6 +28,13 @@ public abstract class BaseTableVO<T extends BaseModVO> {
      */
     private Integer dataCount;
 
+    public BaseTableVO(List<T> dataList, Integer pageSize, Integer pageNum, Integer dataCount) {
+        this.dataList = dataList;
+        this.pageSize = pageSize;
+        this.pageNum = pageNum;
+        this.dataCount = dataCount;
+    }
+
     public List<T> getDataList() {
         return dataList;
     }

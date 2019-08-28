@@ -24,13 +24,18 @@ public abstract class BaseModVO {
      */
     @NotNull(message = "名字不能为空")
     private String name;
-
     /**
      * 状态：是否启用
      */
     @Min(value = 0, message = "只能用0和1表示是否启用")
     @Max(value = 1, message = "只能用0和1表示是否启用")
     private Byte status;
+
+    public BaseModVO(String id, @NotNull(message = "名字不能为空") String name, @Min(value = 0, message = "只能用0和1表示是否启用") @Max(value = 1, message = "只能用0和1表示是否启用") Byte status) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+    }
 
     public String getName() {
         return name;

@@ -23,6 +23,11 @@ public abstract class BaseQueryDTO {
     @Min(value = 1, message = "分页时当前页码不能小于1")
     private Integer pageNum;
 
+    public BaseQueryDTO(@Min(value = 1, message = "分页时每页的数据数目不能小于1") Integer pageSize, @Min(value = 1, message = "分页时当前页码不能小于1") Integer pageNum) {
+        this.pageSize = pageSize;
+        this.pageNum = pageNum;
+    }
+
     public Integer getPageSize() {
         return pageSize;
     }

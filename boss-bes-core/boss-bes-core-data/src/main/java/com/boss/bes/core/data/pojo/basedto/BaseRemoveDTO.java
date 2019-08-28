@@ -16,6 +16,10 @@ public abstract class BaseRemoveDTO {
     @NotNull(message = "待删除的id集合不能为空")
     private List<String> idList;
 
+    public BaseRemoveDTO(@NotNull(message = "待删除的id集合不能为空") List<String> idList) {
+        this.idList = idList;
+    }
+
     public List<String> getIdList() {
         return idList;
     }
