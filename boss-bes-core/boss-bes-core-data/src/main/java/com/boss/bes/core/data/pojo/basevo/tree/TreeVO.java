@@ -1,7 +1,6 @@
 package com.boss.bes.core.data.pojo.basevo.tree;
 
 
-import apple.laf.JRSUIUtils;
 import com.boss.bes.core.data.pojo.basevo.tree.node.AbstractTreeNode;
 
 import javax.validation.Valid;
