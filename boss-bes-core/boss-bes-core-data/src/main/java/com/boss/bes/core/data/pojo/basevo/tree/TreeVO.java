@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo.tree;
 
 
+import apple.laf.JRSUIUtils;
 import com.boss.bes.core.data.pojo.basevo.tree.node.AbstractTreeNode;
 
 import javax.validation.Valid;
@@ -26,6 +27,8 @@ public class TreeVO<T extends AbstractTreeNode> {
     public void setTreeNodeList(List<T> treeNodeList) {
         this.treeNodeList = treeNodeList;
     }
+
+    public TreeVO() {}
 
     public TreeVO(@NotNull(message = "树节点不能为空") List<T> treeNodeList) {
         this.treeNodeList = treeNodeList;
