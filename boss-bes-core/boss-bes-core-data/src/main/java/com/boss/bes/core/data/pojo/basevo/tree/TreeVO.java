@@ -27,6 +27,8 @@ public class TreeVO<T extends AbstractTreeNode> {
         this.treeNodeList = treeNodeList;
     }
 
+    public TreeVO() {}
+
     public TreeVO(@NotNull(message = "树节点不能为空") List<T> treeNodeList) {
         this.treeNodeList = treeNodeList;
     }

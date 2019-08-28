@@ -57,7 +57,23 @@ public enum ResultEnum {
     /**
      * 请求体参数不符合规范
      */
-    REQUEST_BODY_PARAMS_ERROR("1005", "请求体参数不符合规范！！")
+    REQUEST_BODY_PARAMS_ERROR("1005", "请求体参数不符合规范！！"),
+    /**
+     * 没有权限
+     */
+    REQUEST_NO_AUTH_ERROR("1006", "没有权限！"),
+    /**
+     * 登录熔断异常
+     */
+    LOGIN_OUT_TIME_ERROR("1101", "登录验证超时！"),
+    /**
+     * 用户名或密码错误
+     */
+    LOGIN_FORMAT_ERROR("1102", "用户名或密码错误！"),
+    /**
+     * 获取角色资源异常
+     */
+    GET_ROLE_RESOURCE_ERROR("1103", "获取角色资源错误！")
     ;
 
     private String code;
