@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -45,5 +47,10 @@ public abstract class BaseQueryVO {
 
     public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

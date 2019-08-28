@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo.tree.node;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -21,6 +23,15 @@ public abstract class AbstractTreeNode<T extends AbstractTreeNode> {
     private Integer id;
     @NotBlank(message = "节点名称不能为空")
     private String name;
+
+    public AbstractTreeNode() {
+    }
+
+    public AbstractTreeNode(@NotNull(message = "树节点id不能为空") @Min(value = 1, message = "树节点id必须大于0") Integer id, @NotBlank(message = "节点名称不能为空") String name, List<T> childList) {
+        this.id = id;
+        this.name = name;
+        this.childList = childList;
+    }
 
     private List<T> childList;
 
@@ -46,5 +57,10 @@ public abstract class AbstractTreeNode<T extends AbstractTreeNode> {
 
     public void setChildList(List<T> childList) {
         this.childList = childList;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

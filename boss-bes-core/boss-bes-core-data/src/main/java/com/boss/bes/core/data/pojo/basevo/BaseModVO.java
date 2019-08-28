@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -61,5 +63,10 @@ public abstract class BaseModVO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

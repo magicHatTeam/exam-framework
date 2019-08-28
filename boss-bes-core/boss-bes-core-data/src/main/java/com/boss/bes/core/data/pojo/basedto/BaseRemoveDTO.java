@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.basedto;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Iterator;
@@ -32,5 +34,10 @@ public abstract class BaseRemoveDTO {
         while (source.hasNext()) {
             this.idList.add(Long.valueOf(source.next()));
         }
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

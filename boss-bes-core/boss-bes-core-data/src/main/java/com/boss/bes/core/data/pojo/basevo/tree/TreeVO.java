@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo.tree;
 
 
+import com.alibaba.fastjson.JSON;
 import com.boss.bes.core.data.pojo.basevo.tree.node.AbstractTreeNode;
 
 import javax.validation.Valid;
@@ -35,8 +36,6 @@ public class TreeVO<T extends AbstractTreeNode> {
 
     @Override
     public String toString() {
-        return "TreeVO{" +
-                "treeNodeList=" + treeNodeList +
-                '}';
+        return JSON.toJSONString(this);
     }
 }

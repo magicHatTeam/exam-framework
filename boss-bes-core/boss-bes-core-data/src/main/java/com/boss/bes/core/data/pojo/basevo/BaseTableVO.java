@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.List;
 
 /**
@@ -67,5 +69,10 @@ public abstract class BaseTableVO<T extends BaseModVO> {
 
     public void setDataCount(Integer dataCount) {
         this.dataCount = dataCount;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

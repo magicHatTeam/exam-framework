@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -28,5 +30,10 @@ public abstract class BaseRemoveVO {
 
     public void setIdList(List<String> idList) {
         this.idList = idList;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

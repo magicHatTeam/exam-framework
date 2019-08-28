@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.basedto;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -114,15 +116,6 @@ public abstract class BaseModDTO {
 
     @Override
     public String toString() {
-        return "BaseModDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", status=" + status +
-                ", createdBy=" + createdBy +
-                ", createdTime=" + createdTime +
-                ", updatedBy=" + updatedBy +
-                ", updatedTime=" + updatedTime +
-                ", version=" + version +
-                '}';
+        return JSON.toJSONString(this);
     }
 }
