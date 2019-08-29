@@ -1,7 +1,10 @@
 package com.boss.bes.core.data.pojo.basedto;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -14,19 +17,27 @@ import java.util.List;
 @Valid
 public abstract class BaseRemoveDTO {
     @NotNull(message = "待删除的id集合不能为空")
-    private List<String> idList;
+    private List<Long> idList;
 
     public BaseRemoveDTO() {}
 
-    public BaseRemoveDTO(@NotNull(message = "待删除的id集合不能为空") List<String> idList) {
+    public BaseRemoveDTO(@NotNull(message = "待删除的id集合不能为空") List<Long> idList) {
         this.idList = idList;
     }
 
-    public List<String> getIdList() {
+    public List<Long> getIdList() {
         return idList;
     }
 
     public void setIdList(List<String> idList) {
-        this.idList = idList;
+        Iterator<String> source = idList.iterator();
+        while (source.hasNext()) {
+            this.idList.add(Long.valueOf(source.next()));
+        }
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }
