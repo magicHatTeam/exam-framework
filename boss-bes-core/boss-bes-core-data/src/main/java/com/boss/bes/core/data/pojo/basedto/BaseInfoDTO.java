@@ -23,12 +23,12 @@ public abstract class BaseInfoDTO<T extends BaseModDTO> {
     /**
      * 当前查询条件下总共的数据条数
      */
-    private Integer dataCount;
+    private Long dataCount;
 
     public BaseInfoDTO() {
     }
 
-    public BaseInfoDTO(List<T> dataList, Integer pageSize, Integer pageNum, Integer dataCount) {
+    public BaseInfoDTO(List<T> dataList, Integer pageSize, Integer pageNum, Long dataCount) {
         this.dataList = dataList;
         this.pageSize = pageSize;
         this.pageNum = pageNum;
@@ -59,11 +59,11 @@ public abstract class BaseInfoDTO<T extends BaseModDTO> {
         this.pageNum = pageNum;
     }
 
-    public Integer getDataCount() {
+    public Long getDataCount() {
         return dataCount;
     }
 
-    public void setDataCount(Integer dataCount) {
+    public void setDataCount(Long dataCount) {
         this.dataCount = dataCount;
     }
 }
