@@ -10,9 +10,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MultipartException;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
@@ -73,6 +78,15 @@ public class Handle {
                 errorMessages.add(objectError.getDefaultMessage());
             }
             return ResponseUtil.buildError("1000",errorMessages.toString());
+        }
+        if (e instanceof MethodArgumentNotValidException){
+            MethodArgumentNotValidException exception = (MethodArgumentNotValidException)e;
+            List<ObjectError> errors = exception.getBindingResult().getAllErrors();
+            List<String> errorMessages = new ArrayList<>();
+            for (ObjectError error : errors) {
+                errorMessages.add(error.getDefaultMessage());
+            }
+            return ResponseUtil.buildSuccess("10000",errorMessages.toString());
         } else {
             return ResponseUtil.buildError(ResultEnum.SYSTEM_ERROR);
         }
