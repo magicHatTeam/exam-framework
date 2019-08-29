@@ -18,24 +18,14 @@ public abstract class BaseInfoVO<T extends BaseModVO> {
      */
     private List<T> dataList;
     /**
-     * 当前分页条件下，一页中拥有的数据条数
-     */
-    private Integer pageSize;
-    /**
-     * 当前分页条件下，一页中拥有的数据条数
-     */
-    private Integer pageNum;
-    /**
      * 当前查询条件下总共的数据条数
      */
     private Long dataCount;
 
     public BaseInfoVO() {}
 
-    public BaseInfoVO(List<T> dataList, Integer pageSize, Integer pageNum, Long dataCount) {
+    public BaseInfoVO(List<T> dataList, Long dataCount) {
         this.dataList = dataList;
-        this.pageSize = pageSize;
-        this.pageNum = pageNum;
         this.dataCount = dataCount;
     }
 
@@ -45,22 +35,6 @@ public abstract class BaseInfoVO<T extends BaseModVO> {
 
     public void setDataList(List<T> dataList) {
         this.dataList = dataList;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
     }
 
     public Long getDataCount() {
