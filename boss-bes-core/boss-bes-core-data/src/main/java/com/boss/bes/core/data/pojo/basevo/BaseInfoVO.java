@@ -1,7 +1,10 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -12,30 +15,23 @@ import java.util.List;
  * @version 1.0
  * @date 2019-08-26 10:21
  */
+@Valid
 public abstract class BaseInfoVO<T extends BaseModVO> {
     /**
      * 显示在表格中的VO集合（因为表格中的单个VO和增加/删除VO类似）
      */
+    @Valid
     private List<T> dataList;
-    /**
-     * 当前分页条件下，一页中拥有的数据条数
-     */
-    private Integer pageSize;
-    /**
-     * 当前分页条件下，一页中拥有的数据条数
-     */
-    private Integer pageNum;
     /**
      * 当前查询条件下总共的数据条数
      */
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long dataCount;
 
     public BaseInfoVO() {}
 
-    public BaseInfoVO(List<T> dataList, Integer pageSize, Integer pageNum, Long dataCount) {
+    public BaseInfoVO(List<T> dataList, Long dataCount) {
         this.dataList = dataList;
-        this.pageSize = pageSize;
-        this.pageNum = pageNum;
         this.dataCount = dataCount;
     }
 
@@ -45,22 +41,6 @@ public abstract class BaseInfoVO<T extends BaseModVO> {
 
     public void setDataList(List<T> dataList) {
         this.dataList = dataList;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
     }
 
     public Long getDataCount() {

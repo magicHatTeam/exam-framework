@@ -1,6 +1,8 @@
 package com.boss.bes.core.data.pojo.tree.node;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -20,14 +22,15 @@ import java.util.List;
 public abstract class AbstractTreeNode<T extends AbstractTreeNode> {
     @NotNull(message = "树节点id不能为空")
     @Min(value = 1, message = "树节点id必须大于0")
-    private Integer id;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long id;
     @NotBlank(message = "节点名称不能为空")
     private String name;
 
     public AbstractTreeNode() {
     }
 
-    public AbstractTreeNode(@NotNull(message = "树节点id不能为空") @Min(value = 1, message = "树节点id必须大于0") Integer id, @NotBlank(message = "节点名称不能为空") String name, List<T> childList) {
+    public AbstractTreeNode(@NotNull(message = "树节点id不能为空") @Min(value = 1, message = "树节点id必须大于0") Long id, @NotBlank(message = "节点名称不能为空") String name, List<T> childList) {
         this.id = id;
         this.name = name;
         this.childList = childList;
@@ -35,11 +38,11 @@ public abstract class AbstractTreeNode<T extends AbstractTreeNode> {
 
     private List<T> childList;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

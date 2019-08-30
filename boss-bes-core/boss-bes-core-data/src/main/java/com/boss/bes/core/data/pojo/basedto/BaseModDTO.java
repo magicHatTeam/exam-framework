@@ -1,7 +1,10 @@
 package com.boss.bes.core.data.pojo.basedto;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.ToStringSerializer;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -14,6 +17,7 @@ import java.util.Date;
  * @version 1.0
  * @date 2019-08-27 14:41
  */
+@Valid
 public abstract class BaseModDTO {
     /**
      * 字段id
@@ -56,6 +60,10 @@ public abstract class BaseModDTO {
 
     public void setId(String id) {
         this.id = Long.valueOf(id);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
