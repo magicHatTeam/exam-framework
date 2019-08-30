@@ -1,8 +1,8 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
@@ -22,7 +22,7 @@ public abstract class BaseModVO {
      * 字段id
      * 在新增字段时 id 可以为空
      */
-    @JSONField(serializeUsing = ToStringSerializer.class)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
     /**
      * 字段名
@@ -38,7 +38,7 @@ public abstract class BaseModVO {
     /**
      * 数据版本
      */
-    @JSONField(serializeUsing = ToStringSerializer.class)
+    @JsonSerialize(using = com.fasterxml.jackson.databind.ser.std.ToStringSerializer.class)
     private Long version;
 
     public BaseModVO() {}

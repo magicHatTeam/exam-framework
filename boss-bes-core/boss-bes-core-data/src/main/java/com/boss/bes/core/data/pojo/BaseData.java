@@ -1,7 +1,7 @@
 package com.boss.bes.core.data.pojo;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -20,13 +20,13 @@ public class BaseData {
      * 在新增字段时 id 可以为空
      */
     @NotNull(message = "id不能为空")
-    @JSONField(serializeUsing = ToStringSerializer.class)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
     /**
      * 数据版本
      */
     @NotNull(message = "版本不能为空")
-    @JSONField(serializeUsing = ToStringSerializer.class)
+    @JsonSerialize(using=ToStringSerializer.class)
     private Long version;
 
     public BaseData() {

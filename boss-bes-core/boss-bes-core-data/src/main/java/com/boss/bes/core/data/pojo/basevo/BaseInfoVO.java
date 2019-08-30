@@ -1,8 +1,8 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,7 +25,7 @@ public abstract class BaseInfoVO<T extends BaseModVO> {
     /**
      * 当前查询条件下总共的数据条数
      */
-    @JSONField(serializeUsing = ToStringSerializer.class)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long dataCount;
 
     public BaseInfoVO() {}
