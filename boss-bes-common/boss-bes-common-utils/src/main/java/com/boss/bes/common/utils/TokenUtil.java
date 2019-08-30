@@ -75,4 +75,16 @@ public class TokenUtil {
         }
         return listString.toString();
     }
+
+    /**
+     * 获取公用缓存中的数据
+     * @param request 请求，用于获取token
+     * @param stringRedisTemplate redis
+     * @return JSONObject
+     */
+    public static JSONObject getUserCommonCache(HttpServletRequest request, StringRedisTemplate stringRedisTemplate){
+        String token = request.getHeader("token");
+        Map<String, String> map = JwtUtil.verifyToken(token);
+        return getCommonParamsFromRedis(map.get("id"), stringRedisTemplate);
+    }
 }

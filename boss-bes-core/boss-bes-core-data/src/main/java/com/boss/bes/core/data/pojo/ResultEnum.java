@@ -73,7 +73,53 @@ public enum ResultEnum {
     /**
      * 获取角色资源异常
      */
-    GET_ROLE_RESOURCE_ERROR("1103", "获取角色资源错误！")
+    GET_ROLE_RESOURCE_ERROR("1103", "获取角色资源错误！"),
+
+    // 试卷微服务异常
+    /**
+     * 上传的试卷不存在异常
+     */
+    PAPER_NOT_EXITS("2601", "上传的试卷不存在！"),
+    /**
+     * 存在名称相同的模板
+     */
+    PAPER_TEMPLATE_SAME_NAME("2602", "存在名称相同的模板！"),
+    /**
+     * 生成模板试卷失败异常
+     */
+    PAPER_GENERATE_TEMPLATE("2603", "生成模板试卷失败！"),
+    /**
+     * 试卷为空试卷异常
+     */
+    PAPER_NONE_SUBJECTS("2604", "试卷为空试卷！"),
+    /**
+     * 试卷已被禁用不能进行上传
+     */
+    PAPER_IS_DISABLE("2605", "试卷已被禁用不能进行上传！"),
+    /**
+     * 组卷配置项为空异常
+     */
+    PAPER_COMPOSITION_NONE_CONFIG("2606", "组卷失败！组卷配置项为空！"),
+    /**
+     * 组卷配置详情为空异常
+     */
+    PAPER_COMPOSITION_NONE_CONFIG_ITEM("2607", "组卷失败！组卷配置详情为空，请添加配置详情！"),
+    /**
+     * 配置详情的题目数量太多
+     */
+    PAPER_COMPOSITION_CONFIG_NUMBER_TOO_BIGGER("2608", "组卷失败！配置详情的题目数量太大，题目数量不够，请减少数量或者添加该类型题目"),
+    /**
+     * 组卷生成题目异常
+     */
+    PAPER_COMPOSITION_GENERATE_SUBJECT("2609", "组卷失败！无法生成题目！"),
+    /**
+     * 组卷生成答案异常
+     */
+    PAPER_COMPOSITION_GENERATE_ANSWER("2610", "组卷失败！无法生成答案！"),
+    /**
+     * 答案为空异常
+     */
+    PAPER_COMPOSITION_NONE_ANSWER("2611", "组卷失败！该试卷的答案全部为空！"),
     ;
 
     private String code;
