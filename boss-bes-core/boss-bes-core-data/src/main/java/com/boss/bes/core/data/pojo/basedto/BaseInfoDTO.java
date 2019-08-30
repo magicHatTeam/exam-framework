@@ -1,5 +1,6 @@
 package com.boss.bes.core.data.pojo.basedto;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -7,6 +8,7 @@ import java.util.List;
  * @version 1.0
  * @date 2019-08-28 19:32
  */
+@Valid
 public abstract class BaseInfoDTO<T extends BaseModDTO> {
     /**
      * 显示在表格中的VO集合（因为表格中的单个VO和增加/删除VO类似）

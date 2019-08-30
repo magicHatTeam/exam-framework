@@ -3,6 +3,7 @@ package com.boss.bes.core.data.pojo.basevo;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.ToStringSerializer;
+import com.boss.bes.core.data.pojo.BaseData;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -17,35 +18,17 @@ import java.util.List;
  */
 @Valid
 public abstract class BaseRemoveVO {
-    @NotNull(message = "待删除的id集合不能为空")
-    @JSONField(serializeUsing = ToStringSerializer.class)
-    private List<Long> idList;
-
-    @NotNull(message = "版本不能为空")
-    @JSONField(serializeUsing = ToStringSerializer.class)
-    private Long version;
+    @Valid
+    private List<BaseData> dataList;
 
     public BaseRemoveVO() {}
 
-    public BaseRemoveVO(@NotNull(message = "待删除的id集合不能为空") List<Long> idList, Long version) {
-        this.idList = idList;
-        this.version = version;
+    public List<BaseData> getDataList() {
+        return dataList;
     }
 
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-
-    public List<Long> getIdList() {
-        return idList;
-    }
-
-    public void setIdList(List<Long> idList) {
-        this.idList = idList;
+    public void setDataList(List<BaseData> dataList) {
+        this.dataList = dataList;
     }
 
     @Override

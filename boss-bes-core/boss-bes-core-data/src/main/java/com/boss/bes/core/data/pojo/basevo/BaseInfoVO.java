@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.ToStringSerializer;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -14,10 +15,12 @@ import java.util.List;
  * @version 1.0
  * @date 2019-08-26 10:21
  */
+@Valid
 public abstract class BaseInfoVO<T extends BaseModVO> {
     /**
      * 显示在表格中的VO集合（因为表格中的单个VO和增加/删除VO类似）
      */
+    @Valid
     private List<T> dataList;
     /**
      * 当前查询条件下总共的数据条数

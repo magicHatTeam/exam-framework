@@ -38,7 +38,6 @@ public abstract class BaseModVO {
     /**
      * 数据版本
      */
-    @NotNull(message = "版本不能为空")
     @JSONField(serializeUsing = ToStringSerializer.class)
     private Long version;
 
