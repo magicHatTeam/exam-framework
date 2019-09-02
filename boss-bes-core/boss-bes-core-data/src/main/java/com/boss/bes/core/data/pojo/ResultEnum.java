@@ -120,6 +120,30 @@ public enum ResultEnum {
      * 答案为空异常
      */
     PAPER_COMPOSITION_NONE_ANSWER("2611", "组卷失败！该试卷的答案全部为空！"),
+    /**
+     * 试卷无法关联题目
+     */
+    PAPER_COMPOSITION_CANNOT_SUBJECT("2612", "组卷失败！试卷无法关联题目！"),
+    /**
+     * 下载试卷失败异常
+     */
+    TEMPLATE_DOWNLOAD_ERROR("2613", "下载试卷失败！"),
+    /**
+     * 下载试卷参数异常
+     */
+    TEMPLATE_PARAMS_NONE_ERROR("2614", "请选择需要下载的模板"),
+    /**
+     * 模板不存在异常
+     */
+    TEMPLATE_NOT_EXIST("2615", "下载试卷失败！选择的模板不存在！"),
+    /**
+     * 模板被禁用异常
+     */
+    TEMPLATE_IS_DISABLE("2616", "下载试卷失败！选择的模板被禁用！"),
+    /**
+     * 模板为空异常
+     */
+    TEMPLATE_NONE_SUBJECTS("2617", "该模板为空模板！")
     ;
 
     private String code;

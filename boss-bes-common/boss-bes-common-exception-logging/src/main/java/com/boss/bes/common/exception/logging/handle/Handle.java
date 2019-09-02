@@ -3,20 +3,17 @@ package com.boss.bes.common.exception.logging.handle;
 
 import com.boss.bes.common.exception.logging.aspect.ExceptionAspect;
 import com.boss.bes.common.exception.logging.exception.AppException;
-import com.boss.bes.core.data.util.ResponseUtil;
 import com.boss.bes.core.data.pojo.CommonResponse;
 import com.boss.bes.core.data.pojo.ResultEnum;
+import com.boss.bes.core.data.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import org.springframework.web.multipart.MultipartException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;

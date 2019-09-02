@@ -4,9 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.boss.bes.core.data.pojo.BaseData;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**

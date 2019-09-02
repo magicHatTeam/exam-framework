@@ -1,8 +1,6 @@
 package com.boss.bes.core.data.pojo.basedto;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
