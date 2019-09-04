@@ -52,14 +52,16 @@ public class AutoFillEntityFieldMapperDaoAspect {
 	 * TODO：有待将这些包进行动态配置
 	 */
 	@Pointcut(value = "execution(public * com.boss.bes.paper.center.dao.*.insert*(..)) || " +
-			"execution(public * com.bosssoft.bes.basedata.center.dao.*.insert*(..))")
+			"execution(public * com.bosssoft.bes.basedata.center.dao.*.insert*(..)) ||" +
+			"execution(public * com.boss.bes.user.permission.center.dao.*.insert*(..))")
 	public void daoInsertAction(){}
 
 	/**
 	 * 更新数据的切点
 	 */
 	@Pointcut(value = "execution(public * com.boss.bes.paper.center.dao.*.update*(..)) || " +
-			"execution(public * com.bosssoft.bes.basedata.center.dao.*.update*(..))")
+			"execution(public * com.bosssoft.bes.basedata.center.dao.*.update*(..)) ||" +
+			"execution(public * com.boss.bes.user.permission.center.dao.*.insert*(..))")
 	public void daoUpdateAction(){}
 
 	/**
