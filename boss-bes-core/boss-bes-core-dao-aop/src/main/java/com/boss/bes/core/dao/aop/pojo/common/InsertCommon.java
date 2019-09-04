@@ -93,6 +93,14 @@ public class InsertCommon {
 	public InsertCommon() {
 	}
 
+	public InsertCommon(Long createdBy, Date createdTime, Long updatedBy, Date updatedTime, Long version) {
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.updatedBy = updatedBy;
+		this.updatedTime = updatedTime;
+		this.version = version;
+	}
+
 	public InsertCommon(Long orgId, Long companyId, Long createdBy, Date createdTime, Long updatedBy, Date updatedTime, Long version) {
 		this.orgId = orgId;
 		this.companyId = companyId;

@@ -44,6 +44,8 @@ public class AutoFillEntityFieldMapperDaoAspect {
 
 	private static String FIELD_ID = "id";
 	private static String FIELD_STATUS = "status";
+	private static String FIELD_ORG_ID = "orgId";
+	private static String FIELD_COMPANY_ID = "companyId";
 
 	/**
 	 * 新增数据的切点
@@ -83,10 +85,8 @@ public class AutoFillEntityFieldMapperDaoAspect {
 			throw new DaoException(ResultEnum.PARAMS_TOKEN_ERROR);
 		}
 		Date date = new Date();
-		Long orgId = redisJsonObject.getLong(CommonCacheConstants.ORG_ID);
-		Long companyId = redisJsonObject.getLong(CommonCacheConstants.COMPANY_ID);
 		Long updatedBy = redisJsonObject.getLong(CommonCacheConstants.USER_ID);
-		InsertCommon commonString = new InsertCommon(orgId, companyId, updatedBy, date, updatedBy, date, System.currentTimeMillis());
+		InsertCommon commonString = new InsertCommon(updatedBy, date, updatedBy, date, System.currentTimeMillis());
 		if (!fieldsExist.get(FIELD_ID)){
 			// ID没有值则自动填充
 			commonString.setId(SnowflakeIdWorker.generateId());
@@ -95,6 +95,14 @@ public class AutoFillEntityFieldMapperDaoAspect {
 			// status没有值时则自动填充为启用
 			commonString.setStatus(ByteConstants.STATUS_YES);
 		}
+        if (!fieldsExist.get(FIELD_ORG_ID)){
+            // orgId没有值时则自动填充
+            commonString.setOrgId(redisJsonObject.getLong(CommonCacheConstants.ORG_ID));
+        }
+        if (!fieldsExist.get(FIELD_COMPANY_ID)){
+            // companyId没有值时则自动填充
+            commonString.setCompanyId(redisJsonObject.getLong(CommonCacheConstants.COMPANY_ID));
+        }
 		BeanUtil.copyProperties(commonString, args[0], CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
 		return joinPoint.proceed(args);
 	}
@@ -141,21 +149,27 @@ public class AutoFillEntityFieldMapperDaoAspect {
 	 * @return 属性集合
 	 */
 	private Map<String,Boolean> judgeFieldsExist(Object[] args){
-		Map<String,Boolean> map = new HashMap<>();
+		Map<String,Boolean> map = new HashMap<>(4);
 		JSONObject jsonObject = (JSONObject) JSONObject.toJSON(args[0]);
-		boolean idValueExist = false;
-		boolean idExist = jsonObject.containsKey(FIELD_ID);
-		if (idExist){
-			idValueExist = jsonObject.getLong(FIELD_ID) != null;
-		}
-		boolean statusValueExist = false;
-		boolean statusExist = jsonObject.containsKey(FIELD_STATUS);
-		if (statusExist){
-			statusValueExist = jsonObject.getLong(FIELD_STATUS) != null;
-		}
-		map.put(FIELD_ID, idValueExist);
-		map.put(FIELD_STATUS, statusValueExist);
+		map.put(FIELD_ID, judgeFieldValue(jsonObject,FIELD_ID));
+		map.put(FIELD_STATUS, judgeFieldValue(jsonObject,FIELD_STATUS));
+		map.put(FIELD_ORG_ID, judgeFieldValue(jsonObject,FIELD_ORG_ID));
+		map.put(FIELD_COMPANY_ID, judgeFieldValue(jsonObject,FIELD_COMPANY_ID));
 		return map;
 	}
 
+    /**
+     * 判断属性的值是否存在
+     * @param jsonObject JSONObject
+     * @param field 字段名
+     * @return 是否存在
+     */
+	private Boolean judgeFieldValue(JSONObject jsonObject,String field){
+        boolean valueExist = false;
+        boolean exist = jsonObject.containsKey(field);
+        if (exist){
+            valueExist = jsonObject.getLong(field) != null;
+        }
+        return valueExist;
+    }
 }
