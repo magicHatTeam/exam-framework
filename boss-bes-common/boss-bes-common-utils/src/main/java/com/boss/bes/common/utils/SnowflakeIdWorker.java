@@ -172,7 +172,8 @@ public class SnowflakeIdWorker {
     }
 
     private static Long getDataCenterId(){
-        int[] ints = StringUtils.toCodePoints(SystemUtils.getHostName());
+//        int[] ints = StringUtils.toCodePoints(SystemUtils.getHostName());
+        int[] ints = StringUtils.toCodePoints("172.0.0.1");
         int sums = 0;
         for (int i: ints) {
             sums += i;

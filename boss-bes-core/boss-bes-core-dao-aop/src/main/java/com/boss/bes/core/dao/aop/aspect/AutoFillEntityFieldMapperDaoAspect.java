@@ -61,7 +61,7 @@ public class AutoFillEntityFieldMapperDaoAspect {
 	 */
 	@Pointcut(value = "execution(public * com.boss.bes.paper.center.dao.*.update*(..)) || " +
 			"execution(public * com.bosssoft.bes.basedata.center.dao.*.update*(..)) ||" +
-			"execution(public * com.boss.bes.user.permission.center.dao.*.insert*(..))")
+			"execution(public * com.boss.bes.user.permission.center.dao.*.update*(..))")
 	public void daoUpdateAction(){}
 
 	/**
