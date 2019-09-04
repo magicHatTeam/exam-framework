@@ -93,4 +93,19 @@ public class TokenUtil {
             return null;
         }
     }
+
+    /**
+     * 获取JSONObject从request和Redis
+     * @return JSONObject OR null
+     */
+    public static JSONObject getJsonObject(StringRedisTemplate stringRedisTemplate) throws IOException {
+        Map<String, String> commonParamsFromToken = TokenUtil.getCommonParamsFromToken();
+        if (commonParamsFromToken!=null){
+            String userId = commonParamsFromToken.get(CommonCacheConstants.USER_ID);
+            if (StrUtil.isNotEmpty(userId)) {
+                return TokenUtil.getCommonParamsFromRedis(userId, stringRedisTemplate);
+            }
+        }
+        return null;
+    }
 }

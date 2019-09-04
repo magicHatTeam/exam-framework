@@ -8,6 +8,8 @@ import java.util.Date;
  */
 public class InsertCommon {
 
+	private Long id;
+	private Byte status;
 	private Long orgId;
 	private Long companyId;
 	private Long createdBy;
@@ -15,6 +17,22 @@ public class InsertCommon {
 	private Long updatedBy;
 	private Date updatedTime;
 	private Long version;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Byte getStatus() {
+		return status;
+	}
+
+	public void setStatus(Byte status) {
+		this.status = status;
+	}
 
 	public Long getOrgId() {
 		return orgId;
@@ -85,10 +103,23 @@ public class InsertCommon {
 		this.version = version;
 	}
 
+	public InsertCommon(Long id, Long orgId, Long companyId, Long createdBy, Date createdTime, Long updatedBy, Date updatedTime, Long version) {
+		this.id = id;
+		this.orgId = orgId;
+		this.companyId = companyId;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+		this.updatedBy = updatedBy;
+		this.updatedTime = updatedTime;
+		this.version = version;
+	}
+
 	@Override
 	public String toString() {
 		return "InsertCommon{" +
-				"orgId=" + orgId +
+				"id=" + id +
+				", status=" + status +
+				", orgId=" + orgId +
 				", companyId=" + companyId +
 				", createdBy=" + createdBy +
 				", createdTime=" + createdTime +

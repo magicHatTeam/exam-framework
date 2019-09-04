@@ -8,25 +8,17 @@ import java.util.Date;
  */
 public class UpdateCommon {
 
-	private Long orgId;
-	private Long companyId;
 	private Long updatedBy;
 	private Date updatedTime;
+	private Long version;
 
-	public Long getOrgId() {
-		return orgId;
+	public UpdateCommon() {
 	}
 
-	public void setOrgId(Long orgId) {
-		this.orgId = orgId;
-	}
-
-	public Long getCompanyId() {
-		return companyId;
-	}
-
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
+	public UpdateCommon(Long updatedBy, Date updatedTime, Long version) {
+		this.updatedBy = updatedBy;
+		this.updatedTime = updatedTime;
+		this.version = version;
 	}
 
 	public Long getUpdatedBy() {
@@ -45,13 +37,20 @@ public class UpdateCommon {
 		this.updatedTime = updatedTime;
 	}
 
-	public UpdateCommon() {
+	public Long getVersion() {
+		return version;
 	}
 
-	public UpdateCommon(Long orgId, Long companyId, Long updatedBy, Date updatedTime) {
-		this.orgId = orgId;
-		this.companyId = companyId;
-		this.updatedBy = updatedBy;
-		this.updatedTime = updatedTime;
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+
+	@Override
+	public String toString() {
+		return "UpdateCommon{" +
+				"updatedBy=" + updatedBy +
+				", updatedTime=" + updatedTime +
+				", version=" + version +
+				'}';
 	}
 }
