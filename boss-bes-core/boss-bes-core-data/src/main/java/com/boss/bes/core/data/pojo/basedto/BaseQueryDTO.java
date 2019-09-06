@@ -25,6 +25,11 @@ public abstract class BaseQueryDTO {
     @Min(value = 1, message = "分页时当前页码不能小于1")
     private Integer pageNum;
 
+    /**
+     * 查询时通过当前用户所属公司id来判断能够查询到的数据
+     */
+    private Long belongedCompanyId;
+
     public BaseQueryDTO() {}
 
     public BaseQueryDTO(@Min(value = 1, message = "分页时每页的数据数目不能小于1") Integer pageSize, @Min(value = 1, message = "分页时当前页码不能小于1") Integer pageNum) {
@@ -46,6 +51,14 @@ public abstract class BaseQueryDTO {
 
     public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
+    }
+
+    public Long getBelongedCompanyId() {
+        return belongedCompanyId;
+    }
+
+    public void setBelongedCompanyId(Long belongedCompanyId) {
+        this.belongedCompanyId = belongedCompanyId;
     }
 
     @Override

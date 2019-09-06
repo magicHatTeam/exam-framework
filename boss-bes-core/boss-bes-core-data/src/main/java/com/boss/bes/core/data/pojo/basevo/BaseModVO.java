@@ -41,6 +41,12 @@ public abstract class BaseModVO {
     @JsonSerialize(using = com.fasterxml.jackson.databind.ser.std.ToStringSerializer.class)
     private Long version;
 
+    /**
+     * 查询时通过当前用户所属公司id来判断能够查询到的数据
+     */
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long belongedCompanyId;
+
     public BaseModVO() {}
 
     public BaseModVO(Long id, @NotNull(message = "名字不能为空") String name, @Min(value = 0, message = "只能用0和1表示是否启用") @Max(value = 1, message = "只能用0和1表示是否启用") Byte status, Long version) {
@@ -80,6 +86,14 @@ public abstract class BaseModVO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getBelongedCompanyId() {
+        return belongedCompanyId;
+    }
+
+    public void setBelongedCompanyId(Long belongedCompanyId) {
+        this.belongedCompanyId = belongedCompanyId;
     }
 
     @Override

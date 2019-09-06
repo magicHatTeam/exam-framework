@@ -39,18 +39,12 @@ public abstract class BaseModDTO {
     private Date updatedTime;
     private Long version;
 
-    public BaseModDTO() {}
+    /**
+     * 查询时通过当前用户所属公司id来判断能够查询到的数据
+     */
+    private Long belongedCompanyId;
 
-    public BaseModDTO(Long id, @NotNull(message = "名字不能为空") String name, @Min(value = 0, message = "只能用0和1表示是否启用") @Max(value = 1, message = "只能用0和1表示是否启用") Byte status, Long createdBy, Date createdTime, Long updatedBy, Date updatedTime, Long version) {
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.createdBy = createdBy;
-        this.createdTime = createdTime;
-        this.updatedBy = updatedBy;
-        this.updatedTime = updatedTime;
-        this.version = version;
-    }
+    public BaseModDTO() {}
 
     public Long getId() {
         return id;
@@ -118,6 +112,14 @@ public abstract class BaseModDTO {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public Long getBelongedCompanyId() {
+        return belongedCompanyId;
+    }
+
+    public void setBelongedCompanyId(Long belongedCompanyId) {
+        this.belongedCompanyId = belongedCompanyId;
     }
 
     @Override

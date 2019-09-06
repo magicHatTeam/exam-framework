@@ -29,6 +29,11 @@ public class BaseData {
     @JsonSerialize(using=ToStringSerializer.class)
     private Long version;
 
+    /**
+     * 当前数据的所属id，为空则是组织机构级别数据
+     */
+    private Long belongedCompanyId;
+
     public BaseData() {
     }
 
@@ -46,5 +51,13 @@ public class BaseData {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public Long getBelongedCompanyId() {
+        return belongedCompanyId;
+    }
+
+    public void setBelongedCompanyId(Long belongedCompanyId) {
+        this.belongedCompanyId = belongedCompanyId;
     }
 }
