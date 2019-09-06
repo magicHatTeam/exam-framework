@@ -42,7 +42,7 @@ public abstract class BaseModVO {
     private Long version;
 
     /**
-     * 查询时通过当前用户所属公司id来判断能够查询到的数据
+     * 当前数据的所属公司id
      */
     @JsonSerialize(using = ToStringSerializer.class)
     private Long belongedCompanyId;

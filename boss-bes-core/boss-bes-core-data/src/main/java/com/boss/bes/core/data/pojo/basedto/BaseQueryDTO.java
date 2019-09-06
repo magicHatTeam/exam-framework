@@ -26,9 +26,10 @@ public abstract class BaseQueryDTO {
     private Integer pageNum;
 
     /**
-     * 查询时通过当前用户所属公司id来判断能够查询到的数据
+     * 查询时通过当前用户管理的公司id来判断能够查询到的数据
      */
     private Long belongedCompanyId;
+    private Long belongedOrgId;
 
     public BaseQueryDTO() {}
 
@@ -59,6 +60,14 @@ public abstract class BaseQueryDTO {
 
     public void setBelongedCompanyId(Long belongedCompanyId) {
         this.belongedCompanyId = belongedCompanyId;
+    }
+
+    public Long getBelongedOrgId() {
+        return belongedOrgId;
+    }
+
+    public void setBelongedOrgId(Long belongedOrgId) {
+        this.belongedOrgId = belongedOrgId;
     }
 
     @Override

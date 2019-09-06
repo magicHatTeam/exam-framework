@@ -48,4 +48,14 @@ public class CommonCacheConstants {
      * 角色名
      */
     public static final String ROLES = "roles";
+
+    /**
+     * 用户是否拥有管理员权限
+     */
+    public static final String MASTER = "master";
+
+    /**
+     * 用户是否为公司级别管理员
+     */
+    public static final String COMPANY_MASTER = "companyMaster";
 }
