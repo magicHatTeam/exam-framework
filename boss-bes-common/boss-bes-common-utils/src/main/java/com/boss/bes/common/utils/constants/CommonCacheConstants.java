@@ -55,7 +55,22 @@ public class CommonCacheConstants {
     public static final String MASTER = "master";
 
     /**
-     * 用户是否为公司级别管理员
+     * 用户管理员级别
      */
-    public static final String COMPANY_MASTER = "companyMaster";
+    public static final String MASTER_LEVEL = "masterLevel";
+
+    /**
+     * 公司管理员
+     */
+    public static final Byte COMPANY_MASTER = 0;
+
+    /**
+     * 组织机构管理员
+     */
+    public static final Byte ORG_MASTER = 1;
+
+    /**
+     * 超级管理员
+     */
+    public static final Byte SUPER_MASTER = 2;
 }
