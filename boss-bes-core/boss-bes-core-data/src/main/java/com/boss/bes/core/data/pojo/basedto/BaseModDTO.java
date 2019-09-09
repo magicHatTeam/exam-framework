@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.basedto;
 
 import com.alibaba.fastjson.JSON;
+import com.boss.bes.core.data.pojo.BasePermissionData;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
@@ -16,7 +17,7 @@ import java.util.Date;
  * @date 2019-08-27 14:41
  */
 @Valid
-public abstract class BaseModDTO {
+public abstract class BaseModDTO extends BasePermissionData {
     /**
      * 字段id
      * 在新增字段时 id 可以为空

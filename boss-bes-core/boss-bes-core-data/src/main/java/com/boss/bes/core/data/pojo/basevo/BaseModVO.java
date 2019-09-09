@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import com.alibaba.fastjson.JSON;
+import com.boss.bes.core.data.pojo.BasePermissionData;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
@@ -17,7 +18,7 @@ import javax.validation.constraints.NotNull;
  * @date 2019-08-23 14:17
  */
 @Valid
-public abstract class BaseModVO {
+public abstract class BaseModVO extends BasePermissionData {
     /**
      * 字段id
      * 在新增字段时 id 可以为空

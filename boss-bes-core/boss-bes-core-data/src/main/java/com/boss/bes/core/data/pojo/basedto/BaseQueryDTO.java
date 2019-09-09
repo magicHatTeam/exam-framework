@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.basedto;
 
 import com.alibaba.fastjson.JSON;
+import com.boss.bes.core.data.pojo.BasePermissionData;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -13,7 +14,7 @@ import javax.validation.constraints.Min;
  * @date 2019-08-26 10:11
  */
 @Valid
-public abstract class BaseQueryDTO {
+public abstract class BaseQueryDTO extends BasePermissionData {
     /**
      * 当前分页条件下，一页中拥有的数据条数
      */
@@ -24,12 +25,6 @@ public abstract class BaseQueryDTO {
      */
     @Min(value = 1, message = "分页时当前页码不能小于1")
     private Integer pageNum;
-
-    /**
-     * 查询时通过当前用户管理的公司id来判断能够查询到的数据
-     */
-    private Long belongedCompanyId;
-    private Long belongedOrgId;
 
     public BaseQueryDTO() {}
 
@@ -52,22 +47,6 @@ public abstract class BaseQueryDTO {
 
     public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
-    }
-
-    public Long getBelongedCompanyId() {
-        return belongedCompanyId;
-    }
-
-    public void setBelongedCompanyId(Long belongedCompanyId) {
-        this.belongedCompanyId = belongedCompanyId;
-    }
-
-    public Long getBelongedOrgId() {
-        return belongedOrgId;
-    }
-
-    public void setBelongedOrgId(Long belongedOrgId) {
-        this.belongedOrgId = belongedOrgId;
     }
 
     @Override

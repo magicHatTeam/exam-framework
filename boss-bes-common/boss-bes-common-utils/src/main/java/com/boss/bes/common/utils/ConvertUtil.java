@@ -1,6 +1,11 @@
 package com.boss.bes.common.utils;
 
+import com.boss.bes.common.exception.logging.exception.BusinessException;
+import org.springframework.beans.BeanUtils;
+
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Song
@@ -217,6 +222,29 @@ public final class ConvertUtil {
 
     private final static int toByte(char c) {
         return (byte) HEX_STR.indexOf(c);
+    }
+
+    /**
+     * 将bean的list转换为另一种bean的list集合
+     * @param srcList
+     * @param clazz
+     * @param <K>
+     * @param <V>
+     * @return
+     */
+    public final static <K, V> List<V> copyBeanList(List<K> srcList, Class<V> clazz) {
+        List<V> targetList = new ArrayList<V>();
+        for (K src : srcList) {
+            V target = null;
+            try {
+                target = clazz.getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                throw new BusinessException("100000", "目标bean必须要用无参构造方法");
+            }
+            BeanUtils.copyProperties(src, target);
+            targetList.add(target);
+        }
+        return targetList;
     }
 }
 
