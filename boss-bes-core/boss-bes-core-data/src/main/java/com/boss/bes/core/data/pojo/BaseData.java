@@ -32,7 +32,9 @@ public class BaseData {
     /**
      * 当前数据的所属id，为空则是组织机构级别数据
      */
-    private Long belongedCompanyId;
+    private Long companyId;
+
+    private Long orgId;
 
     public BaseData() {
     }
@@ -53,11 +55,19 @@ public class BaseData {
         this.version = version;
     }
 
-    public Long getBelongedCompanyId() {
-        return belongedCompanyId;
+    public Long getCompanyId() {
+        return companyId;
     }
 
-    public void setBelongedCompanyId(Long belongedCompanyId) {
-        this.belongedCompanyId = belongedCompanyId;
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
+    public Long getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
     }
 }
