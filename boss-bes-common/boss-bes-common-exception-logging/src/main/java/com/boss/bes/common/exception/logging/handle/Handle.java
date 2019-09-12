@@ -10,12 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -49,7 +47,7 @@ public class Handle {
     public CommonResponse handle(Exception e){
         logger.error("Error found: ", e);
         if (e instanceof AppException) {
-            // 系统内部异常
+            // 系统内部业务异常
             AppException exception = (AppException) e;
             if (exception.getResultEnum() != null){
                 return ResponseUtil.buildError(exception.getResultEnum());
@@ -57,7 +55,7 @@ public class Handle {
             return ResponseUtil.buildError(exception.getCode(),exception.getMessage());
         }
         if(e instanceof ConstraintViolationException){
-            // 表单验证不通过
+            // 自定义表单验证不通过
             ConstraintViolationException constraintViolationException = (ConstraintViolationException) e;
             Set<ConstraintViolation<?>> constraintViolations = constraintViolationException.getConstraintViolations();
             Iterator<ConstraintViolation<?>> iterator = constraintViolations.iterator();
@@ -76,28 +74,17 @@ public class Handle {
             for (ObjectError objectError : errors){
                 errorMessages.add(objectError.getDefaultMessage());
             }
-            return ResponseUtil.buildError("100001",errorMessages.toString());
-        }
-        if (e instanceof HttpRequestMethodNotSupportedException){
-            // 请求方式不支持
-            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException
-                    = (HttpRequestMethodNotSupportedException)e;
-            return ResponseUtil.buildError("100002", "不支持该请求方式");
-        }
-        if (e instanceof MethodArgumentTypeMismatchException){
-            // 请求参数格式不正确
-            MethodArgumentTypeMismatchException methodArgumentTypeMismatchException
-                    = (MethodArgumentTypeMismatchException)e;
-            return ResponseUtil.buildError("100003", "请求的参数格式不正确");
+            return ResponseUtil.buildError("1000",errorMessages.toString());
         }
         if (e instanceof MethodArgumentNotValidException){
+            // @Valid 的另外一种异常
             MethodArgumentNotValidException exception = (MethodArgumentNotValidException)e;
             List<ObjectError> errors = exception.getBindingResult().getAllErrors();
             List<String> errorMessages = new ArrayList<>();
             for (ObjectError error : errors) {
                 errorMessages.add(error.getDefaultMessage());
             }
-            return ResponseUtil.buildSuccess("100000",errorMessages.toString());
+            return ResponseUtil.buildSuccess("10000",errorMessages.toString());
         } else {
             return ResponseUtil.buildError(ResultEnum.SYSTEM_ERROR);
         }
