@@ -143,7 +143,31 @@ public enum ResultEnum {
     /**
      * 模板为空异常
      */
-    TEMPLATE_NONE_SUBJECTS("2617", "该模板为空模板！")
+    TEMPLATE_NONE_SUBJECTS("2617", "该模板为空模板！"),
+    /**
+     * 考试发布记录不存在
+     */
+    PUBLISH_RECORD_ID_NOT_EXISTS("140000","考试发布记录id为空"),
+    /**
+     * 找不到考试发布记录
+     */
+    PUBlISH_RECORD_NOT_EXISTS("140001","找不到考试发布记录"),
+    /**
+     * 找不到试卷id异常
+     */
+    PUBLISH_RECORD_PAPER_ID_NOT_EXISTS("140002","找不到试卷ID异常"),
+    /**
+     * 考试未发布异常
+     */
+    EXAM_UNPUBLISH_EXCEPTION("141000","该场考试未发布！"),
+    /**
+     * 考试已经发布异常
+     */
+    EXAM_PUBLISHED_EXCEPTION("141001","该场考试已经结束！"),
+    /**
+     * 考试剩余时间异常
+     */
+    EXAM_TIME_EXCEPTION("141001","考试时间错误")
     ;
 
     private String code;
