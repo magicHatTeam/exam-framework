@@ -47,7 +47,7 @@ public class Handle {
     public CommonResponse handle(Exception e){
         logger.error("Error found: ", e);
         if (e instanceof AppException) {
-            // 系统内部异常
+            // 系统内部业务异常
             AppException exception = (AppException) e;
             if (exception.getResultEnum() != null){
                 return ResponseUtil.buildError(exception.getResultEnum());
@@ -55,7 +55,7 @@ public class Handle {
             return ResponseUtil.buildError(exception.getCode(),exception.getMessage());
         }
         if(e instanceof ConstraintViolationException){
-            // 表单验证不通过
+            // 自定义表单验证不通过
             ConstraintViolationException constraintViolationException = (ConstraintViolationException) e;
             Set<ConstraintViolation<?>> constraintViolations = constraintViolationException.getConstraintViolations();
             Iterator<ConstraintViolation<?>> iterator = constraintViolations.iterator();
@@ -77,6 +77,7 @@ public class Handle {
             return ResponseUtil.buildError("1000",errorMessages.toString());
         }
         if (e instanceof MethodArgumentNotValidException){
+            // @Valid 的另外一种异常
             MethodArgumentNotValidException exception = (MethodArgumentNotValidException)e;
             List<ObjectError> errors = exception.getBindingResult().getAllErrors();
             List<String> errorMessages = new ArrayList<>();
