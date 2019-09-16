@@ -26,6 +26,161 @@ public enum ResultEnum {
      * 方法执行成功时的枚举情况
      */
     SUCCESS("00000", "请求成功"),
+
+    /**
+     * 系统管理模块的异常码定义
+     * TODO
+     * @since 2019/9/16
+     */
+
+    /**
+     *  请求体为空
+     */
+    SYSTEM_NULLBODY("12201", "请求体为空"),
+
+    /**
+     * 部门管理查询数据为空
+     */
+    SYSTEM_DEPARTMENT_NOTFANF("12202", "对部门查询结果为空"),
+
+    /**
+     * 对组织机构-公司的树结构进行查询时出错
+     */
+    SYSTEM_DEPARTMENT_ERRORTREE("12203", "对公司-部门的树结构进行查询时出错"),
+
+    /**
+     * 对部门进行插入时失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_INSERT("12204", "对部门进行插入时失败"),
+
+    /**
+     * 将公司信息插入公司-部门的中间表时出现异常
+     */
+    SYSTEM_DEPARTMENT_ERROR_INSRTTRELATION("12205", "将公司信息插入公司-部门的中间表时出现异常"),
+
+    /**
+     * 待删除的部门信息不能为空
+     */
+    SYSTEM_DEPARTMENT_ERROR_DELETENULL("12206", "待删除的部门信息不能为空"),
+
+    /**
+     * 从公司-部门的中间表中删除数据失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_DELETERELATION("12207", "从公司-部门的中间表中删除数据失败"),
+
+    /**
+     * 删除部门信息失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_DELETE("12208", "删除部门信息失败"),
+
+    /**
+     * 数据版本不一致，请刷新
+     */
+    SYSTEM_DEPARTMENT_ERROR_VERSION("12209", "数据版本不一致，请刷新"),
+
+    /**
+     *  请求体为空
+     */
+    SYSTEM_ORAGATION_NULLBODY("12001", "请求体为空"),
+
+    /**
+     * 部门管理查询数据为空
+     */
+    SYSTEM_ORAGATION_NOTFANF("12002", "对组织机构查询结果为空"),
+
+    /**
+     * 对组织机构-公司的树结构进行查询时出错
+     */
+    SYSTEM_ORAGATION_ERRORTREE("12003", "对组织机构-公司的树结构进行查询时出错"),
+
+    /**
+     * 对部门进行插入时失败
+     */
+    SYSTEM_ORAGATION_ERROR_INSERT("12004", "对组织机构进行插入时失败"),
+
+    /**
+     * 将公司信息插入公司-部门的中间表时出现异常
+     */
+    SYSTEM_ORAGATION_ERROR_INSRTTRELATION("12005", "将组织机构信息插-部门的中间表时出现异常"),
+
+    /**
+     * 待删除的部门信息不能为空
+     */
+    SYSTEM_ORAGATION_ERROR_DELETENULL("12006", "待删除的部门信息不能为空"),
+
+    /**
+     * 从公司-部门的中间表中删除数据失败
+     */
+    SYSTEM_ORAGATION_ERROR_DELETERELATION("12007", "从公司-部门的中间表中删除数据失败"),
+
+    /**
+     * 删除部门信息失败
+     */
+    SYSTEM_ORAGATION_ERROR_DELETE("12008", "删除部门信息失败"),
+
+    /**
+     * 数据版本不一致，请刷新
+     */
+    SYSTEM_ORAGATION_ERROR_VERSION("12009", "数据版本不一致，请刷新"),
+
+    /**
+     *  请求体为空
+     */
+    SYSTEM_POSITION_NULLBODY("12501", "请求体为空"),
+
+    /**
+     * 部门管理查询数据为空
+     */
+    SYSTEM_POSITION_NOTFANF("12502", "对职位查询结果为空"),
+
+    /**
+     * 对组织机构-公司的树结构进行查询时出错
+     */
+    SYSTEM_POSITION_ERRORTREE("12503", "对公司-职位的树结构进行查询时出错"),
+
+    /**
+     * 对部门进行插入时失败
+     */
+    SYSTEM_POSITION_ERROR_INSERT("12504", "对职位信息进行插入时失败"),
+
+    /**
+     * 将公司信息插入公司-部门的中间表时出现异常
+     */
+    SYSTEM_POSITION_ERROR_INSRTTRELATION("12505", "将职位信息插公司-职位的中间表时出现异常"),
+
+    /**
+     * 待删除的部门信息不能为空
+     */
+    SYSTEM_POSITION_ERROR_DELETENULL("12506", "待删除的职位信息不能为空"),
+
+    /**
+     * 从公司-部门的中间表中删除数据失败
+     */
+    SYSTEM_POSITION_ERROR_DELETERELATION("12507", "从部门-职位的中间表中删除数据失败"),
+
+    /**
+     * 删除部门信息失败
+     */
+    SYSTEM_POSITION_ERROR_DELETE("12508", "删除职位信息失败"),
+
+    /**
+     * 数据版本不一致，请刷新
+     */
+    SYSTEM_POSITION_ERROR_VERSION("12509", "数据版本不一致，请刷新"),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * 默认错误
      */

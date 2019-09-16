@@ -81,7 +81,7 @@ public class Handle {
             // 请求参数格式不正确
             MethodArgumentTypeMismatchException methodArgumentTypeMismatchException
                     = (MethodArgumentTypeMismatchException)e;
-            return ResponseUtil.buildError("00002", methodArgumentTypeMismatchException.getMessage());
+            return ResponseUtil.buildError("00002", "请求参数格式错误");
         }
         if (e instanceof MethodArgumentNotValidException){
             // @Valid 的另外一种异常
