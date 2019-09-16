@@ -14,6 +14,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -64,7 +65,7 @@ public class Handle {
                 ConstraintViolation<?> constraintViolation = iterator.next();
                 errorMessages.add(constraintViolation.getMessage());
             }
-            return ResponseUtil.buildError("1000",errorMessages.toString());
+            return ResponseUtil.buildError("00004",errorMessages.toString());
         }
         if(e instanceof BindException){
             // @Valid表单验证不通过
@@ -74,7 +75,13 @@ public class Handle {
             for (ObjectError objectError : errors){
                 errorMessages.add(objectError.getDefaultMessage());
             }
-            return ResponseUtil.buildError("1000",errorMessages.toString());
+            return ResponseUtil.buildError("00003",errorMessages.toString());
+        }
+        if (e instanceof MethodArgumentTypeMismatchException){
+            // 请求参数格式不正确
+            MethodArgumentTypeMismatchException methodArgumentTypeMismatchException
+                    = (MethodArgumentTypeMismatchException)e;
+            return ResponseUtil.buildError("00002", methodArgumentTypeMismatchException.getMessage());
         }
         if (e instanceof MethodArgumentNotValidException){
             // @Valid 的另外一种异常
@@ -84,7 +91,7 @@ public class Handle {
             for (ObjectError error : errors) {
                 errorMessages.add(error.getDefaultMessage());
             }
-            return ResponseUtil.buildSuccess("10000",errorMessages.toString());
+            return ResponseUtil.buildSuccess("00001",errorMessages.toString());
         } else {
             return ResponseUtil.buildError(ResultEnum.SYSTEM_ERROR);
         }

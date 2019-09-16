@@ -25,7 +25,7 @@ public enum ResultEnum {
     /**
      * 方法执行成功时的枚举情况
      */
-    SUCCESS("0000", "请求成功"),
+    SUCCESS("00000", "请求成功"),
     /**
      * 默认错误
      */
