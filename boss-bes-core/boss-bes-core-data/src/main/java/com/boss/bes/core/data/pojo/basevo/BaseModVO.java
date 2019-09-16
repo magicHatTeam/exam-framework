@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -28,7 +29,7 @@ public abstract class BaseModVO extends BasePermissionData {
     /**
      * 字段名
      */
-    @NotNull(message = "名字不能为空")
+    @NotEmpty(message = "名字不能为空")
     private String name;
     /**
      * 状态：是否启用
