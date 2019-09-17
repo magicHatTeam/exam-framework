@@ -1,7 +1,0 @@
-spring:
-  cache:
-    redis:
-        use-key-prefix: true
-        key-prefix: dev
-        cache-null-values: false
-        time-to-live: 20s
