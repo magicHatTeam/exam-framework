@@ -2,6 +2,7 @@ package com.boss.bes.core.data.pojo.basevo;
 
 import com.alibaba.fastjson.JSON;
 import com.boss.bes.core.data.pojo.BaseData;
+import com.boss.bes.core.data.pojo.BasePermissionData;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * @date 2019-08-26 11:35
  */
 @Valid
-public abstract class BaseRemoveVO {
+public abstract class BaseRemoveVO extends BasePermissionData {
     @Valid
     private List<BaseData> dataList;
 
