@@ -1,8 +1,8 @@
 package com.boss.bes.common.utils;
 
+import cn.hutool.core.util.StrUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -143,7 +143,7 @@ public final class FileOperation {
                 List<MultipartFile> multipartFiles = multiRequest.getFiles(iter.next());
                 for (MultipartFile multipartFile : multipartFiles) {
                     String fileName = multipartFile.getOriginalFilename();
-                    if (StringUtils.isNotEmpty(fileName) && (!exclude.contains(fileName))) {
+                    if (StrUtil.isNotEmpty(fileName) && (!exclude.contains(fileName))) {
                         file = new File(basePath + changeFilename2Uuid(fileName));
                         filePaths.put(fileName, file.getPath());
                         multipartFile.transferTo(file);

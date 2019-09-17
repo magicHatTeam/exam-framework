@@ -1,12 +1,14 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import com.alibaba.fastjson.JSON;
+import com.boss.bes.core.data.pojo.BasePermissionData;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -17,7 +19,7 @@ import javax.validation.constraints.NotNull;
  * @date 2019-08-23 14:17
  */
 @Valid
-public abstract class BaseModVO {
+public abstract class BaseModVO extends BasePermissionData {
     /**
      * 字段id
      * 在新增字段时 id 可以为空
@@ -27,6 +29,7 @@ public abstract class BaseModVO {
     /**
      * 字段名
      */
+    @NotEmpty(message = "名字不能为空")
     private String name;
     /**
      * 状态：是否启用
@@ -39,6 +42,12 @@ public abstract class BaseModVO {
      */
     @JsonSerialize(using = com.fasterxml.jackson.databind.ser.std.ToStringSerializer.class)
     private Long version;
+
+    /**
+     * 当前数据的所属公司id
+     */
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long belongedCompanyId;
 
     public BaseModVO() {}
 
@@ -79,6 +88,14 @@ public abstract class BaseModVO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getBelongedCompanyId() {
+        return belongedCompanyId;
+    }
+
+    public void setBelongedCompanyId(Long belongedCompanyId) {
+        this.belongedCompanyId = belongedCompanyId;
     }
 
     @Override

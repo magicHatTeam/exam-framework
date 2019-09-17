@@ -25,7 +25,162 @@ public enum ResultEnum {
     /**
      * 方法执行成功时的枚举情况
      */
-    SUCCESS("0000", "请求成功"),
+    SUCCESS("00000", "请求成功"),
+
+    /**
+     * 系统管理模块的异常码定义
+     * TODO
+     * @since 2019/9/16
+     */
+
+    /**
+     *  请求体为空
+     */
+    SYSTEM_NULLBODY("12201", "请求体为空"),
+
+    /**
+     * 部门管理查询数据为空
+     */
+    SYSTEM_DEPARTMENT_NOTFANF("12202", "对部门查询结果为空"),
+
+    /**
+     * 对组织机构-公司的树结构进行查询时出错
+     */
+    SYSTEM_DEPARTMENT_ERRORTREE("12203", "对公司-部门的树结构进行查询时出错"),
+
+    /**
+     * 对部门进行插入时失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_INSERT("12204", "对部门进行插入时失败"),
+
+    /**
+     * 将公司信息插入公司-部门的中间表时出现异常
+     */
+    SYSTEM_DEPARTMENT_ERROR_INSRTTRELATION("12205", "将公司信息插入公司-部门的中间表时出现异常"),
+
+    /**
+     * 待删除的部门信息不能为空
+     */
+    SYSTEM_DEPARTMENT_ERROR_DELETENULL("12206", "待删除的部门信息不能为空"),
+
+    /**
+     * 从公司-部门的中间表中删除数据失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_DELETERELATION("12207", "从公司-部门的中间表中删除数据失败"),
+
+    /**
+     * 删除部门信息失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_DELETE("12208", "删除部门信息失败"),
+
+    /**
+     * 数据版本不一致，请刷新
+     */
+    SYSTEM_DEPARTMENT_ERROR_VERSION("12209", "数据版本不一致，请刷新"),
+
+    /**
+     *  请求体为空
+     */
+    SYSTEM_ORAGATION_NULLBODY("12001", "请求体为空"),
+
+    /**
+     * 部门管理查询数据为空
+     */
+    SYSTEM_ORAGATION_NOTFANF("12002", "对组织机构查询结果为空"),
+
+    /**
+     * 对组织机构-公司的树结构进行查询时出错
+     */
+    SYSTEM_ORAGATION_ERRORTREE("12003", "对组织机构-公司的树结构进行查询时出错"),
+
+    /**
+     * 对部门进行插入时失败
+     */
+    SYSTEM_ORAGATION_ERROR_INSERT("12004", "对组织机构进行插入时失败"),
+
+    /**
+     * 将公司信息插入公司-部门的中间表时出现异常
+     */
+    SYSTEM_ORAGATION_ERROR_INSRTTRELATION("12005", "将组织机构信息插-部门的中间表时出现异常"),
+
+    /**
+     * 待删除的部门信息不能为空
+     */
+    SYSTEM_ORAGATION_ERROR_DELETENULL("12006", "待删除的部门信息不能为空"),
+
+    /**
+     * 从公司-部门的中间表中删除数据失败
+     */
+    SYSTEM_ORAGATION_ERROR_DELETERELATION("12007", "从公司-部门的中间表中删除数据失败"),
+
+    /**
+     * 删除部门信息失败
+     */
+    SYSTEM_ORAGATION_ERROR_DELETE("12008", "删除部门信息失败"),
+
+    /**
+     * 数据版本不一致，请刷新
+     */
+    SYSTEM_ORAGATION_ERROR_VERSION("12009", "数据版本不一致，请刷新"),
+
+    /**
+     *  请求体为空
+     */
+    SYSTEM_POSITION_NULLBODY("12501", "请求体为空"),
+
+    /**
+     * 部门管理查询数据为空
+     */
+    SYSTEM_POSITION_NOTFANF("12502", "对职位查询结果为空"),
+
+    /**
+     * 对组织机构-公司的树结构进行查询时出错
+     */
+    SYSTEM_POSITION_ERRORTREE("12503", "对公司-职位的树结构进行查询时出错"),
+
+    /**
+     * 对部门进行插入时失败
+     */
+    SYSTEM_POSITION_ERROR_INSERT("12504", "对职位信息进行插入时失败"),
+
+    /**
+     * 将公司信息插入公司-部门的中间表时出现异常
+     */
+    SYSTEM_POSITION_ERROR_INSRTTRELATION("12505", "将职位信息插公司-职位的中间表时出现异常"),
+
+    /**
+     * 待删除的部门信息不能为空
+     */
+    SYSTEM_POSITION_ERROR_DELETENULL("12506", "待删除的职位信息不能为空"),
+
+    /**
+     * 从公司-部门的中间表中删除数据失败
+     */
+    SYSTEM_POSITION_ERROR_DELETERELATION("12507", "从部门-职位的中间表中删除数据失败"),
+
+    /**
+     * 删除部门信息失败
+     */
+    SYSTEM_POSITION_ERROR_DELETE("12508", "删除职位信息失败"),
+
+    /**
+     * 数据版本不一致，请刷新
+     */
+    SYSTEM_POSITION_ERROR_VERSION("12509", "数据版本不一致，请刷新"),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * 默认错误
      */
@@ -73,7 +228,101 @@ public enum ResultEnum {
     /**
      * 获取角色资源异常
      */
-    GET_ROLE_RESOURCE_ERROR("1103", "获取角色资源错误！")
+    GET_ROLE_RESOURCE_ERROR("1103", "获取角色资源错误！"),
+
+    // 试卷微服务异常
+    /**
+     * 上传的试卷不存在异常
+     */
+    PAPER_NOT_EXITS("2601", "上传的试卷不存在！"),
+    /**
+     * 存在名称相同的模板
+     */
+    PAPER_TEMPLATE_SAME_NAME("2602", "存在名称相同的模板！"),
+    /**
+     * 生成模板试卷失败异常
+     */
+    PAPER_GENERATE_TEMPLATE("2603", "生成模板试卷失败！"),
+    /**
+     * 试卷为空试卷异常
+     */
+    PAPER_NONE_SUBJECTS("2604", "试卷为空试卷！"),
+    /**
+     * 试卷已被禁用不能进行上传
+     */
+    PAPER_IS_DISABLE("2605", "试卷已被禁用不能进行上传！"),
+    /**
+     * 组卷配置项为空异常
+     */
+    PAPER_COMPOSITION_NONE_CONFIG("2606", "组卷失败！组卷配置项为空！"),
+    /**
+     * 组卷配置详情为空异常
+     */
+    PAPER_COMPOSITION_NONE_CONFIG_ITEM("2607", "组卷失败！组卷配置详情为空，请添加配置详情！"),
+    /**
+     * 配置详情的题目数量太多
+     */
+    PAPER_COMPOSITION_CONFIG_NUMBER_TOO_BIGGER("2608", "组卷失败！配置详情的题目数量太大，题目数量不够，请减少数量或者添加该类型题目"),
+    /**
+     * 组卷生成题目异常
+     */
+    PAPER_COMPOSITION_GENERATE_SUBJECT("2609", "组卷失败！无法生成题目！"),
+    /**
+     * 组卷生成答案异常
+     */
+    PAPER_COMPOSITION_GENERATE_ANSWER("2610", "组卷失败！无法生成答案！"),
+    /**
+     * 答案为空异常
+     */
+    PAPER_COMPOSITION_NONE_ANSWER("2611", "组卷失败！该试卷的答案全部为空！"),
+    /**
+     * 试卷无法关联题目
+     */
+    PAPER_COMPOSITION_CANNOT_SUBJECT("2612", "组卷失败！试卷无法关联题目！"),
+    /**
+     * 下载试卷失败异常
+     */
+    TEMPLATE_DOWNLOAD_ERROR("2613", "下载试卷失败！"),
+    /**
+     * 下载试卷参数异常
+     */
+    TEMPLATE_PARAMS_NONE_ERROR("2614", "请选择需要下载的模板"),
+    /**
+     * 模板不存在异常
+     */
+    TEMPLATE_NOT_EXIST("2615", "下载试卷失败！选择的模板不存在！"),
+    /**
+     * 模板被禁用异常
+     */
+    TEMPLATE_IS_DISABLE("2616", "下载试卷失败！选择的模板被禁用！"),
+    /**
+     * 模板为空异常
+     */
+    TEMPLATE_NONE_SUBJECTS("2617", "该模板为空模板！"),
+    /**
+     * 考试发布记录不存在
+     */
+    PUBLISH_RECORD_ID_NOT_EXISTS("140000","考试发布记录id为空"),
+    /**
+     * 找不到考试发布记录
+     */
+    PUBlISH_RECORD_NOT_EXISTS("140001","找不到考试发布记录"),
+    /**
+     * 找不到试卷id异常
+     */
+    PUBLISH_RECORD_PAPER_ID_NOT_EXISTS("140002","找不到试卷ID异常"),
+    /**
+     * 考试未发布异常
+     */
+    EXAM_UNPUBLISH_EXCEPTION("141000","该场考试未发布！"),
+    /**
+     * 考试已经发布异常
+     */
+    EXAM_PUBLISHED_EXCEPTION("141001","该场考试已经结束！"),
+    /**
+     * 考试剩余时间异常
+     */
+    EXAM_TIME_EXCEPTION("141001","考试时间错误")
     ;
 
     private String code;

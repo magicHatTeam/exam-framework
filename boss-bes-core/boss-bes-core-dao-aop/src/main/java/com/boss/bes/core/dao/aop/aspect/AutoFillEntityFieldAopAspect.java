@@ -3,7 +3,10 @@ package com.boss.bes.core.dao.aop.aspect;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.boss.bes.common.exception.logging.exception.DaoException;
+import com.boss.bes.common.utils.SnowflakeIdWorker;
 import com.boss.bes.common.utils.TokenUtil;
+import com.boss.bes.common.utils.constants.ByteConstants;
+import com.boss.bes.common.utils.constants.CommonCacheConstants;
 import com.boss.bes.core.dao.aop.annotation.AutoFillEntityFieldAopAnnotation;
 import com.boss.bes.core.dao.aop.pojo.common.InsertCommon;
 import com.boss.bes.core.dao.aop.pojo.common.UpdateCommon;
@@ -13,6 +16,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +25,14 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
 /**
- * @author Lynch
+ * 注解切面
+ * 自动填值的切面
+ * @author Lynch、likang
  * @date 2019/8/11 -23:21
  */
 @Aspect
@@ -51,24 +58,32 @@ public class AutoFillEntityFieldAopAspect {
 	public Object doAround(ProceedingJoinPoint joinPoint, AutoFillEntityFieldAopAnnotation autoFillEntityFieldAopAnnotation) throws Throwable {
 		// 获取切面参数及其属性域
 		Object[] args = joinPoint.getArgs();
-		JSONObject redisJsonObject = getJsonObject();
+		if (args.length < 1 || args[0] instanceof Collection){
+			return joinPoint.proceed(args);
+		}
+		JSONObject redisJsonObject = TokenUtil.getJsonObject(stringRedisTemplate);
+		if (redisJsonObject == null) {
+			throw new DaoException(ResultEnum.PARAMS_TOKEN_ERROR);
+		}
 		Date date = new Date();
-		Long orgId = Long.parseLong(redisJsonObject.get("orgId").toString());
-		Long companyId = Long.parseLong(redisJsonObject.get("companyId").toString());
-		Long updatedBy = Long.parseLong(redisJsonObject.get("updatedBy").toString());
+		Long orgId = redisJsonObject.getLong(CommonCacheConstants.ORG_ID);
+		Long companyId = redisJsonObject.getLong(CommonCacheConstants.COMPANY_ID);
+		Long updatedBy = redisJsonObject.getLong(CommonCacheConstants.USER_ID);
 
 		// 为不同的dao操作执行不同规则
 		if (MethodType.INSERT.equals(autoFillEntityFieldAopAnnotation.methodType())) {
-			Long createdBy = Long.parseLong(redisJsonObject.get("createdBy").toString());
-			Long version = 0L;
-
-			InsertCommon commonString = new InsertCommon(orgId,companyId,createdBy,date,updatedBy,date,version);
-			inject2To1(args[0],commonString);
-
+			Long id = SnowflakeIdWorker.generateId();
+			InsertCommon commonString = new InsertCommon(orgId, companyId, updatedBy, date, updatedBy, date, System.currentTimeMillis());
+			if (autoFillEntityFieldAopAnnotation.autoFillId()){
+				commonString.setId(SnowflakeIdWorker.generateId());
+			}
+			if (autoFillEntityFieldAopAnnotation.autoFillStatus()){
+				commonString.setStatus(ByteConstants.STATUS_YES);
+			}
+			BeanUtils.copyProperties(commonString, args[0]);
 		} else if (MethodType.UPDATE.equals(autoFillEntityFieldAopAnnotation.methodType())) {
-			// 对组织Id等在缓存中已经存在的进行改变时，需要对缓存和数据库同步更新
-			UpdateCommon commonString = new UpdateCommon(orgId,companyId,updatedBy,date);
-			inject2To1(args[0],commonString);
+			UpdateCommon commonString = new UpdateCommon(updatedBy,date,System.currentTimeMillis());
+			BeanUtils.copyProperties(commonString, args[0]);
 		}
 		return joinPoint.proceed(args);
 	}
@@ -96,7 +111,7 @@ public class AutoFillEntityFieldAopAspect {
 	private JSONObject getJsonObject() throws IOException {
 		Map<String, String> commonParamsFromToken = TokenUtil.getCommonParamsFromToken();
 		if (commonParamsFromToken!=null){
-			String userId = commonParamsFromToken.get("id");
+			String userId = commonParamsFromToken.get(CommonCacheConstants.USER_ID);
 			if (StrUtil.isNotEmpty(userId)) {
 				return TokenUtil.getCommonParamsFromRedis(userId, stringRedisTemplate);
 			}

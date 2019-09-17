@@ -1,10 +1,10 @@
 package com.boss.bes.core.data.pojo.basevo;
 
 import com.alibaba.fastjson.JSON;
+import com.boss.bes.core.data.pojo.BasePermissionData;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 /**
  * 基础的查询VO，由前端-->后端进行查询时，传给后端的查询条件
@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
  * @date 2019-08-26 10:11
  */
 @Valid
-public abstract class BaseQueryVO {
+public abstract class BaseQueryVO extends BasePermissionData {
     /**
      * 当前分页条件下，一页中拥有的数据条数
      */

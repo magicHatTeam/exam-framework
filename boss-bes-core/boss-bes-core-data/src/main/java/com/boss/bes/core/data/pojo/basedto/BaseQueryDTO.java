@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.basedto;
 
 import com.alibaba.fastjson.JSON;
+import com.boss.bes.core.data.pojo.BasePermissionData;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -13,7 +14,7 @@ import javax.validation.constraints.Min;
  * @date 2019-08-26 10:11
  */
 @Valid
-public abstract class BaseQueryDTO {
+public abstract class BaseQueryDTO extends BasePermissionData {
     /**
      * 当前分页条件下，一页中拥有的数据条数
      */
