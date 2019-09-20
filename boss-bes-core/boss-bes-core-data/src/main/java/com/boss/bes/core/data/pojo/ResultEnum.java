@@ -31,6 +31,64 @@ public enum ResultEnum {
      * @since 2019/9/16
      */
 
+    // =================================
+    // 系统管理-公司
+    // =================================
+
+    /**
+     * 请求体为空
+     */
+    SYSTEM_COMPANY_EMPTY_REQUEST("12101", "请求体为空"),
+
+    /**
+     * 没有匹配的查询结果
+     */
+    SYSTEM_COMPANY_NO_MATCH_QUERY_RESULT("12102", "没有匹配的查询结果"),
+
+    /**
+     * 公司信息插入失败
+     */
+    SYSTEM_COMPANY_FAIL_INSERT("12103", "数据库中公司信息没能成功地新增"),
+
+    /**
+     * 公司信息插入失败(由于组织机构-公司中间表)
+     */
+    SYSTEM_COMPANY_FAIL_INSERT_CAUSE_T_ORG_COMPANY("12104", "数据库中组织机构和公司的联系新增失败"),
+
+    /**
+     * 公司信息更新失败
+     */
+    SYSTEM_COMPANY_FAIL_UPDATE("12105", "数据库中公司信息没能成功地更新"),
+
+    /**
+     * 空的待删除公司
+     */
+    SYSTEM_COMPANY_EMPTY_DELETED_COMPANY("12106", "空的待删除公司"),
+
+    /**
+     * 公司信息删除失败
+     */
+    SYSTEM_COMPANY_FAIL_DELETE("12107", "数据库中公司信息没能成功地删除"),
+
+    /**
+     * 可能删除了正被使用的公司
+     */
+    SYSTEM_COMPANY_DELETED_COMPANY_IS_BEING_USED("12108", "待删除的公司可能正被使用中"),
+
+    /**
+     * 公司信息删除失败(由于组织机构-公司中间表)
+     */
+    SYSTEM_COMPANY_FAIL_DELETE_CAUSE_T_ORG_COMPANY("12109", "数据库中组织机构和公司的联系删除失败"),
+
+    /**
+     * 数据版本信息不一致
+     */
+    SYSTEM_COMPANY_INCONSISTENT_VERSION("12110", "数据版本不一致"),
+
+    // =================================
+    // 系统管理-部门
+    // =================================
+
     /**
      *  请求体为空
      */
@@ -166,7 +224,227 @@ public enum ResultEnum {
      */
     SYSTEM_POSITION_ERROR_VERSION("12509", "数据版本不一致，请刷新"),
 
+    // =================================
+    // 系统管理-资源
+    // =================================
 
+    /**
+     * 请求体为空
+     */
+    SYSTEM_RESOURCE_EMPTY_REQUEST("12301", "请求体为空"),
+
+    /**
+     * 没有匹配的查询结果
+     */
+    SYSTEM_RESOURCE_NO_MATCH_QUERY_RESULT("12302", "没有匹配的查询结果"),
+
+    /**
+     * 资源信息插入失败
+     */
+    SYSTEM_RESOURCE_FAIL_INSERT("12303", "数据库中资源信息没能成功地新增"),
+
+    /**
+     * 资源信息插入失败(由于组织机构-资源中间表)
+     */
+    SYSTEM_RESOURCE_FAIL_INSERT_CAUSE_T_ORG_RESOURCE("12304", "数据库中组织机构和资源的联系新增失败"),
+
+    /**
+     * 资源信息更新失败
+     */
+    SYSTEM_RESOURCE_FAIL_UPDATE("12305", "数据库中资源信息没能成功地更新"),
+
+    /**
+     * 空的待删除资源
+     */
+    SYSTEM_RESOURCE_EMPTY_DELETED_RESOURCE("12306", "空的待删除资源"),
+
+    /**
+     * 资源信息删除失败
+     */
+    SYSTEM_RESOURCE_FAIL_DELETE("12307", "数据库中资源信息没能成功地删除"),
+
+    /**
+     * 可能删除了正被使用的资源
+     */
+    SYSTEM_RESOURCE_DELETED_RESOURCE_IS_BEING_USED("12308", "待删除的资源可能正被使用中"),
+
+    /**
+     * 数据版本信息不一致
+     */
+    SYSTEM_RESOURCE_INCONSISTENT_VERSION("12109", "数据版本不一致"),
+
+    /**
+     * 资源信息删除失败(由于组织机构-资源中间表)
+     */
+    SYSTEM_RESOURCE_FAIL_DELETE_CAUSE_T_ORG_RESOURCE("12310", "数据库中组织机构和资源的联系删除失败"),
+
+    /**
+     * 当前登录用户的权限不满足要求
+     */
+    SYSTEM_RESOURCE_ERROR_MASTER_ACCESS("12311", "只有组织机构级别管理员才能进行资源管理"),
+
+    /**
+     * 删除了非叶子节点的资源
+     */
+    SYSTEM_RESOURCE_NON_LEAF_CANNOT_BE_DELETED("12312", "只能删除是叶子节点的资源"),
+
+    /**
+     * 只有非叶子节点才能成为父节点
+     */
+    SYSTEM_RESOURCE_LEAF_CANNOT_BE_PARENT("12313", "叶子节点不能充当其它节点的父节点"),
+
+    // =================================
+    // 系统管理-角色
+    // =================================
+
+    /**
+     * 请求体为空
+     */
+    SYSTEM_ROLE_EMPTY_REQUEST("12401", "请求体为空"),
+
+    /**
+     * 没有匹配的查询结果
+     */
+    SYSTEM_ROLE_NO_MATCH_QUERY_RESULT("12402", "没有匹配的查询结果"),
+
+    /**
+     * 角色信息插入失败
+     */
+    SYSTEM_ROLE_FAIL_INSERT("12403", "数据库中角色信息没能成功地新增"),
+
+    /**
+     * 角色信息插入失败(由于组织机构-公司-角色中间表)
+     */
+    SYSTEM_ROLE_FAIL_INSERT_CAUSE_T_ORG_COMPANY_ROLE("12404", "数据库中组织机构、公司和角色的联系新增失败"),
+
+    /**
+     * 角色信息更新失败
+     */
+    SYSTEM_ROLE_FAIL_UPDATE("12405", "数据库中角色信息没能成功地更新"),
+
+    /**
+     * 空的待删除角色
+     */
+    SYSTEM_ROLE_EMPTY_DELETED_ROLE("12406", "空的待删除角色"),
+
+    /**
+     * 角色信息删除失败
+     */
+    SYSTEM_ROLE_FAIL_DELETE("12407", "数据库中角色信息没能成功地删除"),
+
+    /**
+     * 可能删除了正被使用的角色
+     */
+    SYSTEM_ROLE_DELETED_ROLE_IS_BEING_USED("12408", "待删除的角色可能正被使用中"),
+
+    /**
+     * 数据版本信息不一致
+     */
+    SYSTEM_ROLE_INCONSISTENT_VERSION("12109", "数据版本不一致"),
+
+    /**
+     * 角色信息删除失败(由于组织机构-公司-角色中间表)
+     */
+    SYSTEM_ROLE_FAIL_DELETE_CAUSE_T_ORG_COMPANY_ROLE("12410", "数据库中组织机构、公司和角色的联系删除失败"),
+
+    /**
+     * 角色信息删除失败(由于资源-角色中间表)
+     */
+    SYSTEM_ROLE_FAIL_DELETE_CAUSE_T_RESOURCE_ROLE("12411", "数据库中资源和角色的联系删除失败"),
+
+    /**
+     * 当前登录用户的权限不满足要求
+     */
+    SYSTEM_ROLE_ERROR_MASTER_ACCESS("12412", "超级管理员不允许进行内部角色管理"),
+
+    /**
+     * 对角色进行资源分配之前，必须以机构为单位
+     */
+    SYSTEM_ROLE_FAIL_DISTRIBUTE_RESOURCE_CAUSE_WITHOUT_ORG_INFO("12413", "进行资源分配时，必须有所属机构"),
+
+    // =================================
+    // 系统管理-用户
+    // =================================
+
+    /**
+     * 请求体为空
+     */
+    SYSTEM_USER_EMPTY_REQUEST("12401", "请求体为空"),
+
+    /**
+     * 没有匹配的查询结果
+     */
+    SYSTEM_USER_NO_MATCH_QUERY_RESULT("12402", "没有匹配的查询结果"),
+
+    /**
+     * 用户信息插入失败
+     */
+    SYSTEM_USER_FAIL_INSERT("12403", "数据库中用户信息没能成功地新增"),
+
+    /**
+     * 用户信息插入失败(由于组织机构-公司-用户中间表)
+     */
+    SYSTEM_USER_FAIL_INSERT_CAUSE_T_ORG_COMPANY_USER("12404", "数据库中组织机构、公司和用户的联系新增失败"),
+
+    /**
+     * 用户信息插入失败(由于角色-用户中间表)
+     */
+    SYSTEM_USER_FAIL_INSERT_CAUSE_T_ROLE_USER("12414", "数据库中角色和用户的联系新增失败"),
+
+    /**
+     * 用户信息插入失败(由于部门-用户中间表)
+     */
+    SYSTEM_USER_FAIL_INSERT_CAUSE_T_DEPARTMENT_USER("12415", "数据库中部门和用户的联系新增失败"),
+
+    /**
+     * 用户信息更新失败
+     */
+    SYSTEM_USER_FAIL_UPDATE("12405", "数据库中用户信息没能成功地更新"),
+
+    /**
+     * 空的待删除用户
+     */
+    SYSTEM_USER_EMPTY_DELETED_USER("12406", "空的待删除用户"),
+
+    /**
+     * 用户信息删除失败
+     */
+    SYSTEM_USER_FAIL_DELETE("12407", "数据库中用户信息没能成功地删除"),
+
+    /**
+     * 数据版本信息不一致
+     */
+    SYSTEM_USER_INCONSISTENT_VERSION("12109", "数据版本不一致"),
+
+    /**
+     * 用户信息删除失败(由于组织机构-公司-用户中间表)
+     */
+    SYSTEM_USER_FAIL_DELETE_CAUSE_T_ORG_COMPANY_USER("12410", "数据库中组织机构、公司和用户的联系删除失败"),
+
+    /**
+     * 用户信息删除失败(由于角色-用户中间表)
+     */
+    SYSTEM_USER_FAIL_DELETE_CAUSE_T_ROLE_USER("12411", "数据库中角色和用户的联系删除失败"),
+
+    /**
+     * 用户信息删除失败(由于部门-用户中间表)
+     */
+    SYSTEM_USER_FAIL_DELETE_CAUSE_T_DEPARTMENT_USER("12413", "数据库中部门和用户的联系删除失败"),
+
+    /**
+     * 当前登录用户的权限不满足要求
+     */
+    SYSTEM_USER_ERROR_MASTER_ACCESS("12412", "超级管理员不允许进行内部用户管理"),
+
+    /**
+     * 为角色分配用户时，没能正确的将用户之前拥有的角色重置
+     */
+    SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_RESET("12408", "没能够正确地重置用户之前拥有的角色"),
+
+    /**
+     * 为角色分配用户时，没能正确的对用户进行角色分配
+     */
+    SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DISTRIBUTE("12416", "没能够正确地分配给用户指定角色"),
 
 
 
