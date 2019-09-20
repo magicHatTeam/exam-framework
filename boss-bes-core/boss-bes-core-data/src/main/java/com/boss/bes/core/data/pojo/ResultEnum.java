@@ -25,7 +25,7 @@ public enum ResultEnum {
      */
     SUCCESS("00000", "请求成功"),
 
-    /**
+    /*
      * 系统管理模块的异常码定义
      * TODO
      * @since 2019/9/16
