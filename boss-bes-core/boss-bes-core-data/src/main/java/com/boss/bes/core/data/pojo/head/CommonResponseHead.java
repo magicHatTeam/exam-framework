@@ -12,7 +12,7 @@ public class CommonResponseHead {
      * head
      * 应用程序版本，不允许为空
      */
-    private String version;
+    private String version = "1.0";
     /**
      * head
      * 应答码
