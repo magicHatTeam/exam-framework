@@ -446,16 +446,114 @@ public enum ResultEnum {
      */
     SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DISTRIBUTE("12416", "没能够正确地分配给用户指定角色"),
 
+    // =================================
+    // 系统管理-工具类
+    // =================================
 
+    /**
+     * 获取公用缓存失败
+     */
+    SYSTEM_UTIL_FAIL_FETCH_COMMON_CACHE("12901", "获取公用缓存失败"),
 
+    /**
+     * 尝试进行系统管理的用户不是管理员
+     */
+    SYSTEM_UTIL_ERROR_ACCESS("12902", "只有管理员才能进行系统管理"),
 
+    /**
+     * 当前用户不能管理该组织机构
+     */
+    SYSTEM_UTIL_INCONSISTENT_MASTER_ORG("12903", "目标修改机构和当前用户可操控组织机构不一致"),
 
+    /**
+     * 当前用户不能管理该公司
+     */
+    SYSTEM_UTIL_INCONSISTENT_MASTER_COMPANY("12904", "目标修改机构和当前用户可操控公司不一致"),
 
+    /**
+     * 数据库中不存在对应的角色
+     */
+    SYSTEM_UTIL_NO_SUCH_ROLE("12905", "数据库中不存在符合查询条件的角色"),
 
+    /**
+     * 角色版本信息和数据库中不一致
+     */
+    SYSTEM_UTIL_INCONSISTENT_ROLE_VERSION("12906", "角色的版本信息和数据库中不一致"),
 
+    /**
+     * 数据库中不存在对应的资源
+     */
+    SYSTEM_UTIL_NO_SUCH_RESOURCE("12907", "数据库中不存在符合查询条件的资源"),
 
+    /**
+     * 资源版本信息和数据库中不一致
+     */
+    SYSTEM_UTIL_INCONSISTENT_RESOURCE_VERSION("12908", "资源的版本信息和数据库中不一致"),
 
+    /**
+     * 数据库中不存在对应的用户
+     */
+    SYSTEM_UTIL_NO_SUCH_USER("12909", "数据库中不存在符合查询条件的用户"),
 
+    /**
+     * 用户版本信息和数据库中不一致
+     */
+    SYSTEM_UTIL_INCONSISTENT_USER_VERSION("12910", "用户的版本信息和数据库中不一致"),
+
+    /**
+     * 待分配的角色列表为空
+     */
+    SYSTEM_UTIL_DISTRIBUTE_BUT_EMPTY_ROLE("12911", "待分配的角色列表为空"),
+
+    /**
+     * 待分配的用户列表为空
+     */
+    SYSTEM_UTIL_DISTRIBUTE_BUT_EMPTY_USER("12911", "待分配的用户列表为空"),
+
+    /**
+     * 为角色进行资源分配时失败
+     */
+    SYSTEM_UTIL_ERROR_DISTRIBUTE_ROLE_AND_RESOURCE("12912", "进行角色的资源分配时失败"),
+
+    /**
+     * 为用户进行角色分配时失败
+     */
+    SYSTEM_UTIL_ERROR_DISTRIBUTE_USER_AND_ROLE("12913", "进行用户的角色分配时失败"),
+
+    /**
+     * 角色和用户的所属机构必须一致
+     */
+    SYSTEM_UTIL_ROLE_AND_USER_MUST_SAME_ORG("12914", "角色和用户的所属机构必须一致"),
+
+    /**
+     * 角色和用户的所属公司必须一致
+     */
+    SYSTEM_UTIL_ROLE_AND_USER_MUST_SAME_COMPANY("12915", "角色和用户的所属公司必须一致"),
+
+    /**
+     * 角色和资源的所属机构必须一致
+     */
+    SYSTEM_UTIL_ROL_AND_RESOURCE_MUST_BE_SAME_ORG("12916", "角色和资源的所属机构必须一致"),
+
+    /**
+     * 获取组织机构-公司树失败
+     */
+    SYSTEM_UTIL_TREE_EMPTY_ORG_COMPANY("12917", "获取组织机构-公司树失败"),
+
+    /**
+     * 获取公司-部门树失败
+     */
+    SYSTEM_UTIL_TREE_EMPTY_COMPANY_DEPARTMENT("12918", "获取公司-部门树失败"),
+
+    /**
+     * 获取公司-职位树失败
+     */
+    SYSTEM_UTIL_TREE_EMPTY_COMPANY_POSITION("12919", "获取公司-职位树失败"),
+
+    /**
+     * 获取资源树失败
+     */
+    SYSTEM_UTIL_TREE_EMPTY_RESOURCE("12920", "获取资源树失败"),
 
     /**
      * 默认错误
@@ -464,7 +562,7 @@ public enum ResultEnum {
     /**
      * 系统错误
      */
-    SYSTEM_ERROR("1000", "系统错误"),
+    SYSTEM_ERROR("00000", "系统错误"),
     /**
      * 业务错误
      */
