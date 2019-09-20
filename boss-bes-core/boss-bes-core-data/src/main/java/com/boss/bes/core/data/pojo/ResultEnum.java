@@ -2,20 +2,18 @@ package com.boss.bes.core.data.pojo;
 
 /**
  * 业务结果枚举类，包含应答码和消息
- * 应答码规定为4位，规则如下：
- * 1. 业务执行成功时，使用 0000
- * 2. 出现系统级错误，使用 1xxx
- *      网关服务错误：10xx
- *      认证服务错误：11xx
- *      日志服务错误：12xx
- *      CDN服务错误：13xx
- * 3. 出现业务错误，使用 2xxx
- *      基础数据服务错误：20xx + 21xx
- *      租凭服务错误：22xx + 23xx
- *      用户和权限服务错误：24xx + 25xx
- *      试卷服务错误：26xx + 27xx
- *      考试服务错误：28xx + 29xx
- *  现在只是初步模拟实现，还需要后续的修改
+ * 应答码规定为5位，规则如下：
+ * 第一位：取值范围0、1  0代表系统本身抛出的异常，1代表业务异常
+ * 第二位：取值访问0、1、2、3、4、5、6 分别代表网关、基础数据服务、系统管理、试卷微服务、考试微服务、认证、公共模块异常
+ * 第三位：对应模块的页面：从0-x 代表每个模块展开的页面，从上到下
+ *  其中6，公共模块中：
+ *  boss-bes-common-exception-logging：0
+ *  boss-bes-common-logging：1
+ *  boss-bes-common-utils：2
+ *  boss-bes-core-api-version：3
+ *  boss-bes-core-dao-aop：4
+ *  boss-bes-core-data：5
+ * 第四和第五位：代表具体的业务
  *
  * @author 何家伟
  * @date 2019-08-09 23:05
@@ -193,112 +191,184 @@ public enum ResultEnum {
      * 业务错误
      */
     BUSINESS_ERROR("2000", "参数错误"),
+
+    // 公共模块异常
     /**
      * 从请求体拿token内参数错误，或者从redis拿值错误
      */
-    PARAMS_TOKEN_ERROR("1001", "获取自动填值参数错误"),
+    PARAMS_TOKEN_ERROR("16401", "获取自动填值参数错误"),
+
+    // 网关异常
     /**
      * 网关熔断超时错误
      */
-    GATEWAY_HYSTRIX_TIMEOUT_ERROR("1002", "网关熔断超时错误"),
+    GATEWAY_HYSTRIX_TIMEOUT_ERROR("10001", "网关熔断超时错误！"),
     /**
      * token无效错误
      */
-    TOKEN_INVALID("1003","token无效，请重新登录"),
+    TOKEN_INVALID("10002","登录无效，请重新登录！"),
     /**
      * token不存在错误
      */
-    TOKEN_NOT_EXITS("1004", "token不存在，请登录"),
+    TOKEN_NOT_EXITS("10003", "登录超时，请登录！"),
     /**
      * 请求体参数不符合规范
      */
-    REQUEST_BODY_PARAMS_ERROR("1005", "请求体参数不符合规范！！"),
+    REQUEST_BODY_PARAMS_ERROR("10004", "请求体参数不符合规范！！"),
     /**
      * 没有权限
      */
-    REQUEST_NO_AUTH_ERROR("1006", "没有权限！"),
+    REQUEST_NO_AUTH_ERROR("10005", "对不起，您没有操作权限！"),
+
+    // 认证微服务异常
     /**
      * 登录熔断异常
      */
-    LOGIN_OUT_TIME_ERROR("1101", "登录验证超时！"),
+    LOGIN_OUT_TIME_ERROR("15001", "登录验证超时！"),
     /**
      * 用户名或密码错误
      */
-    LOGIN_FORMAT_ERROR("1102", "用户名或密码错误！"),
+    LOGIN_FORMAT_ERROR("15002", "用户名或密码错误！"),
     /**
      * 获取角色资源异常
      */
-    GET_ROLE_RESOURCE_ERROR("1103", "获取角色资源错误！"),
+    GET_ROLE_RESOURCE_ERROR("15003", "获取角色资源错误！"),
+    /**
+     * 用户注销异常
+     */
+    LOGIN_OUT_ERROR("15004", "用户注销错误！"),
 
     // 试卷微服务异常
     /**
-     * 上传的试卷不存在异常
+     * 获取公用缓存失败！
      */
-    PAPER_NOT_EXITS("2601", "上传的试卷不存在！"),
-    /**
-     * 存在名称相同的模板
-     */
-    PAPER_TEMPLATE_SAME_NAME("2602", "存在名称相同的模板！"),
-    /**
-     * 生成模板试卷失败异常
-     */
-    PAPER_GENERATE_TEMPLATE("2603", "生成模板试卷失败！"),
-    /**
-     * 试卷为空试卷异常
-     */
-    PAPER_NONE_SUBJECTS("2604", "试卷为空试卷！"),
-    /**
-     * 试卷已被禁用不能进行上传
-     */
-    PAPER_IS_DISABLE("2605", "试卷已被禁用不能进行上传！"),
+    USER_REDIS_PAPER_ERROR("13000", "用户信息发生错误，请重新登录！"),
     /**
      * 组卷配置项为空异常
      */
-    PAPER_COMPOSITION_NONE_CONFIG("2606", "组卷失败！组卷配置项为空！"),
+    PAPER_COMPOSITION_NONE_CONFIG("13001", "组卷失败！组卷配置项为空！"),
     /**
      * 组卷配置详情为空异常
      */
-    PAPER_COMPOSITION_NONE_CONFIG_ITEM("2607", "组卷失败！组卷配置详情为空，请添加配置详情！"),
+    PAPER_COMPOSITION_NONE_CONFIG_ITEM("13002", "组卷失败！组卷配置详情为空，请添加配置详情！"),
     /**
      * 配置详情的题目数量太多
      */
-    PAPER_COMPOSITION_CONFIG_NUMBER_TOO_BIGGER("2608", "组卷失败！配置详情的题目数量太大，题目数量不够，请减少数量或者添加该类型题目"),
+    PAPER_COMPOSITION_CONFIG_NUMBER_TOO_BIGGER("13003", "组卷失败！配置详情的题目数量太大，题目数量不够，请减少数量或者添加该类型题目"),
     /**
      * 组卷生成题目异常
      */
-    PAPER_COMPOSITION_GENERATE_SUBJECT("2609", "组卷失败！无法生成题目！"),
+    PAPER_COMPOSITION_GENERATE_SUBJECT("13004", "组卷失败！无法生成题目！"),
     /**
      * 组卷生成答案异常
      */
-    PAPER_COMPOSITION_GENERATE_ANSWER("2610", "组卷失败！无法生成答案！"),
+    PAPER_COMPOSITION_GENERATE_ANSWER("13005", "组卷失败！无法生成答案！"),
     /**
      * 答案为空异常
      */
-    PAPER_COMPOSITION_NONE_ANSWER("2611", "组卷失败！该试卷的答案全部为空！"),
+    PAPER_COMPOSITION_NONE_ANSWER("13006", "组卷失败！该试卷的答案全部为空！"),
     /**
      * 试卷无法关联题目
      */
-    PAPER_COMPOSITION_CANNOT_SUBJECT("2612", "组卷失败！试卷无法关联题目！"),
+    PAPER_COMPOSITION_CANNOT_SUBJECT("13007", "组卷失败！试卷无法关联题目！"),
+    /**
+     * 查询条件错误
+     */
+    PAPER_COMPOSITION_PARAMS_ERROR("13008", "试卷查询失败，查询条件错误！"),
+    /**
+     * 既不是公司、组织机构管理员，也不是超级管理员，则没有操作权限
+     */
+    PAPER_COMPOSITION_NO_PERMISSION("13009", "没有权限操作！"),
+    /**
+     * 组卷失败，题库获取题目失败！
+     */
+    PAPER_COMPOSITION_NONE_SUBJECTS("13010", "组卷失败，题库获取题目失败！"),
+    /**
+     * 预览参数错误，请选择试卷
+     */
+    PAPER_PREVIEW_PARAMS_ERROR("13011", "预览参数错误，请选择试卷！"),
+    /**
+     * 上传的试卷不存在异常
+     */
+    PAPER_NOT_EXITS("13101", "上传的试卷不存在！"),
+    /**
+     * 存在名称相同的模板
+     */
+    PAPER_TEMPLATE_SAME_NAME("13102", "存在名称相同的模板！"),
+    /**
+     * 生成模板试卷失败异常
+     */
+    PAPER_GENERATE_TEMPLATE("13103", "试卷生成模板失败！"),
+    /**
+     * 试卷为空试卷异常
+     */
+    PAPER_NONE_SUBJECTS("13104", "试卷为空试卷！"),
+    /**
+     * 试卷已被禁用不能进行上传
+     */
+    PAPER_IS_DISABLE("13105", "试卷已被禁用不能进行上传！"),
+    /**
+     * 试卷参数错误
+     */
+    PAPER_PARAMS_NONE_ERROR("13106", "请选择需要上传的试卷！"),
+    /**
+     * 操作数据库异常
+     */
+    PAPER_UPLOAD_DATABASE_EXCEPTION("13107", "上传试卷时，数据持久层出现问题！！"),
     /**
      * 下载试卷失败异常
      */
-    TEMPLATE_DOWNLOAD_ERROR("2613", "下载试卷失败！"),
+    TEMPLATE_DOWNLOAD_ERROR("13201", "下载试卷失败！"),
     /**
      * 下载试卷参数异常
      */
-    TEMPLATE_PARAMS_NONE_ERROR("2614", "请选择需要下载的模板"),
+    TEMPLATE_PARAMS_NONE_ERROR("13202", "请选择需要下载的模板"),
     /**
      * 模板不存在异常
      */
-    TEMPLATE_NOT_EXIST("2615", "下载试卷失败！选择的模板不存在！"),
+    TEMPLATE_NOT_EXIST("13203", "下载试卷失败！选择的模板不存在！"),
     /**
      * 模板被禁用异常
      */
-    TEMPLATE_IS_DISABLE("2616", "下载试卷失败！选择的模板被禁用！"),
+    TEMPLATE_IS_DISABLE("13204", "下载试卷失败！选择的模板被禁用！"),
     /**
      * 模板为空异常
      */
-    TEMPLATE_NONE_SUBJECTS("2617", "该模板为空模板！"),
+    TEMPLATE_NONE_SUBJECTS("13205", "该模板为空模板！"),
+    /**
+     * 不是公司管理员,没有权限操作
+     */
+    TEMPLATE_DOWNLOAD_NO_PERMISSION("13206", "不是公司管理员,没有权限操作！"),
+    /**
+     * 操作数据库异常
+     */
+    TEMPLATE_DOWNLOAD_DATABASE_EXCEPTION("13207", "下载试卷时，数据持久层出现问题！"),
+    /**
+     * 删除试卷参数异常
+     */
+    MAINTAIN_DELETE_PAPERS_ERROR("13301", "需要删除的数据为空，请选择试卷！"),
+    /**
+     * 试卷正在被发布不能删除异常
+     */
+    MAINTAIN_DELETE_PUBLISHED_ERROR("13302", "试卷正在被发布不能删除！"),
+    /**
+     * 维护试卷的数据持久化层发生错误
+     */
+    MAINTAIN_DATABASE_ERROR("13303", "维护试卷的数据持久化层发生错误！"),
+    /**
+     * 删除试卷异常
+     */
+    MAINTAIN_DELETE_ERROR("13304", "删除试卷发生错误！"),
+
+    // 考试微服务
+    /**
+     * 试卷参数错误异常
+     */
+    PAPER_PARAMS_ERROR("2618", "试卷参数错误！"),
+    /**
+     * 试卷服务超时错误
+     */
+    PAPER_TIMEOUT_ERROR("2619","试卷服务超时错误!"),
     /**
      * 考试发布记录不存在
      */
