@@ -85,6 +85,9 @@ public class AutoFillEntityFieldMapperDaoAspect {
 			Long startTime = System.currentTimeMillis();
 			// 获取切面参数及其属性域
 			Object[] args = joinPoint.getArgs();
+			if (args == null) {
+				throw new DaoException(ResultEnum.DAO_AOP_ARGS_ERROR);
+			}
 			if (args.length < 1 || args[0] instanceof Collection || judgeAnnotationExist(joinPoint)) {
 				return joinPoint.proceed(args);
 			}
@@ -132,20 +135,31 @@ public class AutoFillEntityFieldMapperDaoAspect {
 	 * @return 返回值
 	 */
 	@Around("daoUpdateAction()")
-	public Object doUpdateAround(ProceedingJoinPoint joinPoint) throws Throwable {
-		// 获取切面参数及其属性域
-		Object[] args = joinPoint.getArgs();
-		if (args.length < 1 || args[0] instanceof Collection || judgeAnnotationExist(joinPoint)){
-			return joinPoint.proceed(args);
+	public Object doUpdateAround(ProceedingJoinPoint joinPoint){
+		Object result;
+		try {
+			// 获取切面参数及其属性域
+			Object[] args = joinPoint.getArgs();
+			if (args == null) {
+				throw new DaoException(ResultEnum.DAO_AOP_ARGS_ERROR);
+			}
+			if (args.length < 1 || args[0] instanceof Collection || judgeAnnotationExist(joinPoint)) {
+				return joinPoint.proceed(args);
+			}
+			JSONObject redisJsonObject = TokenUtil.getJsonObject(stringRedisTemplate);
+			if (redisJsonObject == null) {
+				throw new DaoException(ResultEnum.PARAMS_TOKEN_ERROR);
+			}
+			Long updatedBy = redisJsonObject.getLong(CommonCacheConstants.USER_ID);
+			UpdateCommon commonString = new UpdateCommon(updatedBy, new Date(), System.currentTimeMillis());
+			BeanUtils.copyProperties(commonString, args[0]);
+			result = joinPoint.proceed(args);
+		} catch (Throwable throwable){
+			logger.error(throwable.getMessage(), throwable);
+			throw throwable instanceof DaoException ?
+					(DaoException)throwable:new DaoException(throwable.getMessage(), ResultEnum.COMMON_SYSTEM_ERROR.getCode());
 		}
-		JSONObject redisJsonObject = TokenUtil.getJsonObject(stringRedisTemplate);
-		if (redisJsonObject == null) {
-			throw new DaoException(ResultEnum.PARAMS_TOKEN_ERROR);
-		}
-		Long updatedBy = redisJsonObject.getLong(CommonCacheConstants.USER_ID);
-		UpdateCommon commonString = new UpdateCommon(updatedBy,new Date(),System.currentTimeMillis());
-		BeanUtils.copyProperties(commonString, args[0]);
-		return joinPoint.proceed(args);
+		return result;
 	}
 
 	/**

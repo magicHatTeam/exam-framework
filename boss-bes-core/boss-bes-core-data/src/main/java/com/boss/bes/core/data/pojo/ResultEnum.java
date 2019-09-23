@@ -577,6 +577,10 @@ public enum ResultEnum {
      * 系统发生异常
      */
     COMMON_SYSTEM_ERROR("16402", "系统发生异常!"),
+    /**
+     * Dao Aop切面为获取到参数
+     */
+    DAO_AOP_ARGS_ERROR("16403","dao层操作数据需要参数！！"),
 
     // 网关异常
     /**

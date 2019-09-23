@@ -59,6 +59,9 @@ public class AutoFillEntityFieldAopAspect {
 			Long startTime = System.currentTimeMillis();
 			// 获取切面参数及其属性域
 			Object[] args = joinPoint.getArgs();
+			if (args == null) {
+				throw new DaoException(ResultEnum.DAO_AOP_ARGS_ERROR);
+			}
 			if (args.length < 1 || args[0] instanceof Collection){
 				return joinPoint.proceed(args);
 			}
