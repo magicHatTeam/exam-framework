@@ -92,7 +92,7 @@ public enum ResultEnum {
     /**
      *  请求体为空
      */
-    SYSTEM_NULLBODY("12201", "请求体为空"),
+    SYSTEM_DEPARTMENT_NULLBODY("12201", "请求体为空"),
 
     /**
      * 部门管理查询数据为空
@@ -768,7 +768,28 @@ public enum ResultEnum {
     /**
      * 考试剩余时间异常
      */
-    EXAM_TIME_EXCEPTION("141001","考试时间错误")
+    EXAM_TIME_EXCEPTION("141001","考试时间错误"),
+
+    /**
+     * 考试报表查询请求体为空
+     */
+    EXAM_REPORT_NULLBODY("14199","考试报表查询请求体为空"),
+    /**
+     * 获取考试报表失败
+     */
+    EXAM_ERROR_GETEXAM("14198","获取考试信息失败"),
+    /**
+     * 获取考试报表失败
+     */
+    EXAM_ERROR_GETREPORT("14197","获取报表信息失败"),
+    /**
+     * 获取考试报表失败
+     */
+    EXAM_TIME_NOTOVER("14196","获取报表信息失败"),
+    /**
+     * 基础数据请求的数据为空
+     */
+    API_NULL_BODY("010001","请求体为空")
     ;
 
     private String code;
