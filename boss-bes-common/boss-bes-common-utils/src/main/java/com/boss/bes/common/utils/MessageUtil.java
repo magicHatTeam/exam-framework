@@ -17,7 +17,7 @@ public final class MessageUtil {
     /**
      * 聚合数据短信AppKey
      **/
-    private static final String APP_KEY="0587b5df665f45b1b6a0cb51f7dc3dd0";
+    private static final String APP_KEY = "0587b5df665f45b1b6a0cb51f7dc3dd0";
 
     /**
      *请求url  "http://apis.haoservice.com/sms/sendv2"
@@ -32,7 +32,7 @@ public final class MessageUtil {
     /**
      * 模版id
      **/
-    private static final String TPL_ID="5225";
+    private static final String TPL_ID = "5225";
 
     /**
      * 默认字符集
@@ -54,7 +54,7 @@ public final class MessageUtil {
      * @param phoneNum
      * @param code     可以调用工具类中的GenerateRandomCode产生4位验证码
      */
-    public static void mobileQuery(String phoneNum,int code){
+    public static Boolean mobileQuery(String phoneNum,int code){
         String result = null;
         /**
          * 添加请求参数
@@ -73,6 +73,8 @@ public final class MessageUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return true;
     }
 
     /**
