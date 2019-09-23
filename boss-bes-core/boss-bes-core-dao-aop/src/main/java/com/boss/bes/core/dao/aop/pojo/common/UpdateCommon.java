@@ -3,13 +3,24 @@ package com.boss.bes.core.dao.aop.pojo.common;
 import java.util.Date;
 
 /**
+ * 修改的公共属性类
+ * 通过此类的属性进行填值
  * @author Lynch
  * @date 2019/8/15 -13:45
  */
 public class UpdateCommon {
 
+	/**
+	 * 修改人
+	 */
 	private Long updatedBy;
+	/**
+	 * 修改时间
+	 */
 	private Date updatedTime;
+	/**
+	 * 版本
+	 */
 	private Long version;
 
 	public UpdateCommon() {

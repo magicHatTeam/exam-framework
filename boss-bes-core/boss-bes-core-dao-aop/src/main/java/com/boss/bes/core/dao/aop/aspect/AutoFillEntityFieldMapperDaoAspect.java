@@ -18,6 +18,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -38,6 +40,8 @@ import java.util.Map;
 @Aspect
 @Component
 public class AutoFillEntityFieldMapperDaoAspect {
+
+	private static Logger logger = LoggerFactory.getLogger(AutoFillEntityFieldMapperDaoAspect.class);
 
 	@Resource
 	private StringRedisTemplate stringRedisTemplate;
@@ -75,40 +79,51 @@ public class AutoFillEntityFieldMapperDaoAspect {
 	 * @return 返回值
 	 */
 	@Around("daoInsertAction()")
-	public Object doInsertAround(ProceedingJoinPoint joinPoint) throws Throwable {
-		// 获取切面参数及其属性域
-		Object[] args = joinPoint.getArgs();
-		if (args.length < 1 || args[0] instanceof Collection || judgeAnnotationExist(joinPoint)){
-			return joinPoint.proceed(args);
+	public Object doInsertAround(ProceedingJoinPoint joinPoint){
+		Object result;
+		try {
+			Long startTime = System.currentTimeMillis();
+			// 获取切面参数及其属性域
+			Object[] args = joinPoint.getArgs();
+			if (args.length < 1 || args[0] instanceof Collection || judgeAnnotationExist(joinPoint)) {
+				return joinPoint.proceed(args);
+			}
+			// 判断属性中ID和status是否有值
+			Map<String, Boolean> fieldsExist = judgeFieldsExist(args);
+			// 拿取公用数据
+			JSONObject redisJsonObject = TokenUtil.getJsonObject(stringRedisTemplate);
+			if (redisJsonObject == null) {
+				throw new DaoException(ResultEnum.PARAMS_TOKEN_ERROR);
+			}
+			Date date = new Date();
+			Long updatedBy = redisJsonObject.getLong(CommonCacheConstants.USER_ID);
+			InsertCommon commonString = new InsertCommon(updatedBy, date, updatedBy, date, System.currentTimeMillis());
+			if (!fieldsExist.get(FIELD_ID)) {
+				// ID没有值则自动填充
+				commonString.setId(SnowflakeIdWorker.generateId());
+			}
+			if (!fieldsExist.get(FIELD_STATUS)) {
+				// status没有值时则自动填充为启用
+				commonString.setStatus(ByteConstants.STATUS_YES);
+			}
+			if (!fieldsExist.get(FIELD_ORG_ID)) {
+				// orgId没有值时则自动填充
+				commonString.setOrgId(redisJsonObject.getLong(CommonCacheConstants.ORG_ID));
+			}
+			if (!fieldsExist.get(FIELD_COMPANY_ID)) {
+				// companyId没有值时则自动填充
+				commonString.setCompanyId(redisJsonObject.getLong(CommonCacheConstants.COMPANY_ID));
+			}
+			BeanUtil.copyProperties(commonString, args[0], CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
+			Long endTime = System.currentTimeMillis();
+			logger.info("DaoAop属性填值消耗时长：" + (endTime - startTime));
+			result = joinPoint.proceed(args);
+		} catch (Throwable throwable){
+			logger.error(throwable.getMessage(), throwable);
+			throw throwable instanceof DaoException ?
+					(DaoException)throwable:new DaoException(throwable.getMessage(), ResultEnum.COMMON_SYSTEM_ERROR.getCode());
 		}
-		// 判断属性中ID和status是否有值
-		Map<String, Boolean> fieldsExist = judgeFieldsExist(args);
-		// 拿取公用数据
-		JSONObject redisJsonObject = TokenUtil.getJsonObject(stringRedisTemplate);
-		if (redisJsonObject == null) {
-			throw new DaoException(ResultEnum.PARAMS_TOKEN_ERROR);
-		}
-		Date date = new Date();
-		Long updatedBy = redisJsonObject.getLong(CommonCacheConstants.USER_ID);
-		InsertCommon commonString = new InsertCommon(updatedBy, date, updatedBy, date, System.currentTimeMillis());
-		if (!fieldsExist.get(FIELD_ID)){
-			// ID没有值则自动填充
-			commonString.setId(SnowflakeIdWorker.generateId());
-		}
-		if (!fieldsExist.get(FIELD_STATUS)){
-			// status没有值时则自动填充为启用
-			commonString.setStatus(ByteConstants.STATUS_YES);
-		}
-        if (!fieldsExist.get(FIELD_ORG_ID)){
-            // orgId没有值时则自动填充
-            commonString.setOrgId(redisJsonObject.getLong(CommonCacheConstants.ORG_ID));
-        }
-        if (!fieldsExist.get(FIELD_COMPANY_ID)){
-            // companyId没有值时则自动填充
-            commonString.setCompanyId(redisJsonObject.getLong(CommonCacheConstants.COMPANY_ID));
-        }
-		BeanUtil.copyProperties(commonString, args[0], CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
-		return joinPoint.proceed(args);
+		return result;
 	}
 
 	/**

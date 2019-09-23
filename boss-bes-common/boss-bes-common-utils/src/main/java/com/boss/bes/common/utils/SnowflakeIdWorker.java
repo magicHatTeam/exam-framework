@@ -33,7 +33,7 @@ public class SnowflakeIdWorker {
 
     // ==============================Fields===========================================
     /** 开始时间截 (2015-01-01) */
-    private final long twepoch = 1489111610226L;
+    private final long startTime = 1489111610226L;
 
     /** 机器id所占的位数 */
     private final long workerIdBits = 5L;
@@ -86,7 +86,7 @@ public class SnowflakeIdWorker {
      * @param workerId 工作ID (0~31)
      * @param dataCenterId 数据中心ID (0~31)
      */
-    public SnowflakeIdWorker(long workerId, long dataCenterId) {
+    private SnowflakeIdWorker(long workerId, long dataCenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("workerId can't be greater than %d or less than 0", maxWorkerId));
         }
@@ -102,7 +102,7 @@ public class SnowflakeIdWorker {
      * 获得下一个ID (该方法是线程安全的)
      * @return SnowflakeId
      */
-    public synchronized long nextId() {
+    private synchronized long nextId() {
         long timestamp = timeGen();
 
         //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
@@ -129,7 +129,7 @@ public class SnowflakeIdWorker {
         lastTimestamp = timestamp;
 
         //移位并通过或运算拼到一起组成64位的ID
-        return ((timestamp - twepoch) << timestampLeftShift)
+        return ((timestamp - startTime) << timestampLeftShift)
                 | (dataCenterId << dataCenterIdShift)
                 | (workerId << workerIdShift)
                 | sequence;
@@ -140,7 +140,7 @@ public class SnowflakeIdWorker {
      * @param lastTimestamp 上次生成ID的时间截
      * @return 当前时间戳
      */
-    protected long tilNextMillis(long lastTimestamp) {
+    private long tilNextMillis(long lastTimestamp) {
         long timestamp = timeGen();
         while (timestamp <= lastTimestamp) {
             timestamp = timeGen();
@@ -152,7 +152,7 @@ public class SnowflakeIdWorker {
      * 返回以毫秒为单位的当前时间
      * @return 当前时间(毫秒)
      */
-    protected long timeGen() {
+    private long timeGen() {
         return System.currentTimeMillis();
     }
 
@@ -184,7 +184,7 @@ public class SnowflakeIdWorker {
      * 静态工具类
      * @return 雪花算法生成的ID
      */
-    public static Long generateId(){
+    public static synchronized Long generateId(){
         return idWorker.nextId();
     }
 }
