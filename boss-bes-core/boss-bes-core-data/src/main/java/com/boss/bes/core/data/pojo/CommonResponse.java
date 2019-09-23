@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class CommonResponse<T> implements Serializable {
+    private static final long serialVersionUID = -5002890004008607969L;
     /**
      * head
      * 包含了规定的响应报文头
