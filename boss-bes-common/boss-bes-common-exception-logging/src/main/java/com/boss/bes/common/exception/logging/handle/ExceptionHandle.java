@@ -31,7 +31,7 @@ import java.util.Set;
  * @since 2019/8/13
  */
 @ControllerAdvice
-public class Handle {
+public class ExceptionHandle {
 
     private Logger logger = LoggerFactory.getLogger(ExceptionAspect.class);
     /**
