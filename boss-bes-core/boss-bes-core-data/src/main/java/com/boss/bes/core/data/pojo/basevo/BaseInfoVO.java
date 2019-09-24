@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import javax.validation.Valid;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,7 +17,8 @@ import java.util.List;
  * @date 2019-08-26 10:21
  */
 @Valid
-public abstract class BaseInfoVO<T extends BaseModVO> {
+public abstract class BaseInfoVO<T extends BaseModVO> implements Serializable {
+    private static final long serialVersionUID = -421671871218685809L;
     /**
      * 显示在表格中的VO集合（因为表格中的单个VO和增加/删除VO类似）
      */

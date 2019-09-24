@@ -2,6 +2,7 @@ package com.boss.bes.core.data.pojo;
 
 import com.boss.bes.core.data.pojo.head.CommonRequestHead;
 import javax.validation.Valid;
+import java.io.Serializable;
 
 /**
  * 约定的请求报文
@@ -17,7 +18,8 @@ import javax.validation.Valid;
  * @date 2019-08-14 23:02
  * @version 2.0
  */
-public class CommonRequest<T> {
+public class CommonRequest<T> implements Serializable {
+    private static final long serialVersionUID = -371451492111208541L;
     /**
      * head
      * 即从前端传来的请求报文头

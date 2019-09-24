@@ -1,6 +1,7 @@
 package com.boss.bes.core.data.pojo.head;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 /**
  * 约定的请求报文头
@@ -10,7 +11,8 @@ import javax.validation.constraints.NotBlank;
  * @version 3.0
  * @date 2019-08-14 22:33
  */
-public class CommonRequestHead {
+public class CommonRequestHead implements Serializable {
+    private static final long serialVersionUID = -7476256075318476298L;
     /**
      * 数据版本（时间戳形式，不是应用版本）
      */
