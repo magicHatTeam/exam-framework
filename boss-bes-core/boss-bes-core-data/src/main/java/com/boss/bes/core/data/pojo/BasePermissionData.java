@@ -18,6 +18,33 @@ public class BasePermissionData {
      */
     private Long loginOrgId;
 
+    /**
+     * 当前登录用户的级别
+     */
+    private Byte masterLevel;
+
+    /**
+     * 当前登录用户是否未管理员
+     */
+    private Boolean master;
+
+
+    public Byte getMasterLevel() {
+        return masterLevel;
+    }
+
+    public void setMasterLevel(Byte masterLevel) {
+        this.masterLevel = masterLevel;
+    }
+
+    public Boolean getMaster() {
+        return master;
+    }
+
+    public void setMaster(Boolean master) {
+        this.master = master;
+    }
+
     public BasePermissionData() {
     }
 
