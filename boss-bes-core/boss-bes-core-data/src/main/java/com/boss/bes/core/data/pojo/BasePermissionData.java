@@ -1,5 +1,6 @@
 package com.boss.bes.core.data.pojo;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 
 /**
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * @version 1.0
  * @date 2019/9/9 2:57 下午
  */
+@Valid
 public class BasePermissionData implements Serializable {
     private static final long serialVersionUID = -2042738983189251562L;
     /**
@@ -27,7 +29,7 @@ public class BasePermissionData implements Serializable {
     private Byte masterLevel;
 
     /**
-     * 当前登录用户是否未管理员
+     * 当前登录用户是否为管理员
      */
     private Boolean master;
 
