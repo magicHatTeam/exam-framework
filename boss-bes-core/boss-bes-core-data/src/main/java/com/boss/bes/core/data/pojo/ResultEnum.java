@@ -48,7 +48,11 @@ public enum ResultEnum {
     /**
      * 公司信息插入失败
      */
-    SYSTEM_COMPANY_FAIL_INSERT("12103", "数据库中公司信息没能成功地新增"),
+    SYSTEM_COMPANY_FAIL_INSERT("12103", "新增公司信息时出现异常"),
+    /**
+     * 无效的插入
+     */
+    SYSTEM_COMPANY_USELESS_INSERT("12111", "数据库中公司信息新增数目未能满足要求"),
 
     /**
      * 公司信息插入失败(由于组织机构-公司中间表)
@@ -58,7 +62,11 @@ public enum ResultEnum {
     /**
      * 公司信息更新失败
      */
-    SYSTEM_COMPANY_FAIL_UPDATE("12105", "数据库中公司信息没能成功地更新"),
+    SYSTEM_COMPANY_FAIL_UPDATE("12105", "更新公司信息时出现异常"),
+    /**
+     * 无效的更新
+     */
+    SYSTEM_COMPANY_USELESS_UPDATE("12112", "数据库中公司信息更新数目未能满足要求"),
 
     /**
      * 空的待删除公司
@@ -68,7 +76,11 @@ public enum ResultEnum {
     /**
      * 公司信息删除失败
      */
-    SYSTEM_COMPANY_FAIL_DELETE("12107", "数据库中公司信息没能成功地删除"),
+    SYSTEM_COMPANY_FAIL_DELETE("12107", "删除公司信息时出现异常"),
+    /**
+     * 无效的删除
+     */
+    SYSTEM_COMPANY_USELESS_DELETE("12113", "数据库中公司信息删除数目未能满足要求"),
 
     /**
      * 可能删除了正被使用的公司
@@ -76,14 +88,27 @@ public enum ResultEnum {
     SYSTEM_COMPANY_DELETED_COMPANY_IS_BEING_USED("12108", "待删除的公司可能正被使用中"),
 
     /**
+     * 删除组织机构-公司中间表时出现异常
+     */
+    SYSTEM_COMPANY_FAIL_WHEN_DELETE_T_ORG_COMPANY("12109", "删除组织机构-公司中间表时出现异常"),
+    /**
      * 公司信息删除失败(由于组织机构-公司中间表)
      */
-    SYSTEM_COMPANY_FAIL_DELETE_CAUSE_T_ORG_COMPANY("12109", "数据库中组织机构和公司的联系删除失败"),
+    SYSTEM_COMPANY_FAIL_DELETE_CAUSE_T_ORG_COMPANY("12114", "数据库中组织机构-公司中间表信息删除数目未能满足要求"),
 
     /**
      * 数据版本信息不一致
      */
     SYSTEM_COMPANY_INCONSISTENT_VERSION("12110", "数据版本不一致"),
+    /**
+     * 查询公司信息时出现异常
+     */
+    SYSTEM_COMPANY_FAIL_QUERY("12115", "查询公司信息时出现异常"),
+
+    /**
+     * 新增组织机构-公司中间表时出现异常
+     */
+    SYSTEM_COMPANY_FAIL_WHEN_INSERT_T_ORG_COMPANY("12116", "新增组织机构-公司中间表时出现异常"),
 
     // =================================
     // 系统管理-部门
@@ -241,7 +266,11 @@ public enum ResultEnum {
     /**
      * 资源信息插入失败
      */
-    SYSTEM_RESOURCE_FAIL_INSERT("12303", "数据库中资源信息没能成功地新增"),
+    SYSTEM_RESOURCE_FAIL_INSERT("12303", "新增资源信息时出现异常"),
+    /**
+     * 资源信息插入数目不满足要求
+     */
+    SYSTEM_RESOURCE_USELESS_INSERT("12314", "数据库中资源信息新增数目未能满足要求"),
 
     /**
      * 资源信息插入失败(由于组织机构-资源中间表)
@@ -249,9 +278,17 @@ public enum ResultEnum {
     SYSTEM_RESOURCE_FAIL_INSERT_CAUSE_T_ORG_RESOURCE("12304", "数据库中组织机构和资源的联系新增失败"),
 
     /**
+     * 资源信息新增失败(由于组织机构-资源中间表新增数目不对)
+     */
+    SYSTEM_RESOURCE_FAIL_WHEN_INSERT_T_ORG_RESOURCE("12318", "数据库中组织机构-资源中间表信息新增数目未能满足要求"),
+    /**
      * 资源信息更新失败
      */
-    SYSTEM_RESOURCE_FAIL_UPDATE("12305", "数据库中资源信息没能成功地更新"),
+    SYSTEM_RESOURCE_FAIL_UPDATE("12305", "更新资源信息时出现异常"),
+    /**
+     * 资源信息更新数目不满足要求
+     */
+    SYSTEM_RESOURCE_USELESS_UPDATE("12315", "数据库中资源信息更新数目未能满足要求"),
 
     /**
      * 空的待删除资源
@@ -261,7 +298,11 @@ public enum ResultEnum {
     /**
      * 资源信息删除失败
      */
-    SYSTEM_RESOURCE_FAIL_DELETE("12307", "数据库中资源信息没能成功地删除"),
+    SYSTEM_RESOURCE_FAIL_DELETE("12307", "删除资源信息时出现异常"),
+    /**
+     * 资源信息删除数目不满足要求
+     */
+    SYSTEM_RESOURCE_USELESS_DELETE("12315", "数据库中资源信息删除数目未能满足要求"),
 
     /**
      * 可能删除了正被使用的资源
@@ -279,6 +320,11 @@ public enum ResultEnum {
     SYSTEM_RESOURCE_FAIL_DELETE_CAUSE_T_ORG_RESOURCE("12310", "数据库中组织机构和资源的联系删除失败"),
 
     /**
+     * 资源信息删除失败(由于组织机构-资源中间表删除失败)
+     */
+    SYSTEM_RESOURCE_FAIL_WHEN_DELETE_T_ORG_RESOURCE("12317", "数据库中组织机构-资源中间表信息删除数目未能满足要求"),
+
+    /**
      * 当前登录用户的权限不满足要求
      */
     SYSTEM_RESOURCE_ERROR_MASTER_ACCESS("12311", "只有组织机构级别管理员才能进行资源管理"),
@@ -292,6 +338,11 @@ public enum ResultEnum {
      * 只有非叶子节点才能成为父节点
      */
     SYSTEM_RESOURCE_LEAF_CANNOT_BE_PARENT("12313", "叶子节点不能充当其它节点的父节点"),
+
+    /**
+     * 查询公司信息时出现异常
+     */
+    SYSTEM_RESOURCE_FAIL_QUERY("12116", "查询资源信息时出现异常"),
 
     // =================================
     // 系统管理-角色
