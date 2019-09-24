@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo;
 
+import java.io.Serializable;
+
 /**
  * 基础的权限pojo
  *
@@ -7,7 +9,8 @@ package com.boss.bes.core.data.pojo;
  * @version 1.0
  * @date 2019/9/9 2:57 下午
  */
-public class BasePermissionData {
+public class BasePermissionData implements Serializable {
+    private static final long serialVersionUID = -2042738983189251562L;
     /**
      * 当前登录用户所管理的公司id,为null则表示能管理当前组织机构所有公司
      */
