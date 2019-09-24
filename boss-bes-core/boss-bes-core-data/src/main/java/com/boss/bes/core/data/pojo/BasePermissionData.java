@@ -28,11 +28,6 @@ public class BasePermissionData implements Serializable {
      */
     private Byte masterLevel;
 
-    /**
-     * 当前登录用户是否为管理员
-     */
-    private Boolean master;
-
 
     public Byte getMasterLevel() {
         return masterLevel;
@@ -40,14 +35,6 @@ public class BasePermissionData implements Serializable {
 
     public void setMasterLevel(Byte masterLevel) {
         this.masterLevel = masterLevel;
-    }
-
-    public Boolean getMaster() {
-        return master;
-    }
-
-    public void setMaster(Boolean master) {
-        this.master = master;
     }
 
     public BasePermissionData() {
