@@ -1,5 +1,7 @@
 package com.boss.bes.core.data.pojo.head;
 
+import java.io.Serializable;
+
 /**
  * 响应报文头的实体类
  *
@@ -7,7 +9,8 @@ package com.boss.bes.core.data.pojo.head;
  * @version 1.0
  * @date 2019-08-12 13:33
  */
-public class CommonResponseHead {
+public class CommonResponseHead implements Serializable {
+    private static final long serialVersionUID = -670028195189856751L;
     /**
      * head
      * 应用程序版本，不允许为空
