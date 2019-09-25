@@ -19,4 +19,12 @@ public class BusinessException extends AppException
     public BusinessException(String message, String code) {
         super(message, code);
     }
+
+    public BusinessException(ResultEnum resultEnum, Throwable throwable) {
+        super(resultEnum, throwable);
+    }
+
+    public BusinessException(String message, String code, Throwable throwable) {
+        super(message, code, throwable);
+    }
 }
