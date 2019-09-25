@@ -170,14 +170,16 @@ public final class FileOperation {
      *
      * @param filePath
      */
-    public static void deleteFile(String filePath) {
+    public static boolean deleteFile(String filePath) {
         try {
             File file = new File(filePath);
             if (file.exists() && file.isFile()) {
-                file.delete();
+                boolean result = file.delete();
+                return result;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 }

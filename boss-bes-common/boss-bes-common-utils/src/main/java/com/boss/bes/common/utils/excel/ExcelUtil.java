@@ -281,19 +281,19 @@ public class ExcelUtil {
         style.setBorderTop(BorderStyle.THIN);
         style.setWrapText(true);
 
-        if (STYLE_HEADER == type) {
+        if ( type.equals(STYLE_HEADER)) {
             style.setAlignment(HorizontalAlignment.CENTER);
             Font font = wb.createFont();
             font.setFontHeightInPoints((short) 16);
             font.setBold(true);
             style.setFont(font);
-        } else if (STYLE_TITLE == type) {
+        } else if ( type.equals(STYLE_TITLE)) {
             style.setAlignment(HorizontalAlignment.CENTER);
             Font font = wb.createFont();
             font.setFontHeightInPoints((short) 18);
             font.setBold(true);
             style.setFont(font);
-        } else if (STYLE_DATA == type) {
+        } else if (type.equals(STYLE_DATA)) {
             style.setAlignment(HorizontalAlignment.CENTER);
             Font font = wb.createFont();
             font.setFontHeightInPoints((short) 12);
