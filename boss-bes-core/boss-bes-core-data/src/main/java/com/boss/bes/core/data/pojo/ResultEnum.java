@@ -312,7 +312,7 @@ public enum ResultEnum {
     /**
      * 数据版本信息不一致
      */
-    SYSTEM_RESOURCE_INCONSISTENT_VERSION("12109", "数据版本不一致"),
+    SYSTEM_RESOURCE_INCONSISTENT_VERSION("12309", "数据版本不一致"),
 
     /**
      * 资源信息删除失败(由于组织机构-资源中间表)
@@ -320,7 +320,7 @@ public enum ResultEnum {
     SYSTEM_RESOURCE_FAIL_DELETE_CAUSE_T_ORG_RESOURCE("12310", "数据库中组织机构和资源的联系删除失败"),
 
     /**
-     * 资源信息删除失败(由于组织机构-资源中间表删除失败)
+     * 资源信息删除失败(由于组织机构-资源中间表删除数目不一致)
      */
     SYSTEM_RESOURCE_FAIL_WHEN_DELETE_T_ORG_RESOURCE("12317", "数据库中组织机构-资源中间表信息删除数目未能满足要求"),
 
@@ -340,9 +340,9 @@ public enum ResultEnum {
     SYSTEM_RESOURCE_LEAF_CANNOT_BE_PARENT("12313", "叶子节点不能充当其它节点的父节点"),
 
     /**
-     * 查询公司信息时出现异常
+     * 查询资源信息时出现异常
      */
-    SYSTEM_RESOURCE_FAIL_QUERY("12116", "查询资源信息时出现异常"),
+    SYSTEM_RESOURCE_FAIL_QUERY("12316", "查询资源信息时出现异常"),
 
     // =================================
     // 系统管理-角色
@@ -357,21 +357,37 @@ public enum ResultEnum {
      * 没有匹配的查询结果
      */
     SYSTEM_ROLE_NO_MATCH_QUERY_RESULT("12402", "没有匹配的查询结果"),
+    /**
+     * 查询角色信息时出现异常
+     */
+    SYSTEM_ROLE_FAIL_QUERY("12417", "查询角色信息时出现异常"),
 
     /**
      * 角色信息插入失败
      */
     SYSTEM_ROLE_FAIL_INSERT("12403", "数据库中角色信息没能成功地新增"),
+    /**
+     * 角色信息插入数目不满足要求
+     */
+    SYSTEM_ROLE_USELESS_INSERT("12414", "数据库中角色信息新增数目未能满足要求"),
 
     /**
      * 角色信息插入失败(由于组织机构-公司-角色中间表)
      */
     SYSTEM_ROLE_FAIL_INSERT_CAUSE_T_ORG_COMPANY_ROLE("12404", "数据库中组织机构、公司和角色的联系新增失败"),
+    /**
+     *  角色信息新增失败(由于组织机构-公司-角色中间表新增数目不对)
+     */
+    SYSTEM_ROLE_FAIL_WHEN_INSERT_T_ORG_COMPANY_ROLE("12417", "数据库中组织机构-公司-角色中间表信息新增数目未能满足要求"),
 
     /**
      * 角色信息更新失败
      */
     SYSTEM_ROLE_FAIL_UPDATE("12405", "数据库中角色信息没能成功地更新"),
+    /**
+     * 角色信息更新数目不满足要求
+     */
+    SYSTEM_ROLE_USELESS_UPDATE("12415", "数据库中角色信息更新数目未能满足要求"),
 
     /**
      * 空的待删除角色
@@ -382,6 +398,10 @@ public enum ResultEnum {
      * 角色信息删除失败
      */
     SYSTEM_ROLE_FAIL_DELETE("12407", "数据库中角色信息没能成功地删除"),
+    /**
+     * 角色信息删除数目不满足要求
+     */
+    SYSTEM_ROLE_USELESS_DELETE("12416", "数据库中角色信息删除数目未能满足要求"),
 
     /**
      * 可能删除了正被使用的角色
@@ -397,6 +417,10 @@ public enum ResultEnum {
      * 角色信息删除失败(由于组织机构-公司-角色中间表)
      */
     SYSTEM_ROLE_FAIL_DELETE_CAUSE_T_ORG_COMPANY_ROLE("12410", "数据库中组织机构、公司和角色的联系删除失败"),
+    /**
+     * 角色信息删除失败(由于组织机构-公司-角色中间表删除数目不对)
+     */
+    SYSTEM_ROLE_FAIL_WHEN_DELETE_T_ORG_COMPANY_ROLE("12418", "数据库中组织机构-公司-角色中间表信息删除数目未能满足要求"),
 
     /**
      * 角色信息删除失败(由于资源-角色中间表)
