@@ -3,19 +3,48 @@ package com.boss.bes.core.dao.aop.pojo.common;
 import java.util.Date;
 
 /**
+ * 插入的公共属性类
+ * 通过此类的属性进行填值
  * @author Lynch
  * @date 2019/8/15 -13:46
  */
 public class InsertCommon {
 
+	/**
+	 * ID
+	 */
 	private Long id;
+	/**
+	 * 状态
+	 */
 	private Byte status;
+	/**
+	 * 组织机构ID
+	 */
 	private Long orgId;
+	/**
+	 * 公司ID
+	 */
 	private Long companyId;
+	/**
+	 * 创建人
+	 */
 	private Long createdBy;
+	/**
+	 * 创建时间
+	 */
 	private Date createdTime;
+	/**
+	 * 修改人
+	 */
 	private Long updatedBy;
+	/**
+	 * 修改时间
+	 */
 	private Date updatedTime;
+	/**
+	 * 版本
+	 */
 	private Long version;
 
 	public Long getId() {

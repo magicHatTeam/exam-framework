@@ -648,6 +648,14 @@ public enum ResultEnum {
      * 从请求体拿token内参数错误，或者从redis拿值错误
      */
     PARAMS_TOKEN_ERROR("16401", "获取自动填值参数错误"),
+    /**
+     * 系统发生异常
+     */
+    COMMON_SYSTEM_ERROR("16402", "系统发生异常!"),
+    /**
+     * Dao Aop切面为获取到参数
+     */
+    DAO_AOP_ARGS_ERROR("16403","dao层操作数据需要参数！！"),
 
     // 网关异常
     /**
