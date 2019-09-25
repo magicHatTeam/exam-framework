@@ -160,13 +160,8 @@ public final class ConvertUtil {
      * @param src 要转换成二进制字符串的byte值
      */
     public final static String byteToBinary(byte src) {
-        StringBuilder result = new StringBuilder();
-        int length = 8;
-        for (int i = 0; i < length; i++) {
-            result.append(src % 2 == 0 ? '0' : '1');
-            src = (byte) (src >>> 1);
-        }
-        return result.reverse().toString();
+        String tString = Integer.toBinaryString((src & 0xFF) + 0x100).substring(1);
+        return tString;
     }
 
     /**
