@@ -160,6 +160,25 @@ public enum ResultEnum {
     SYSTEM_DEPARTMENT_ERROR_VERSION("12209", "数据版本不一致，请刷新"),
 
     /**
+     *  缺少部门操作权限
+     */
+    SYSTEM_DEPARTMENT_OPERATION_LESS("12211", "缺少部门管理权限"),
+
+    /**
+     *  部门名重复
+     */
+    SYSTEM_DEPARTMENT_REPEATNAME("12212", "部门名已被使用"),
+
+    /**
+     *  部门更新失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_UPATE("12213", "部门更新失败"),
+
+    /**
+     *  部门查询失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_QUERY("12210", "部门查询失败"),
+    /**
      *  请求体为空
      */
     SYSTEM_ORAGATION_NULLBODY("12001", "请求体为空"),
@@ -175,7 +194,7 @@ public enum ResultEnum {
     SYSTEM_ORAGATION_ERRORTREE("12003", "对组织机构-公司的树结构进行查询时出错"),
 
     /**
-     * 对部门进行插入时失败
+     * 对组织进行插入时失败
      */
     SYSTEM_ORAGATION_ERROR_INSERT("12004", "对组织机构进行插入时失败"),
 
@@ -203,6 +222,28 @@ public enum ResultEnum {
      * 数据版本不一致，请刷新
      */
     SYSTEM_ORAGATION_ERROR_VERSION("12009", "数据版本不一致，请刷新"),
+
+    /**
+     *  对组织机构查询失败
+     */
+    SYSTEM_ORAGATION_ERROR_QUERY("122010", "组织查询失败"),
+
+
+    /**
+     *  组织机构名重复
+     */
+    SYSTEM_ORAGATION_REPEATNAME("12011", "组织机构名已被使用"),
+
+    /**
+     *  组织机构名重复
+     */
+    SYSTEM_ORAGATION_REPEATCODE("12012", "组织机构代码已被使用"),
+
+    /**
+     *  组织更新失败
+     */
+    SYSTEM_ORAGATION_ERROR_UPATE("12013", "组织机构更新失败"),
+
 
     /**
      *  请求体为空
@@ -248,6 +289,28 @@ public enum ResultEnum {
      * 数据版本不一致，请刷新
      */
     SYSTEM_POSITION_ERROR_VERSION("12509", "数据版本不一致，请刷新"),
+
+    /**
+     *  对职位查询失败
+     */
+    SYSTEM_POSITION_ERROR_QUERY("122510", "职位查询失败"),
+
+
+    /**
+     *  同公司职位名重复
+     */
+    SYSTEM_POSITION_REPEATNAME("12511", "职位名已被使用"),
+
+    /**
+     *  职位更新失败
+     */
+    SYSTEM_POSITION_ERROR_UPATE("12512", "职位更新失败"),
+
+    /**
+     *  对职位管理的操作权限不足
+     */
+    SYSTEM_POSITION_OPERATION_LESS("12513", "对职位管理的操作权限不足"),
+
 
     // =================================
     // 系统管理-资源
