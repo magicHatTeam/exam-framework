@@ -69,7 +69,7 @@ public final class MessageUtil {
         params.put("tpl_value","#code#="+code);
         params.put("key",APP_KEY);
         try {
-            result = net(URL, params, "GET");
+            net(URL, params, "GET");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,7 +85,7 @@ public final class MessageUtil {
      * @return  网络请求字符串
      * @throws Exception
      */
-    public static String net(String strUrl, Map params,String method) throws Exception {
+    private static String net(String strUrl, Map params,String method) throws Exception {
         HttpURLConnection conn = null;
         BufferedReader reader = null;
         String rs = null;
@@ -112,6 +112,7 @@ public final class MessageUtil {
                 try {
                     DataOutputStream out = new DataOutputStream(conn.getOutputStream());
                     out.writeBytes(urlencode(params));
+                    out.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
