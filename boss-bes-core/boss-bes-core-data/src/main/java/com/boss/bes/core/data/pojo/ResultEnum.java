@@ -760,10 +760,49 @@ public enum ResultEnum {
     SYSTEM_UTIL_FAIL_QUERY_TREE_RESOURCE("12926", "获取资源树失败"),
 
 
+    // =================================
+    // 系统管理-对外接口部分
+    // =================================
 
+    /**
+     * 对发布人进行查询时没能获取查询结果
+     */
+    SYSTEM_API_NOTFOUND_PUBISHER("12800", "对发布人进行查询时没能获取查询结果"),
 
+    /**
+     * 对指定id的阅卷官进行查询时没能获取查询结果
+     */
+    SYSTEM_API_NOTFOUND_REVIEWER("12801", "对指定id的阅卷官进行查询时没能获取查询结果"),
 
+    /**
+     * 对指定id的阅卷官进行查询时没能获取查询结果
+     */
+    SYSTEM_API_ERROR_OPERATOR("12802", "越权操作数据"),
 
+    /**
+     * 获取用户信息失败
+     */
+    SYSTEM_API_ERROR_GETUSERS("12803", "获取用户信息失败"),
+
+    /**
+     * 获取用户公用缓存信息失败
+     */
+    SYSTEM_API_ERROR_CACHE("12804", "获取用户公用缓存信息失败"),
+
+    /**
+     * 获取角色列表失败
+     */
+    SYSTEM_API_ERROR_GETROLE("12805", "获取角色列表失败"),
+
+    /**
+     * 根据手机查询失败
+     */
+    SYSTEM_API_ERROR_GETROLEBYPHONE("12806", "根据手机查询失败"),
+
+    /**
+     * 查询公司名失败
+     */
+    SYSTEM_API_ERROR_GETCOMPANY("12807", "查询公司名失败"),
 
 
 
