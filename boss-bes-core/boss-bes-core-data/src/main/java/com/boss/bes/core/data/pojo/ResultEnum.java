@@ -823,7 +823,15 @@ public enum ResultEnum {
     /**
      * 试卷参数错误异常
      */
-    PAPER_PARAMS_ERROR("2618", "试卷参数错误！"),
+    EXAM_PARAMS_ERROR("14100", "传入参数错误！"),
+    EXAM_PUBLISH_START_EXAM("14101", "确认发布考试错误！只能修改状态为发布中的发布记录！"),
+    EXAM_PUBLISH_STOP_EXAM("14102", "终止考试错误！只能修改状态为考试中的发布记录！"),
+    EXAM_PUBLISH_STOP_READ("14103", "终止阅卷错误！只能修改状态为阅卷中的发布记录！"),
+    EXAM_PUBLISH_GET_EXAM_URL("14104", "无法获取系统参数中的考试地址！"),
+    EXAM_PUBLISH_GET_USER_CACHE_TIME("14105", "无法获取系统参数中的考生缓存时间！"),
+    EXAM_SYSTEM_SERVICE_TIMEOUT("14105", "调用系统微服务超时！"),
+    EXAM_PAPER_SERVICE_TIMEOUT("14106", "调用试卷微服务超时！"),
+    EXAM_BASE_DATA_SERVICE_TIMEOUT("14107", "调用基础数据微服务超时！"),
     /**
      * 试卷服务超时错误
      */
