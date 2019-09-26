@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class CommonRequestHead implements Serializable {
     private static final long serialVersionUID = -7476256075318476298L;
     /**
-     * 数据版本（时间戳形式，不是应用版本）
+     * 数据版本
      */
     @NotBlank(message = "request的Head中版本信息不允许为空")
     private String version;
@@ -29,7 +29,7 @@ public class CommonRequestHead implements Serializable {
     /**
      * 设备类型
      */
-    private Integer deviceType;
+    private String deviceType;
     /**
      * 加密方式
      */
@@ -67,11 +67,11 @@ public class CommonRequestHead implements Serializable {
         this.deviceId = deviceId;
     }
 
-    public Integer getDeviceType() {
+    public String getDeviceType() {
         return deviceType;
     }
 
-    public void setDeviceType(Integer deviceType) {
+    public void setDeviceType(String deviceType) {
         this.deviceType = deviceType;
     }
 
