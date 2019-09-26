@@ -759,6 +759,11 @@ public enum ResultEnum {
      */
     SYSTEM_UTIL_FAIL_QUERY_TREE_RESOURCE("12926", "获取资源树失败"),
 
+    /**
+     * 为角色分配用户时，没能正确的将用户之前拥有的角色重置
+     */
+    SYSTEM_UTIL_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DELETE("12508", "没能够正确地先删除用户之前拥有的角色"),
+
 
     // =================================
     // 系统管理-对外接口部分
