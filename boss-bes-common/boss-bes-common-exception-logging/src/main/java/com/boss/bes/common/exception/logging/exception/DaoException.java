@@ -18,4 +18,12 @@ public class DaoException extends AppException {
     public DaoException(String message, String code) {
         super(message, code);
     }
+
+    public DaoException(ResultEnum resultEnum, Throwable throwable) {
+        super(resultEnum, throwable);
+    }
+
+    public DaoException(String message, String code, Throwable throwable) {
+        super(message, code, throwable);
+    }
 }

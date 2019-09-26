@@ -18,4 +18,12 @@ public class ServiceException extends AppException{
     public ServiceException(String message, String code) {
         super(message, code);
     }
+
+    public ServiceException(ResultEnum resultEnum, Throwable throwable) {
+        super(resultEnum, throwable);
+    }
+
+    public ServiceException(String message, String code, Throwable throwable) {
+        super(message, code, throwable);
+    }
 }
