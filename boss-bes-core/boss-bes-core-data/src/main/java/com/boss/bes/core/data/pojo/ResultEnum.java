@@ -620,6 +620,11 @@ public enum ResultEnum {
      */
     SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DISTRIBUTE("12516", "没能够正确地分配给用户指定角色"),
 
+    /**
+     * 密码hash失败
+     */
+    SYSTEM_USER_ILLEGAL_PASSWORD("12517", "不非法的密码"),
+
     // =================================
     // 系统管理-工具类
     // =================================
@@ -818,6 +823,11 @@ public enum ResultEnum {
      * 用户名或密码错误
      */
     SYSTEM_API_ILLEGAL_LOGIN("12809", "用户名或密码错误"),
+
+    /**
+     * 密码校验失败
+     */
+    SYSTEM_API_ILLEGAL_PASSWORD("12810", "非法的用户名或密码"),
 
 
 
