@@ -580,7 +580,7 @@ public enum ResultEnum {
     /**
      * 查询角色信息时出现异常
      */
-    SYSTEM_ROLE_FAIL_QUERY("12417", "查询角色信息时出现异常"),
+    SYSTEM_ROLE_FAIL_QUERY_ROLE("12417", "查询角色信息时出现异常"),
 
     /**
      * 角色信息插入失败
@@ -656,6 +656,11 @@ public enum ResultEnum {
      * 对角色进行资源分配之前，必须以机构为单位
      */
     SYSTEM_ROLE_FAIL_DISTRIBUTE_RESOURCE_CAUSE_WITHOUT_ORG_INFO("12413", "进行资源分配时，必须有所属机构"),
+
+    /**
+     * 查询资源信息时出现异常
+     */
+    SYSTEM_ROLE_FAIL_QUERY_RESOURCE("12419", "查询资源信息时出现异常"),
 
     // =================================
     // 系统管理-用户
