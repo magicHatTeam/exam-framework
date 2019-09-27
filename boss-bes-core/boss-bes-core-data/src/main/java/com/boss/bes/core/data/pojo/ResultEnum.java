@@ -1000,6 +1000,10 @@ public enum ResultEnum {
      * 删除试卷异常
      */
     MAINTAIN_DELETE_ERROR("13304", "删除试卷发生错误！"),
+    MAINTAIN_PARAMS_ERROR("13305", "参数为空，请选择试卷！"),
+    PAPER_EXTENDS_PARAMS("13401", "对外接口参数为空"),
+    PAPER_BASE_DATA_SERVICE_TIMEOUT("13402", "试卷服务调用基础数据服务发生熔断"),
+    PAPER_EXAM_SERVICE_TIMEOUT("13403", "试卷服务调用考试服务发生熔断"),
 
     // 考试微服务
     /**
