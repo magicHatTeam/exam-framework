@@ -15,7 +15,7 @@ package com.boss.bes.core.data.pojo;
  *  boss-bes-core-data：5
  * 第四和第五位：代表具体的业务
  *
- * @author 何家伟
+ * @author 何家伟、Lynch
  * @date 2019-08-09 23:05
  * @version 1.0
  */
@@ -24,6 +24,163 @@ public enum ResultEnum {
      * 方法执行成功时的枚举情况
      */
     SUCCESS("00000", "请求成功"),
+    /*
+     * 基础数据服务模块的异常码定义 11xxx
+     *
+     * @since 2019/9/26
+     */
+    /**
+     * 调用其他微服务异常处理
+     */
+    DATABASE_FEIGN_REQUEST_ERROR("11900", "调用服务超时"),
+    // =================================
+    // 基础数据服务-题目类别管理 110xx
+    // =================================
+    /**
+     * 请求体为空
+     */
+    DATABASE_CATEGORY_EMPTY_REQUEST("11001", "请求体为空"),
+    /**
+     * 题目类别查询失败
+     */
+    DATABASE_CATEGORY_QUERY_ERROR("11002", "查询题目类别出现错误"),
+    /**
+     * 题目类别树结构查询失败
+     */
+    DATABASE_CATEGORY_QUERY_TREE_ERROR("11002", "查询题目类别树结构时出现错误"),
+    /**
+     * 题目类别添加失败
+     */
+    DATABASE_CATEGORY_INSERT_ERROR("11003", "添加题目类别出现错误"),
+    /**
+     * 题目类别更新失败
+     */
+    DATABASE_CATEGORY_UPDATE_ERROR("11004", "更新题目类别出现错误"),
+    /**
+     * 题目类别删除失败
+     */
+    DATABASE_CATEGORY_DELETE_ERROR("11005", "删除题目类别出现错误"),
+    /**
+     * 权限异常
+     */
+    DATABASE_CATEGORY_PERMISSION_ERROR("11006", "当前用户权限不足"),
+
+    // =================================
+    // 基础数据服务-组卷配置管理 111xx
+    // =================================
+    /**
+     * 请求体为空
+     */
+    DATABASE_CONFIG_EMPTY_REQUEST("11101", "请求体为空"),
+    /**
+     * 组卷配置查询失败
+     */
+    DATABASE_CONFIG_QUERY_ERROR("11102", "查询组卷配置出现错误"),
+    /**
+     * 组卷配置明细查询失败
+     */
+    DATABASE_CONFIG_ITEM_QUERY_ERROR("11103", "查询组卷配置明细时出现错误"),
+    /**
+     * 组卷配置更新失败
+     */
+    DATABASE_CONFIG_UPDATE_ERROR("11104", "更新组卷配置出现错误"),
+    /**
+     * 组卷配置明细更新失败
+     */
+    DATABASE_CONFIG_ITEM_UPDATE_ERROR("11105", "更新组卷配置明细出现错误"),
+    /**
+     * 组卷配置删除失败
+     */
+    DATABASE_CONFIG_DELETE_ERROR("11106", "删除组卷配置出现错误"),
+    /**
+     * 组卷配置明细删除失败
+     */
+    DATABASE_CONFIG_ITEM_DELETE_ERROR("11107", "删除组卷配置明细出现错误"),
+    /**
+     * 组卷配置添加失败
+     */
+    DATABASE_CONFIG_INSERT_ERROR("11108", "添加组卷配置出现错误"),
+    /**
+     * 组卷配置明细添加失败
+     */
+    DATABASE_CONFIG_ITEM_INSERT_ERROR("11109", "添加组卷配置明细出现错误"),
+    /**
+     * 权限验证
+     */
+    DATABASE_CONFIG_PERMISSION_ERROR("11110", "当前用户权限不足"),
+
+    // =================================
+    // 基础数据服务-题目管理 112xx
+    // =================================
+    /**
+     * 请求体为空
+     */
+    DATABASE_SUBJECT_EMPTY_REQUEST("11201", "请求体为空"),
+    /**
+     * 题目查询失败
+     */
+    DATABASE_SUBJECT_QUERY_ERROR("11202", "查询题目出现错误"),
+    /**
+     * 题目答案查询失败
+     */
+    DATABASE_SUBJECT_ANSWER_QUERY_ERROR("11203", "查询题目答案时出现错误"),
+    /**
+     * 题目更新失败
+     */
+    DATABASE_SUBJECT_UPDATE_ERROR("11204", "更新题目出现错误"),
+    /**
+     * 题目答案更新失败
+     */
+    DATABASE_SUBJECT_ANSWER_UPDATE_ERROR("11205", "更新题目答案出现错误"),
+    /**
+     * 题目删除失败
+     */
+    DATABASE_SUBJECT_DELETE_ERROR("11206", "删除题目出现错误"),
+    /**
+     * 题目答案删除失败
+     */
+    DATABASE_SUBJECT_ANSWER_DELETE_ERROR("11207", "删除题目答案出现错误"),
+    /**
+     * 题目添加失败
+     */
+    DATABASE_SUBJECT_INSERT_ERROR("11208", "添加题目出现错误"),
+    /**
+     * 题目答案添加失败
+     */
+    DATABASE_SUBJECT_ANSWER_INSERT_ERROR("11209", "添加题目答案出现错误"),
+    /**
+     * 权限不足
+     */
+    DATABASE_SUBJECT_PERMISSION_ERROR("11110", "当前用户权限不足"),
+
+
+    // =================================
+    // 基础数据服务-题目类型管理 113xx
+    // =================================
+    /**
+     * 请求体为空
+     */
+    DATABASE_TYPE_EMPTY_REQUEST("11301", "请求体为空"),
+    /**
+     * 题目类型查询失败
+     */
+    DATABASE_TYPE_QUERY_ERROR("11302", "查询题目类型出现错误"),
+    /**
+     * 题目类型更新失败
+     */
+    DATABASE_TYPE_UPDATE_ERROR("11303", "更新题目类型出现错误"),
+    /**
+     * 题目类型删除失败
+     */
+    DATABASE_TYPE_DELETE_ERROR("11304", "删除题目类型出现错误"),
+    /**
+     * 题目类型添加失败
+     */
+    DATABASE_TYPE_INSERT_ERROR("11305", "添加题目类型出现错误"),
+    /**
+     * 权限不足
+     */
+    DATABASE_TYPE_PERMISSION_ERROR("11306", "当前用户权限不足"),
 
     /*
      * 系统管理模块的异常码定义
