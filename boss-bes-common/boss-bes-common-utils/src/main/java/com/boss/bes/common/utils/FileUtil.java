@@ -31,7 +31,7 @@ public final class FileUtil {
      * 一旦所有需要更新的数据都已经被更新了，应该调用 digest 方法之一完成哈希计算。
      * 对于给定数量的更新数据，digest 方法只能被调用一次。digest 被调用后MessageDigest 对象被重新设置成其初始状态
      */
-    public static MessageDigest MD5 = null;
+    public  static MessageDigest MD5 ;
 
     static {
         try {
@@ -185,7 +185,7 @@ public final class FileUtil {
      * @param targetPath   目标文件
      * @return 是否成功
      */
-    public final static boolean copy(String resourcePath, String targetPath) {
+    public final static boolean copy(String resourcePath, String targetPath) throws IOException {
         File file = new File(resourcePath);
         return copy(file, targetPath);
     }
@@ -198,10 +198,10 @@ public final class FileUtil {
      * @param targetFile 目标文件
      * @return 是否成功
      */
-    public final static boolean copy(File file, String targetFile) {
+    public final static boolean copy(File file, String targetFile) throws IOException {
+        FileInputStream fin = new FileInputStream(file);
+        FileOutputStream fout = new FileOutputStream(new File(targetFile));
         try{
-            FileInputStream fin = new FileInputStream(file);
-            FileOutputStream fout = new FileOutputStream(new File(targetFile));
             FileChannel in = fin.getChannel();
             FileChannel out = fout.getChannel();
             //设定缓冲区
@@ -215,6 +215,9 @@ public final class FileUtil {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }finally{
+            fin.close();
+            fout.close();
         }
         return false;
     }
@@ -236,6 +239,9 @@ public final class FileUtil {
      */
     public static boolean deleteDir(File dir) {
         if (dir.isDirectory()) {
+            if(dir.list() == null || dir.list().length == 0){
+                return false;
+            }
             String[] children = dir.list();
             for (int i = 0; i < children.length; i++) {
                 boolean success = deleteDir(new File(dir, children[i]));

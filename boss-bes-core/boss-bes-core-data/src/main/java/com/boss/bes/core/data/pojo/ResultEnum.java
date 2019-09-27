@@ -205,7 +205,11 @@ public enum ResultEnum {
     /**
      * 公司信息插入失败
      */
-    SYSTEM_COMPANY_FAIL_INSERT("12103", "数据库中公司信息没能成功地新增"),
+    SYSTEM_COMPANY_FAIL_INSERT("12103", "新增公司信息时出现异常"),
+    /**
+     * 无效的插入
+     */
+    SYSTEM_COMPANY_USELESS_INSERT("12111", "数据库中公司信息新增数目未能满足要求"),
 
     /**
      * 公司信息插入失败(由于组织机构-公司中间表)
@@ -215,7 +219,11 @@ public enum ResultEnum {
     /**
      * 公司信息更新失败
      */
-    SYSTEM_COMPANY_FAIL_UPDATE("12105", "数据库中公司信息没能成功地更新"),
+    SYSTEM_COMPANY_FAIL_UPDATE("12105", "更新公司信息时出现异常"),
+    /**
+     * 无效的更新
+     */
+    SYSTEM_COMPANY_USELESS_UPDATE("12112", "数据库中公司信息更新数目未能满足要求"),
 
     /**
      * 空的待删除公司
@@ -225,7 +233,11 @@ public enum ResultEnum {
     /**
      * 公司信息删除失败
      */
-    SYSTEM_COMPANY_FAIL_DELETE("12107", "数据库中公司信息没能成功地删除"),
+    SYSTEM_COMPANY_FAIL_DELETE("12107", "删除公司信息时出现异常"),
+    /**
+     * 无效的删除
+     */
+    SYSTEM_COMPANY_USELESS_DELETE("12113", "数据库中公司信息删除数目未能满足要求"),
 
     /**
      * 可能删除了正被使用的公司
@@ -233,14 +245,27 @@ public enum ResultEnum {
     SYSTEM_COMPANY_DELETED_COMPANY_IS_BEING_USED("12108", "待删除的公司可能正被使用中"),
 
     /**
+     * 删除组织机构-公司中间表时出现异常
+     */
+    SYSTEM_COMPANY_FAIL_WHEN_DELETE_T_ORG_COMPANY("12109", "删除组织机构-公司中间表时出现异常"),
+    /**
      * 公司信息删除失败(由于组织机构-公司中间表)
      */
-    SYSTEM_COMPANY_FAIL_DELETE_CAUSE_T_ORG_COMPANY("12109", "数据库中组织机构和公司的联系删除失败"),
+    SYSTEM_COMPANY_FAIL_DELETE_CAUSE_T_ORG_COMPANY("12114", "数据库中组织机构-公司中间表信息删除数目未能满足要求"),
 
     /**
      * 数据版本信息不一致
      */
     SYSTEM_COMPANY_INCONSISTENT_VERSION("12110", "数据版本不一致"),
+    /**
+     * 查询公司信息时出现异常
+     */
+    SYSTEM_COMPANY_FAIL_QUERY("12115", "查询公司信息时出现异常"),
+
+    /**
+     * 新增组织机构-公司中间表时出现异常
+     */
+    SYSTEM_COMPANY_FAIL_WHEN_INSERT_T_ORG_COMPANY("12116", "新增组织机构-公司中间表时出现异常"),
 
     // =================================
     // 系统管理-部门
@@ -292,6 +317,25 @@ public enum ResultEnum {
     SYSTEM_DEPARTMENT_ERROR_VERSION("12209", "数据版本不一致，请刷新"),
 
     /**
+     *  缺少部门操作权限
+     */
+    SYSTEM_DEPARTMENT_OPERATION_LESS("12211", "缺少部门管理权限"),
+
+    /**
+     *  部门名重复
+     */
+    SYSTEM_DEPARTMENT_REPEATNAME("12212", "部门名已被使用"),
+
+    /**
+     *  部门更新失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_UPATE("12213", "部门更新失败"),
+
+    /**
+     *  部门查询失败
+     */
+    SYSTEM_DEPARTMENT_ERROR_QUERY("12210", "部门查询失败"),
+    /**
      *  请求体为空
      */
     SYSTEM_ORAGATION_NULLBODY("12001", "请求体为空"),
@@ -307,7 +351,7 @@ public enum ResultEnum {
     SYSTEM_ORAGATION_ERRORTREE("12003", "对组织机构-公司的树结构进行查询时出错"),
 
     /**
-     * 对部门进行插入时失败
+     * 对组织进行插入时失败
      */
     SYSTEM_ORAGATION_ERROR_INSERT("12004", "对组织机构进行插入时失败"),
 
@@ -335,6 +379,28 @@ public enum ResultEnum {
      * 数据版本不一致，请刷新
      */
     SYSTEM_ORAGATION_ERROR_VERSION("12009", "数据版本不一致，请刷新"),
+
+    /**
+     *  对组织机构查询失败
+     */
+    SYSTEM_ORAGATION_ERROR_QUERY("122010", "组织查询失败"),
+
+
+    /**
+     *  组织机构名重复
+     */
+    SYSTEM_ORAGATION_REPEATNAME("12011", "组织机构名已被使用"),
+
+    /**
+     *  组织机构名重复
+     */
+    SYSTEM_ORAGATION_REPEATCODE("12012", "组织机构代码已被使用"),
+
+    /**
+     *  组织更新失败
+     */
+    SYSTEM_ORAGATION_ERROR_UPATE("12013", "组织机构更新失败"),
+
 
     /**
      *  请求体为空
@@ -381,6 +447,28 @@ public enum ResultEnum {
      */
     SYSTEM_POSITION_ERROR_VERSION("12509", "数据版本不一致，请刷新"),
 
+    /**
+     *  对职位查询失败
+     */
+    SYSTEM_POSITION_ERROR_QUERY("122510", "职位查询失败"),
+
+
+    /**
+     *  同公司职位名重复
+     */
+    SYSTEM_POSITION_REPEATNAME("12511", "职位名已被使用"),
+
+    /**
+     *  职位更新失败
+     */
+    SYSTEM_POSITION_ERROR_UPATE("12512", "职位更新失败"),
+
+    /**
+     *  对职位管理的操作权限不足
+     */
+    SYSTEM_POSITION_OPERATION_LESS("12513", "对职位管理的操作权限不足"),
+
+
     // =================================
     // 系统管理-资源
     // =================================
@@ -398,7 +486,11 @@ public enum ResultEnum {
     /**
      * 资源信息插入失败
      */
-    SYSTEM_RESOURCE_FAIL_INSERT("12303", "数据库中资源信息没能成功地新增"),
+    SYSTEM_RESOURCE_FAIL_INSERT("12303", "新增资源信息时出现异常"),
+    /**
+     * 资源信息插入数目不满足要求
+     */
+    SYSTEM_RESOURCE_USELESS_INSERT("12314", "数据库中资源信息新增数目未能满足要求"),
 
     /**
      * 资源信息插入失败(由于组织机构-资源中间表)
@@ -406,9 +498,17 @@ public enum ResultEnum {
     SYSTEM_RESOURCE_FAIL_INSERT_CAUSE_T_ORG_RESOURCE("12304", "数据库中组织机构和资源的联系新增失败"),
 
     /**
+     * 资源信息新增失败(由于组织机构-资源中间表新增数目不对)
+     */
+    SYSTEM_RESOURCE_FAIL_WHEN_INSERT_T_ORG_RESOURCE("12318", "数据库中组织机构-资源中间表信息新增数目未能满足要求"),
+    /**
      * 资源信息更新失败
      */
-    SYSTEM_RESOURCE_FAIL_UPDATE("12305", "数据库中资源信息没能成功地更新"),
+    SYSTEM_RESOURCE_FAIL_UPDATE("12305", "更新资源信息时出现异常"),
+    /**
+     * 资源信息更新数目不满足要求
+     */
+    SYSTEM_RESOURCE_USELESS_UPDATE("12315", "数据库中资源信息更新数目未能满足要求"),
 
     /**
      * 空的待删除资源
@@ -418,7 +518,11 @@ public enum ResultEnum {
     /**
      * 资源信息删除失败
      */
-    SYSTEM_RESOURCE_FAIL_DELETE("12307", "数据库中资源信息没能成功地删除"),
+    SYSTEM_RESOURCE_FAIL_DELETE("12307", "删除资源信息时出现异常"),
+    /**
+     * 资源信息删除数目不满足要求
+     */
+    SYSTEM_RESOURCE_USELESS_DELETE("12315", "数据库中资源信息删除数目未能满足要求"),
 
     /**
      * 可能删除了正被使用的资源
@@ -428,12 +532,17 @@ public enum ResultEnum {
     /**
      * 数据版本信息不一致
      */
-    SYSTEM_RESOURCE_INCONSISTENT_VERSION("12109", "数据版本不一致"),
+    SYSTEM_RESOURCE_INCONSISTENT_VERSION("12309", "数据版本不一致"),
 
     /**
      * 资源信息删除失败(由于组织机构-资源中间表)
      */
     SYSTEM_RESOURCE_FAIL_DELETE_CAUSE_T_ORG_RESOURCE("12310", "数据库中组织机构和资源的联系删除失败"),
+
+    /**
+     * 资源信息删除失败(由于组织机构-资源中间表删除数目不一致)
+     */
+    SYSTEM_RESOURCE_FAIL_WHEN_DELETE_T_ORG_RESOURCE("12317", "数据库中组织机构-资源中间表信息删除数目未能满足要求"),
 
     /**
      * 当前登录用户的权限不满足要求
@@ -450,6 +559,11 @@ public enum ResultEnum {
      */
     SYSTEM_RESOURCE_LEAF_CANNOT_BE_PARENT("12313", "叶子节点不能充当其它节点的父节点"),
 
+    /**
+     * 查询资源信息时出现异常
+     */
+    SYSTEM_RESOURCE_FAIL_QUERY("12316", "查询资源信息时出现异常"),
+
     // =================================
     // 系统管理-角色
     // =================================
@@ -463,21 +577,37 @@ public enum ResultEnum {
      * 没有匹配的查询结果
      */
     SYSTEM_ROLE_NO_MATCH_QUERY_RESULT("12402", "没有匹配的查询结果"),
+    /**
+     * 查询角色信息时出现异常
+     */
+    SYSTEM_ROLE_FAIL_QUERY("12417", "查询角色信息时出现异常"),
 
     /**
      * 角色信息插入失败
      */
     SYSTEM_ROLE_FAIL_INSERT("12403", "数据库中角色信息没能成功地新增"),
+    /**
+     * 角色信息插入数目不满足要求
+     */
+    SYSTEM_ROLE_USELESS_INSERT("12414", "数据库中角色信息新增数目未能满足要求"),
 
     /**
      * 角色信息插入失败(由于组织机构-公司-角色中间表)
      */
     SYSTEM_ROLE_FAIL_INSERT_CAUSE_T_ORG_COMPANY_ROLE("12404", "数据库中组织机构、公司和角色的联系新增失败"),
+    /**
+     *  角色信息新增失败(由于组织机构-公司-角色中间表新增数目不对)
+     */
+    SYSTEM_ROLE_FAIL_WHEN_INSERT_T_ORG_COMPANY_ROLE("12417", "数据库中组织机构-公司-角色中间表信息新增数目未能满足要求"),
 
     /**
      * 角色信息更新失败
      */
     SYSTEM_ROLE_FAIL_UPDATE("12405", "数据库中角色信息没能成功地更新"),
+    /**
+     * 角色信息更新数目不满足要求
+     */
+    SYSTEM_ROLE_USELESS_UPDATE("12415", "数据库中角色信息更新数目未能满足要求"),
 
     /**
      * 空的待删除角色
@@ -488,6 +618,10 @@ public enum ResultEnum {
      * 角色信息删除失败
      */
     SYSTEM_ROLE_FAIL_DELETE("12407", "数据库中角色信息没能成功地删除"),
+    /**
+     * 角色信息删除数目不满足要求
+     */
+    SYSTEM_ROLE_USELESS_DELETE("12416", "数据库中角色信息删除数目未能满足要求"),
 
     /**
      * 可能删除了正被使用的角色
@@ -503,6 +637,10 @@ public enum ResultEnum {
      * 角色信息删除失败(由于组织机构-公司-角色中间表)
      */
     SYSTEM_ROLE_FAIL_DELETE_CAUSE_T_ORG_COMPANY_ROLE("12410", "数据库中组织机构、公司和角色的联系删除失败"),
+    /**
+     * 角色信息删除失败(由于组织机构-公司-角色中间表删除数目不对)
+     */
+    SYSTEM_ROLE_FAIL_WHEN_DELETE_T_ORG_COMPANY_ROLE("12418", "数据库中组织机构-公司-角色中间表信息删除数目未能满足要求"),
 
     /**
      * 角色信息删除失败(由于资源-角色中间表)
@@ -526,82 +664,123 @@ public enum ResultEnum {
     /**
      * 请求体为空
      */
-    SYSTEM_USER_EMPTY_REQUEST("12401", "请求体为空"),
+    SYSTEM_USER_EMPTY_REQUEST("12501", "请求体为空"),
 
     /**
      * 没有匹配的查询结果
      */
-    SYSTEM_USER_NO_MATCH_QUERY_RESULT("12402", "没有匹配的查询结果"),
+    SYSTEM_USER_NO_MATCH_QUERY_RESULT("12502", "没有匹配的查询结果"),
+    /**
+     * 查询用户信息时出现异常
+     */
+    SYSTEM_USER_FAIL_QUERY("12518", "查询用户信息时出现异常"),
 
     /**
      * 用户信息插入失败
      */
-    SYSTEM_USER_FAIL_INSERT("12403", "数据库中用户信息没能成功地新增"),
+    SYSTEM_USER_FAIL_INSERT("12503", "数据库中用户信息没能成功地新增"),
+    /**
+     * 用户信息插入数目不满足要求
+     */
+    SYSTEM_USER_USELESS_INSERT("12521", "数据库中用户信息新增数目未能满足要求"),
 
     /**
      * 用户信息插入失败(由于组织机构-公司-用户中间表)
      */
-    SYSTEM_USER_FAIL_INSERT_CAUSE_T_ORG_COMPANY_USER("12404", "数据库中组织机构、公司和用户的联系新增失败"),
+    SYSTEM_USER_FAIL_INSERT_CAUSE_T_ORG_COMPANY_USER("12504", "数据库中组织机构、公司和用户的联系新增失败"),
+    /**
+     *  用户信息新增失败(由于组织机构-公司-用户中间表新增数目不对)
+     */
+    SYSTEM_USER_FAIL_WHEN_INSERT_T_ORG_COMPANY_USER("12520", "数据库中组织机构-公司-角色中间表信息新增数目未能满足要求"),
 
     /**
      * 用户信息插入失败(由于角色-用户中间表)
      */
-    SYSTEM_USER_FAIL_INSERT_CAUSE_T_ROLE_USER("12414", "数据库中角色和用户的联系新增失败"),
+    SYSTEM_USER_FAIL_INSERT_CAUSE_T_ROLE_USER("12514", "数据库中角色和用户的联系新增失败"),
+    /**
+     *  用户信息新增失败(由于角色-用户中间表新增数目不对)
+     */
+    SYSTEM_USER_FAIL_WHEN_INSERT_T_ROLE_USER("12522", "数据库中角色-用户中间表信息新增数目未能满足要求"),
 
     /**
      * 用户信息插入失败(由于部门-用户中间表)
      */
-    SYSTEM_USER_FAIL_INSERT_CAUSE_T_DEPARTMENT_USER("12415", "数据库中部门和用户的联系新增失败"),
+    SYSTEM_USER_FAIL_INSERT_CAUSE_T_DEPARTMENT_USER("12515", "数据库中部门和用户的联系新增失败"),
+    /**
+     *  用户信息新增失败(由于部门-用户中间表新增数目不对)
+     */
+    SYSTEM_USER_FAIL_WHEN_INSERT_T_DEPARTMENT_USER("12523", "数据库中部门-用户中间表信息新增数目未能满足要求"),
 
     /**
      * 用户信息更新失败
      */
-    SYSTEM_USER_FAIL_UPDATE("12405", "数据库中用户信息没能成功地更新"),
+    SYSTEM_USER_FAIL_UPDATE("12505", "数据库中用户信息没能成功地更新"),
+    /**
+     * 用户信息更新数目不满足要求
+     */
+    SYSTEM_USER_USELESS_UPDATE("12519", "数据库中用户信息更新数目未能满足要求"),
 
     /**
      * 空的待删除用户
      */
-    SYSTEM_USER_EMPTY_DELETED_USER("12406", "空的待删除用户"),
+    SYSTEM_USER_EMPTY_DELETED_USER("12506", "空的待删除用户"),
 
     /**
      * 用户信息删除失败
      */
-    SYSTEM_USER_FAIL_DELETE("12407", "数据库中用户信息没能成功地删除"),
+    SYSTEM_USER_FAIL_DELETE("12507", "数据库中用户信息没能成功地删除"),
+    /**
+     * 资源信息删除数目不满足要求
+     */
+    SYSTEM_USER_USELESS_DELETE("12517", "数据库中用户信息删除数目未能满足要求"),
 
     /**
      * 数据版本信息不一致
      */
-    SYSTEM_USER_INCONSISTENT_VERSION("12109", "数据版本不一致"),
+    SYSTEM_USER_INCONSISTENT_VERSION("12509", "数据版本不一致"),
 
     /**
      * 用户信息删除失败(由于组织机构-公司-用户中间表)
      */
-    SYSTEM_USER_FAIL_DELETE_CAUSE_T_ORG_COMPANY_USER("12410", "数据库中组织机构、公司和用户的联系删除失败"),
+    SYSTEM_USER_FAIL_DELETE_CAUSE_T_ORG_COMPANY_USER("12510", "数据库中组织机构、公司和用户的联系删除失败"),
+    /**
+     *  用户信息删除失败(由于组织机构-公司-用户中间表删除数目不对)
+     */
+    SYSTEM_USER_FAIL_WHEN_DELETE_T_ORG_COMPANY_USER("12524", "数据库中组织机构-公司-角色中间表信息删除数目未能满足要求"),
 
     /**
      * 用户信息删除失败(由于角色-用户中间表)
      */
-    SYSTEM_USER_FAIL_DELETE_CAUSE_T_ROLE_USER("12411", "数据库中角色和用户的联系删除失败"),
+    SYSTEM_USER_FAIL_DELETE_CAUSE_T_ROLE_USER("12511", "数据库中角色和用户的联系删除失败"),
 
     /**
      * 用户信息删除失败(由于部门-用户中间表)
      */
-    SYSTEM_USER_FAIL_DELETE_CAUSE_T_DEPARTMENT_USER("12413", "数据库中部门和用户的联系删除失败"),
+    SYSTEM_USER_FAIL_DELETE_CAUSE_T_DEPARTMENT_USER("12513", "数据库中部门和用户的联系删除失败"),
+    /**
+     *  用户信息删除失败(由于部门-用户中间表删除数目不对)
+     */
+    SYSTEM_USER_FAIL_WHEN_DELETE_T_DEPARTMENT_USER("12525", "数据库中部门-用户中间表信息删除数目未能满足要求"),
 
     /**
      * 当前登录用户的权限不满足要求
      */
-    SYSTEM_USER_ERROR_MASTER_ACCESS("12412", "超级管理员不允许进行内部用户管理"),
+    SYSTEM_USER_ERROR_MASTER_ACCESS("12512", "超级管理员不允许进行内部用户管理"),
 
     /**
      * 为角色分配用户时，没能正确的将用户之前拥有的角色重置
      */
-    SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_RESET("12408", "没能够正确地重置用户之前拥有的角色"),
+    SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_RESET("12508", "没能够正确地重置用户之前拥有的角色"),
 
     /**
      * 为角色分配用户时，没能正确的对用户进行角色分配
      */
-    SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DISTRIBUTE("12416", "没能够正确地分配给用户指定角色"),
+    SYSTEM_USER_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DISTRIBUTE("12516", "没能够正确地分配给用户指定角色"),
+
+    /**
+     * 密码hash失败
+     */
+    SYSTEM_USER_ILLEGAL_PASSWORD("12517", "不非法的密码"),
 
     // =================================
     // 系统管理-工具类
@@ -695,22 +874,119 @@ public enum ResultEnum {
     /**
      * 获取组织机构-公司树失败
      */
-    SYSTEM_UTIL_TREE_EMPTY_ORG_COMPANY("12917", "获取组织机构-公司树失败"),
+    SYSTEM_UTIL_TREE_EMPTY_ORG_COMPANY("12917", "获取的组织机构-公司树为空"),
 
     /**
      * 获取公司-部门树失败
      */
-    SYSTEM_UTIL_TREE_EMPTY_COMPANY_DEPARTMENT("12918", "获取公司-部门树失败"),
+    SYSTEM_UTIL_TREE_EMPTY_COMPANY_DEPARTMENT("12918", "获取的公司-部门树为空"),
 
     /**
      * 获取公司-职位树失败
      */
-    SYSTEM_UTIL_TREE_EMPTY_COMPANY_POSITION("12919", "获取公司-职位树失败"),
+    SYSTEM_UTIL_TREE_EMPTY_COMPANY_POSITION("12919", "获取的公司-职位树为空"),
 
     /**
      * 获取资源树失败
      */
-    SYSTEM_UTIL_TREE_EMPTY_RESOURCE("12920", "获取资源树失败"),
+    SYSTEM_UTIL_TREE_EMPTY_RESOURCE("12920", "获取的资源树为空"),
+
+    /**
+     * 查询角色信息时出现异常
+     */
+    SYSTEM_UTIL_FAIL_QUERY_ROLE("12921", "查询角色信息时出现异常"),
+
+    /**
+     * 查询用户信息时出现异常
+     */
+    SYSTEM_UTIL_FAIL_QUERY_USER("12922", "查询用户信息时出现异常"),
+
+    /**
+     * 获取组织机构-公司树失败
+     */
+    SYSTEM_UTIL_FAIL_QUERY_TREE_ORG_COMPANY("12923", "获取组织机构-公司树失败"),
+
+    /**
+     * 获取公司-部门树失败
+     */
+    SYSTEM_UTIL_FAIL_QUERY_TREE_COMPANY_DEPARTMENT("12924", "获取公司-部门树失败"),
+
+    /**
+     * 获取公司-职位树失败
+     */
+    SYSTEM_UTIL_FAIL_QUERY_TREE_COMPANY_POSITION("12925", "获取公司-职位树失败"),
+
+    /**
+     * 获取资源树失败
+     */
+    SYSTEM_UTIL_FAIL_QUERY_TREE_RESOURCE("12926", "获取资源树失败"),
+
+    /**
+     * 为角色分配用户时，没能正确的将用户之前拥有的角色重置
+     */
+    SYSTEM_UTIL_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DELETE("12508", "没能够正确地先删除用户之前拥有的角色"),
+
+
+    // =================================
+    // 系统管理-对外接口部分
+    // =================================
+
+    /**
+     * 对发布人进行查询时没能获取查询结果
+     */
+    SYSTEM_API_NOTFOUND_PUBISHER("12800", "对发布人进行查询时没能获取查询结果"),
+
+    /**
+     * 对指定id的阅卷官进行查询时没能获取查询结果
+     */
+    SYSTEM_API_NOTFOUND_REVIEWER("12801", "对指定id的阅卷官进行查询时没能获取查询结果"),
+
+    /**
+     * 对指定id的阅卷官进行查询时没能获取查询结果
+     */
+    SYSTEM_API_ERROR_OPERATOR("12802", "越权操作数据"),
+
+    /**
+     * 获取用户信息失败
+     */
+    SYSTEM_API_ERROR_GETUSERS("12803", "获取用户信息失败"),
+
+    /**
+     * 获取用户公用缓存信息失败
+     */
+    SYSTEM_API_ERROR_CACHE("12804", "获取用户公用缓存信息失败"),
+
+    /**
+     * 获取角色列表失败
+     */
+    SYSTEM_API_ERROR_GETROLE("12805", "获取角色列表失败"),
+
+    /**
+     * 根据手机查询失败
+     */
+    SYSTEM_API_ERROR_GETROLEBYPHONE("12806", "根据手机查询失败"),
+
+    /**
+     * 查询公司名失败
+     */
+    SYSTEM_API_ERROR_GETCOMPANY("12807", "查询公司名失败"),
+
+    /**
+     * 查询用户失败
+     */
+    SYSTEM_API_NO_SUCH_USER("12808", "不存在满足要求的用户"),
+
+    /**
+     * 用户名或密码错误
+     */
+    SYSTEM_API_ILLEGAL_LOGIN("12809", "用户名或密码错误"),
+
+    /**
+     * 密码校验失败
+     */
+    SYSTEM_API_ILLEGAL_PASSWORD("12810", "非法的用户名或密码"),
+
+
 
     /**
      * 默认错误
@@ -730,6 +1006,14 @@ public enum ResultEnum {
      * 从请求体拿token内参数错误，或者从redis拿值错误
      */
     PARAMS_TOKEN_ERROR("16401", "获取自动填值参数错误"),
+    /**
+     * 系统发生异常
+     */
+    COMMON_SYSTEM_ERROR("16402", "系统发生异常!"),
+    /**
+     * Dao Aop切面为获取到参数
+     */
+    DAO_AOP_ARGS_ERROR("16403","dao层操作数据需要参数！！"),
 
     // 网关异常
     /**
@@ -892,12 +1176,24 @@ public enum ResultEnum {
      * 删除试卷异常
      */
     MAINTAIN_DELETE_ERROR("13304", "删除试卷发生错误！"),
+    MAINTAIN_PARAMS_ERROR("13305", "参数为空，请选择试卷！"),
+    PAPER_EXTENDS_PARAMS("13401", "对外接口参数为空"),
+    PAPER_BASE_DATA_SERVICE_TIMEOUT("13402", "试卷服务调用基础数据服务发生熔断"),
+    PAPER_EXAM_SERVICE_TIMEOUT("13403", "试卷服务调用考试服务发生熔断"),
 
     // 考试微服务
     /**
      * 试卷参数错误异常
      */
-    PAPER_PARAMS_ERROR("2618", "试卷参数错误！"),
+    EXAM_PARAMS_ERROR("14100", "传入参数错误！"),
+    EXAM_PUBLISH_START_EXAM("14101", "确认发布考试错误！只能修改状态为发布中的发布记录！"),
+    EXAM_PUBLISH_STOP_EXAM("14102", "终止考试错误！只能修改状态为考试中的发布记录！"),
+    EXAM_PUBLISH_STOP_READ("14103", "终止阅卷错误！只能修改状态为阅卷中的发布记录！"),
+    EXAM_PUBLISH_GET_EXAM_URL("14104", "无法获取系统参数中的考试地址！"),
+    EXAM_PUBLISH_GET_USER_CACHE_TIME("14105", "无法获取系统参数中的考生缓存时间！"),
+    EXAM_SYSTEM_SERVICE_TIMEOUT("14105", "调用系统微服务超时！"),
+    EXAM_PAPER_SERVICE_TIMEOUT("14106", "调用试卷微服务超时！"),
+    EXAM_BASE_DATA_SERVICE_TIMEOUT("14107", "调用基础数据微服务超时！"),
     /**
      * 试卷服务超时错误
      */

@@ -73,4 +73,6 @@ public class CommonCacheConstants {
      * 超级管理员
      */
     public static final Byte SUPER_MASTER = 2;
+
+    public static final String DEFAULT_PASSWORD = "******";
 }

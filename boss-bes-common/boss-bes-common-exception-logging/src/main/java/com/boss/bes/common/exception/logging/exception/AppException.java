@@ -27,6 +27,14 @@ public class AppException extends RuntimeException {
           this.code = code;
      }
 
+     public AppException(ResultEnum resultEnum, Throwable throwable) {
+          this(resultEnum);
+     }
+
+     public AppException(String message, String code, Throwable throwable) {
+          this(message, code);
+     }
+
      public ResultEnum getResultEnum() {
           return resultEnum;
      }
