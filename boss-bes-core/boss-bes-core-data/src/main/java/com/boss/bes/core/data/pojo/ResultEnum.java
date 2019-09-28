@@ -182,6 +182,81 @@ public enum ResultEnum {
      */
     DATABASE_TYPE_PERMISSION_ERROR("11306", "当前用户权限不足"),
 
+
+
+
+    // =================================
+    // 基础数据服务-数据字典管理 114xx
+    // =================================
+
+    /**
+     * 查询时请求体为空
+     */
+    BASEDATA_DICTIONARY_QUERY_EMPTY_REQUEST("11401", "进行查询时请求体为空"),
+
+    /**
+     * 添加记录时请求体为空
+     */
+    BASEDATA_DICTIONARY_ADD_EMPTY_REQUEST("11402","进行添加时请求体为空"),
+
+    /**
+     * 更新记录时请求体为空
+     */
+    BASEDATA_DICTIONARY_UPDATE_EMPTY_REQUEST("11403","进行更新时请求体为空"),
+
+    /**
+     * 删除记录时请求体为空
+     */
+    BASEDATA_DICTIONARY_DELETE_EMPTY_REQUEST("11404","进行删除时请求体为空"),
+
+    /**
+     * 权限不足
+     */
+    BASEDATA_DICTIONARY_PERMISSION_ERROR("11405","权限不足"),
+
+    /**
+     * 数据库执行查询操作时发生了异常
+     */
+    BASEDATA_DICTIONARY_DATABASE_SELECT_EXCEPTION("11411","数据库执行查询操作时发生了异常"),
+
+    /**
+     * 数据库执行插入记录操作时发生了异常
+     */
+    BASEDATA_DICTIONARY_DATABASE_ADD_EXCEPTION("11412","数据库执行插入记录操作时发生了异常"),
+
+    /**
+     * 数据库执行更新记录操作时发生了异常
+     */
+    BASEDATA_DICTIONARY_DATABASE_UPDATE_EXCEPTION("11413","数据库执行更新记录操作时发生了异常"),
+
+    /**
+     * 数据库执行删除记录操作时发生了异常
+     */
+    BASEDATA_DICTIONARY_DATABASE_DELETE_EXCEPTION("11414","数据库执行删除记录操作时发生了异常"),
+
+    /**
+     * 查询数据字典记录失败
+     */
+    BASEDATA_DICTIONARY_QUERY_ERROR("11421","查询数据字典记录失败"),
+
+    /**
+     * 添加数据字典记录失败
+     */
+    BASEDATA_DICTIONARY_ADD_ERROR("11422","添加数据字典记录失败"),
+
+    /**
+     * 更新数据字典记录失败
+     */
+    BASEDATA_DICTIONARY_UPDATE_ERROR("11423","更新数据字典记录失败"),
+
+    /**
+     * 删除数据字典记录失败
+     */
+    BASEDATA_DICTIONARY_DELETE_ERROR("11424","删除数据字典记录失败"),
+
+
+
+
     /*
      * 系统管理模块的异常码定义
      * TODO
@@ -786,6 +861,132 @@ public enum ResultEnum {
      * 密码hash失败
      */
     SYSTEM_USER_ILLEGAL_PASSWORD("12517", "不非法的密码"),
+
+
+
+    // =================================
+    // 系统管理服务-参数管理 126xx
+    // =================================
+
+    /**
+     * 查询时请求体为空
+     */
+    SYSTEM_PARAM_QUERY_EMPTY_REQUEST("12601", "进行查询时请求体为空"),
+
+    /**
+     * 添加记录时请求体为空
+     */
+    SYSTEM_PARAM_ADD_EMPTY_REQUEST("12602","进行添加时请求体为空"),
+
+    /**
+     * 更新记录时请求体为空
+     */
+    SYSTEM_PARAM_UPDATE_EMPTY_REQUEST("12603","进行更新时请求体为空"),
+
+    /**
+     * 删除记录时请求体为空
+     */
+    SYSTEM_PARAM_DELETE_EMPTY_REQUEST("12604","进行删除时请求体为空"),
+
+    /**
+     * 权限不足
+     */
+    SYSTEM_PARAM_PERMISSION_ERROR("12605","权限不足"),
+
+    /**
+     * 数据库执行查询操作时发生了异常
+     */
+    SYSTEM_PARAM_DATABASE_SELECT_EXCEPTION("12611","数据库执行查询操作时发生了异常"),
+
+    /**
+     * 数据库执行插入记录操作时发生了异常
+     */
+    SYSTEM_PARAM_DATABASE_ADD_EXCEPTION("12612","数据库执行插入记录操作时发生了异常"),
+
+    /**
+     * 数据库执行更新记录操作时发生了异常
+     */
+    SYSTEM_PARAM_DATABASE_UPDATE_EXCEPTION("12613","数据库执行更新记录操作时发生了异常"),
+
+    /**
+     * 数据库执行删除记录操作时发生了异常
+     */
+    SYSTEM_PARAM_DATABASE_DELETE_EXCEPTION("12614","数据库执行删除记录操作时发生了异常"),
+
+    /**
+     * 查询参数记录失败
+     */
+    SYSTEM_PARAM_QUERY_ERROR("12621","查询参数记录失败"),
+
+    /**
+     * 添加参数记录失败
+     */
+    SYSTEM_PARAM_ADD_ERROR("12622","添加参数记录失败"),
+
+    /**
+     * 更新参数记录失败
+     */
+    SYSTEM_PARAM_UPDATE_ERROR("12623","更新参数记录失败"),
+
+    /**
+     * 删除参数记录失败
+     */
+    SYSTEM_PARAM_DELETE_ERROR("12624","删除参数记录失败"),
+
+
+    // =================================
+    // 系统管理服务-在线用户管理 127xx
+    // =================================
+
+    /**
+     * 请求体为空
+     */
+    SYSTEM_USERONLINE_EMPTY_REQUEST("12701","请求体为空"),
+
+    /**
+     * 权限不足
+     */
+    SYSTEM_USERONLINE_PERMISSION_ERROR("12702","权限不足"),
+
+    /**
+     *数据库执行查询操作发生异常
+     */
+    SYSTEM_USERONLINE_DATABASE_SELECT_EXCEPTION("12711","数据库执行查询在线用户信息记录操作时发生异常"),
+
+    /**
+     * 数据库执行更新操作发生异常
+     */
+    SYSTEM_USERONLINE_DATABASE_UPDATE_EXCEPTION("12712","数据库执行更新在线用户信息记录操作时发生异常"),
+
+    /**
+     * 数据库执行添加操作时发生异常
+     */
+    SYSTEM_USERONLINE_DATABASE_ADD_EXCEPTION("12713","数据库执行添加在线用户信息记录操作时发生异常"),
+
+    /**
+     * 添加用户登陆信息失败
+     */
+    SYSTEM_USERONLINE_ADD_LOGIN_INFO_ERROR("12721","添加用户登陆信息失败"),
+
+
+    /**
+     * 添加离线用户信息失败
+     */
+    SYSTEM_USERONLINE_ADD_LOGOUT_INFO_ERROR("12722","添加离线用户信息失败"),
+
+    /**
+     * 查询在线用户记录失败
+     */
+    SYSTEM_USERONLINE_QUERY_ERROR("12723","查询在线用户记录失败"),
+
+    /**
+     * 不在线的用户，不允许执行强制下线
+     */
+    SYSTEM_USERONLINE_FORCE_OFFLINE_ERROR("12731","不在线的用户,不允许执行强制下线"),
+
+
+
+
 
     // =================================
     // 系统管理-工具类
