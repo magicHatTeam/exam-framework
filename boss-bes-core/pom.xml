@@ -14,7 +14,6 @@
     <modules>
         <module>boss-bes-core-data</module>
         <module>boss-bes-core-dao-aop</module>
-        <module>boss-bes-core-api-version</module>
     </modules>
 
 </project>

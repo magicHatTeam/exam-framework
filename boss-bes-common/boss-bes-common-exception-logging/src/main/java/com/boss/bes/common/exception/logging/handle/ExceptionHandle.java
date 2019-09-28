@@ -50,6 +50,7 @@ public class ExceptionHandle {
         if (e instanceof AppException) {
             // 系统内部业务异常
             AppException exception = (AppException) e;
+            logger.error("Error found: ",exception.getCause());
             if (exception.getResultEnum() != null){
                 return ResponseUtil.buildError(exception.getResultEnum());
             }
