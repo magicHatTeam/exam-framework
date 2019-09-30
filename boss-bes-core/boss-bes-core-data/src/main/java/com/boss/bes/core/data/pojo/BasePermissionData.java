@@ -28,6 +28,11 @@ public class BasePermissionData implements Serializable {
      */
     private Byte masterLevel;
 
+    /**
+     * 当前登录用户的id
+     */
+    private Long loginUserId;
+
 
     public Byte getMasterLevel() {
         return masterLevel;
@@ -54,5 +59,13 @@ public class BasePermissionData implements Serializable {
 
     public void setLoginOrgId(Long loginOrgId) {
         this.loginOrgId = loginOrgId;
+    }
+
+    public Long getLoginUserId() {
+        return loginUserId;
+    }
+
+    public void setLoginUserId(Long loginUserId) {
+        this.loginUserId = loginUserId;
     }
 }

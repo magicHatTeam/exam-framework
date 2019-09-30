@@ -593,7 +593,7 @@ public enum ResultEnum {
     /**
      * 资源信息删除失败
      */
-    SYSTEM_RESOURCE_FAIL_DELETE("12307", "删除资源信息时出现异常"),
+    SYSTEM_RESOURCE_FAIL_DELETE("12307", "删除资源信息时出现异常，可能正被使用"),
     /**
      * 资源信息删除数目不满足要求
      */
@@ -692,7 +692,7 @@ public enum ResultEnum {
     /**
      * 角色信息删除失败
      */
-    SYSTEM_ROLE_FAIL_DELETE("12407", "数据库中角色信息没能成功地删除"),
+    SYSTEM_ROLE_FAIL_DELETE("12407", "数据库中角色信息没能成功地删除，可能正被使用"),
     /**
      * 角色信息删除数目不满足要求
      */
@@ -758,7 +758,7 @@ public enum ResultEnum {
     /**
      * 用户信息插入失败
      */
-    SYSTEM_USER_FAIL_INSERT("12503", "数据库中用户信息没能成功地新增"),
+    SYSTEM_USER_FAIL_INSERT("12503", "数据库中用户信息没能成功地新增，可能输入了已存在的工号"),
     /**
      * 用户信息插入数目不满足要求
      */
@@ -1131,6 +1131,26 @@ public enum ResultEnum {
      * 为角色分配用户时，没能正确的将用户之前拥有的角色重置
      */
     SYSTEM_UTIL_FAIL_DISTRIBUTE_ROLE_CAUSE_FAIL_DELETE("12508", "没能够正确地先删除用户之前拥有的角色"),
+
+    /**
+     * 更新用户信息失败
+     */
+    SYSTEM_UTIL_FAIL_UPDATE_USER("12927", "更新用户信息失败"),
+
+    /**
+     * 更新用户信息数目不一致
+     */
+    SYSTEM_UTIL_USELESS_UPDATE_USER("12928", "更新用户信息的数目不满足要求"),
+
+    /**
+     * 更新角色信息失败
+     */
+    SYSTEM_UTIL_FAIL_UPDATE_ROLE("12929", "更新角色信息失败"),
+
+    /**
+     * 更新用户信息数目不一致
+     */
+    SYSTEM_UTIL_USELESS_UPDATE_ROLE("12930", "更新角色信息的数目不满足要求"),
 
 
     // =================================
