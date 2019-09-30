@@ -384,7 +384,7 @@ public enum ResultEnum {
     /**
      * 删除部门信息失败
      */
-    SYSTEM_DEPARTMENT_ERROR_DELETE("12208", "删除部门信息失败"),
+    SYSTEM_DEPARTMENT_ERROR_DELETE("12208", "该部门信息正在被使用"),
 
     /**
      * 数据版本不一致，请刷新
@@ -458,7 +458,7 @@ public enum ResultEnum {
     /**
      *  对组织机构查询失败
      */
-    SYSTEM_ORAGATION_ERROR_QUERY("122010", "组织查询失败"),
+    SYSTEM_ORAGATION_ERROR_QUERY("12010", "组织查询失败"),
 
 
     /**
@@ -515,7 +515,7 @@ public enum ResultEnum {
     /**
      * 删除部门信息失败
      */
-    SYSTEM_POSITION_ERROR_DELETE("12508", "删除职位信息失败"),
+    SYSTEM_POSITION_ERROR_DELETE("12508", "该部门信息正在被使用"),
 
     /**
      * 数据版本不一致，请刷新
