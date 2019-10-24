@@ -1198,11 +1198,6 @@ public enum ResultEnum {
     SYSTEM_API_ERROR_GETCOMPANY("12807", "查询公司名失败"),
 
     /**
-     * 查询参数键值对失败
-     */
-    SYSTEM_API_ERROR_GETPARAMMAP("12807", "查询参数键值对失败"),
-
-    /**
      * 查询用户失败
      */
     SYSTEM_API_NO_SUCH_USER("12808", "不存在满足要求的用户"),
@@ -1217,6 +1212,10 @@ public enum ResultEnum {
      */
     SYSTEM_API_ILLEGAL_PASSWORD("12810", "非法的用户名或密码"),
 
+    /**
+     * 查询参数键值对失败
+     */
+    SYSTEM_API_ERROR_GETPARAMMAP("12811", "查询参数键值对失败"),
 
 
     /**
@@ -1335,6 +1334,10 @@ public enum ResultEnum {
      * 预览参数错误，请选择试卷
      */
     PAPER_PREVIEW_PARAMS_ERROR("13011", "预览参数错误，请选择试卷！"),
+    /**
+     * 组卷失败，获取数据字典难度失败！
+     */
+    PAPER_COMPOSITION_NONE_DIFFICULT("13012", "组卷失败，获取数据字典难度失败！"),
     /**
      * 上传的试卷不存在异常
      */
