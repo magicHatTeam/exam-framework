@@ -1198,6 +1198,11 @@ public enum ResultEnum {
     SYSTEM_API_ERROR_GETCOMPANY("12807", "查询公司名失败"),
 
     /**
+     * 查询参数键值对失败
+     */
+    SYSTEM_API_ERROR_GETPARAMMAP("12807", "查询参数键值对失败"),
+
+    /**
      * 查询用户失败
      */
     SYSTEM_API_NO_SUCH_USER("12808", "不存在满足要求的用户"),
