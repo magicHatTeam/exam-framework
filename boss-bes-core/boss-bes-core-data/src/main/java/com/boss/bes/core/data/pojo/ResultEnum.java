@@ -1335,9 +1335,14 @@ public enum ResultEnum {
      */
     PAPER_PREVIEW_PARAMS_ERROR("13011", "预览参数错误，请选择试卷！"),
     /**
-     * 组卷失败，获取数据字典难度失败！
+     * 获取数据字典难度失败！
      */
     PAPER_COMPOSITION_NONE_DIFFICULT("13012", "组卷失败，获取数据字典难度失败！"),
+    /**
+     * 获取题目类别Map失败！
+     */
+    PAPER_COMPOSITION_NONE_CATEGORYMAP("13013", "组卷失败，获取题目类别Map失败！"),
+
     /**
      * 上传的试卷不存在异常
      */
