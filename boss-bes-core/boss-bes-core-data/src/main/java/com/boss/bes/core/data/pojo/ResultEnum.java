@@ -1334,14 +1334,6 @@ public enum ResultEnum {
      * 预览参数错误，请选择试卷
      */
     PAPER_PREVIEW_PARAMS_ERROR("13011", "预览参数错误，请选择试卷！"),
-    /**
-     * 获取数据字典难度失败！
-     */
-    PAPER_COMPOSITION_NONE_DIFFICULT("13012", "组卷失败，获取数据字典难度失败！"),
-    /**
-     * 获取题目类别Map失败！
-     */
-    PAPER_COMPOSITION_NONE_CATEGORYMAP("13013", "组卷失败，获取题目类别Map失败！"),
 
     /**
      * 上传的试卷不存在异常
@@ -1479,10 +1471,33 @@ public enum ResultEnum {
      */
     EXAM_TIME_NOTOVER("14196","获取报表信息失败"),
     /**
+     * 标准分计算时，题目类别不存在
+     */
+    EXAM_CALCULATE_SCORE_NOTEXIST_CATEGORY("14200","计算标准分失败，题目类别不存在"),
+    /**
+     * 标准分计算时，难度不存在
+     */
+    EXAM_CALCULATE_SCORE_NOTEXIST_DIFFICULT("14201","计算标准分失败，难度不存在"),
+    /**
+     * 标准分计算时，题目信息不存在
+     */
+    EXAM_CALCULATE_SCORE_NOTEXIST_SUBJECTDTO("14203","计算标准分失败，题目信息不存在"),
+    /**
+     * 标准分计算时，题目信息MAP不存在
+     */
+    EXAM_CALCULATE_SCORE_NOTEXIST_SUBJECTDTOMAP("14204","计算标准分失败，题目信息MAP不存在"),
+
+    /**
+     * 获取标签失败，得分不存在
+     */
+    EXAM_ANALYZE_TAG_NOTEXIST_SCORE("14205","获取标签失败，得分不存在"),
+
+    /**
      * 基础数据请求的数据为空
      */
     API_NULL_BODY("010001","请求体为空")
     ;
+
 
     private String code;
     private String msg;
